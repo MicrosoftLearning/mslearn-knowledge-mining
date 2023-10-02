@@ -10,9 +10,9 @@ In this exercise, you'll create an Azure Cognitive Search solution, import some 
 
 Before you can begin using a Debug Session, you need to create an Azure Cognitive Search service.
 
-1. [![Azure resource deploy button.](../media/08-media//deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmaster%2Fazuredeploy.json) select this button to deploy all the resources you need in the Azure portal.
+1. [![Azure resource deploy button.](../media/08-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-search-knowledge-mining%2Fmaster%2Fazuredeploy.json) select this button to deploy all the resources you need in the Azure portal.
 
-    :::image type="content" source="../media/08-media//arm-template-deployment.png" alt-text="A screenshot of the arm deployment template with fields entered.":::
+    :::image type="content" source="../media/08-media/arm-template-deployment.png" alt-text="A screenshot of the arm deployment template with fields entered.":::
 
 1. Under **Resource Group**, select **Create new**.
 1. Type **acs-cognitive-search-exercise**.
@@ -30,17 +30,17 @@ With your resources created, you can now import your source data.
 
 1. On the **Overview** pane, select **Import data**.
 
-      :::image type="content" source="../media/08-media//import-data-small.png" alt-text="A screenshot showing the import data menu selected." lightbox="../media/08-media//import-data.png":::
+      :::image type="content" source="../media/08-media/import-data-small.png" alt-text="A screenshot showing the import data menu selected." lightbox="../media/08-media/import-data.png":::
 
 1. On the import data pane, for the Data Source, select **Samples**.
 
-      :::image type="content" source="../media/08-media//import-data-selection-screen-small.png" alt-text="A screenshot showing the completed fields." lightbox="../media/08-media//import-data-selection-screen.png":::
+      :::image type="content" source="../media/08-media/import-data-selection-screen-small.png" alt-text="A screenshot showing the completed fields." lightbox="../media/08-media/import-data-selection-screen.png":::
 
 1. In the list of samples, select **hotels-sample**.
 1. Select **Next:Add cognitive skills (Optional)**.
 1. Expand the **Add enrichments** section.
 
-    :::image type="content" source="../media/08-media//add-enrichments-small.png" alt-text="A screenshot of the add enrichments options." lightbox="../media/08-media//add-enrichments.png":::
+    :::image type="content" source="../media/08-media/add-enrichments-small.png" alt-text="A screenshot of the add enrichments options." lightbox="../media/08-media/add-enrichments.png":::
 
 1. Select **Text Cognitive Skills**.
 1. Select **Next:Customize target index**.
@@ -51,7 +51,7 @@ With your resources created, you can now import your source data.
 
 The indexer will now begin to ingest 50 documents. However, if you check the status of the indexer you'll find that there's warnings.
 
-:::image type="content" source="../media/08-media//indexer-warnings-small.png" lightbox="../media/08-media//indexer-warnings.png" alt-text="A screenshot showing 150 warnings on the indexer.":::
+:::image type="content" source="../media/08-media/indexer-warnings-small.png" lightbox="../media/08-media/indexer-warnings.png" alt-text="A screenshot showing 150 warnings on the indexer.":::
 
 1. Select **Debug sessions** in the left pane.
 
@@ -59,11 +59,11 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
 1. Select **Choose an existing connection** for  Storage connection string, then select your storage account.
 
-    :::image type="content" source="../media/08-media//connect-storage.png" alt-text="A screenshot showing new de-bug session choosing a connection.":::
+    :::image type="content" source="../media/08-media/connect-storage.png" alt-text="A screenshot showing new de-bug session choosing a connection.":::
 
 1. Select **+ Container** to add a new container. Name it **acs-debug-storage**.
 
-    :::image type="content" source="../media/08-media//create-storage-container-small.png" alt-text="A screenshot showing creating a storage container." lightbox="../media/08-media//create-storage-container.png":::
+    :::image type="content" source="../media/08-media/create-storage-container-small.png" alt-text="A screenshot showing creating a storage container." lightbox="../media/08-media/create-storage-container.png":::
 
 1. Set its **Anonymous access level** to **Container(anonymous read access for containers and blobs)**.
 
@@ -74,7 +74,7 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
     The dependency graph shows you that for each document there's an error on three skills.
 
-    :::image type="content" source="../media/08-media//warning-skill-selection-small.png" lightbox="../media/08-media//warning-skill-selection.png" alt-text="A screenshot showing the three errors on an enriched document.":::
+    :::image type="content" source="../media/08-media/warning-skill-selection-small.png" lightbox="../media/08-media/warning-skill-selection.png" alt-text="A screenshot showing the three errors on an enriched document.":::
 
 1. Select **V3**.
 1. On the skills details pane, select **Errors/Warnings(1)**.
@@ -88,7 +88,7 @@ If you look back at the dependency graph, the Language detection skill has outpu
 
 1. In the dependency graph, select **Language detection**.
 
-    :::image type="content" source="../media/08-media//language-detection-error-small.png" lightbox="../media/08-media//language-detection-error.png" alt-text="A screenshot showing the Skill Settings for the Language Detection skill.":::
+    :::image type="content" source="../media/08-media/language-detection-error-small.png" lightbox="../media/08-media/language-detection-error.png" alt-text="A screenshot showing the Skill Settings for the Language Detection skill.":::
 
     Looking at the skill settings JSON, note the field being used to deduce the language is the `HotelId`.
 
@@ -97,33 +97,33 @@ If you look back at the dependency graph, the Language detection skill has outpu
 ## Resolve the warning on the indexer
 
 1. Select **source** under inputs, and change the field to `/document/Description`.
-    :::image type="content" source="../media/08-media//language-detection-fix.png" light="../media/08-media//language-detection-fix.png" alt-text="A screenshot of the Language Detection SKill screen showing the fixed skill.":::
+    :::image type="content" source="../media/08-media/language-detection-fix.png" light="../media/08-media/language-detection-fix.png" alt-text="A screenshot of the Language Detection SKill screen showing the fixed skill.":::
 1. Select **Save**.
 1. Select **Run**.
 
-    :::image type="content" source="../media/08-media//rerun-debug-session-small.png" light="../media/08-media//rerun-debug-session.png" alt-text="A screenshot showing the need to run after updating a skill.":::
+    :::image type="content" source="../media/08-media/rerun-debug-session-small.png" light="../media/08-media/rerun-debug-session.png" alt-text="A screenshot showing the need to run after updating a skill.":::
 
     The indexer should no longer have any errors or warnings. The skillset can now be updated.
 
 1. Select **Commit changes...**
 
-    :::image type="content" source="../media/08-media//error-fixed.png" alt-text="A screenshot showing the issue resolved.":::
+    :::image type="content" source="../media/08-media/error-fixed.png" alt-text="A screenshot showing the issue resolved.":::
 
 1. Select **OK**.
 
 1. Now you need to make sure that your skillset is attached to an Azure AI Services resource, otherwise you'll hit the basic quote and the indexer will timeout. To do this, select **Skillsets** in the left pane, then select your **hotels-sample-skillset**.
 
-    :::image type="content" source="../media/08-media//update-skillset-small.png" lightbox="../media/08-media//update-skillset.png" alt-text="A screenshot showing the skillset list.":::
+    :::image type="content" source="../media/08-media/update-skillset-small.png" lightbox="../media/08-media/update-skillset.png" alt-text="A screenshot showing the skillset list.":::
 
 1. Select the **AI Services** tab, then select the AI services resource in the list.
 
-    :::image type="content" source="../media/08-media//skillset-attach-service.png" alt-text="A screenshot showing the Azure AI Services resource to attach to the skillset.":::
+    :::image type="content" source="../media/08-media/skillset-attach-service.png" alt-text="A screenshot showing the Azure AI Services resource to attach to the skillset.":::
 
 1. Select **Save**.
 
 1. Now run your indexer to update the documents with the fixed AI enrichments. To do this select **Indexers** in the left pane, select  **hotels-sample-indexer**, then select **Run**.  When it has finished running, you should see that the warnings are now zero.
 
-    :::image type="content" source="../media/08-media//warnings-fixed-indexer-small.png" lightbox="../media/08-media//warnings-fixed-indexer.png alt-text="A screenshot showing everything resolved.":::
+    :::image type="content" source="../media/08-media/warnings-fixed-indexer-small.png" lightbox="../media/08-media/warnings-fixed-indexer.png alt-text="A screenshot showing everything resolved.":::
 
 > [!TIP]
 > Now you've completed the exercise, if you've finished exploring Azure Cognitive Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.

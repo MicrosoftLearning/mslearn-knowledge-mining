@@ -28,7 +28,7 @@ Import the sample data.
 
 1. On the **Overview** pane, select **Import data**.
 
-    :::image type="content" source="../media/05-media/05-media/import-data-new-small.png" alt-text="A screenshot showing the import data menu." lightbox="../media/05-media/import-data-new.png":::
+    :::image type="content" source="../media/05-media/import-data-new-small.png" alt-text="A screenshot showing the import data menu." lightbox="../media/05-media/import-data-new.png":::
 1. On the **Import data** pane, in the **Data source** dropdown, select **Samples**.
 1. Select **hotels-sample**.
 
