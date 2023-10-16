@@ -12,7 +12,7 @@ You'll need the following to successfully this exercise:
 - Azure Cognitive Search service
 - The [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection) *Vector-Search-Quickstart.postman_collection v1.0 json*. 
 
-> [!NOTE]
+> **Note**
 > You can find more information about the Postman app [here](https://learn.microsoft.com/en-us/azure/search/search-get-started-rest) if required.
 
 ## Set up your project
