@@ -1,3 +1,8 @@
+---
+lab:
+    title: 'Use the REST API to run vector search queries'
+---
+
 In this exercise you'll set up your project, create an index, upload your documents, and run queries.
 
 You'll need the following to successfully this exercise:

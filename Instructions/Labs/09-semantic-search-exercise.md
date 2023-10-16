@@ -17,13 +17,13 @@ In this exercise, you will add semantic search to an index and use semantic sear
 1. In the navigation pane, select **Semantic search (preview)**.
 1. In **Availability**, in the **Free** option, select **Select Plan**.
 
-:::image type="content" source="../media/semantic-search/semantic-search/semanticsearch.png" alt-text="Screenshot of Semantic search dialog box.":::
+:::image type="content" source="../media/semantic-search/semanticsearch.png" alt-text="Screenshot of Semantic search dialog box.":::
 
 ## Import a sample index
 
 1. From the Azure portal home page, select **All resources** and select your search service.
 1. Select **Import data**.
-:::image type="content" source="../media/semantic-search/semantic-search/importdata.png" alt-text="Screenshot of Import data button.":::
+:::image type="content" source="../media/semantic-search/importdata.png" alt-text="Screenshot of Import data button.":::
 1. In **Data Source**, select **Samples**.
 1. Select **hotels-sample** and select **Next: Add cognitive skills (Optional)**.
 1. Select **Skip to: Customize target index**.
@@ -38,7 +38,7 @@ To configure semantic ranking, follow these steps:
 
 1. From the Azure portal home page, select **All resources** and select your search service.
 1. On the navigation bar, in **Search management**, select **Indexes**.
-:::image type="content" source="../media/semantic-search/semantic-search/indexes.png" alt-text="Screenshot of Indexes button.":::
+:::image type="content" source="../media/semantic-search/indexes.png" alt-text="Screenshot of Indexes button.":::
 1. Select your index.
 1. Select **Semantic configurations** and select **Add semantic configuration**.
 1. In **Name** type **hotels-conf**.
@@ -52,7 +52,7 @@ To configure semantic ranking, follow these steps:
 1. On your index page, select **Save**.
 1. From the Azure portal home page, select **All resources** and select your search service.
 1. On the navigation bar, in **Search management**, select **Indexes**.
-:::image type="content" source="../media/semantic-search/semantic-search/indexes.png" alt-text="Screenshot of Indexes button.":::
+:::image type="content" source="../media/semantic-search/indexes.png" alt-text="Screenshot of Indexes button.":::
 1. Select your index.
 1. Select **Search explorer**.
 1. Select **View** and select **JSON view**.
