@@ -1,3 +1,7 @@
+---
+lab:
+    title: 'Debug search issues'
+---
 
 You've built your search solution but have noticed that there are some warnings on the indexer.
 

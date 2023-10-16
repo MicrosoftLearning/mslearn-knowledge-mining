@@ -1,3 +1,8 @@
+---
+lab:
+    title: 'Enrich a cognitive search index with custom classes'
+---
+
 You've built a search solution and now want to add Azure AI Services for language enrichments to your indexes.
 
 :::image type="content" source="../media/04-media/exercise-overview.png" alt-text="A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App." border="false":::

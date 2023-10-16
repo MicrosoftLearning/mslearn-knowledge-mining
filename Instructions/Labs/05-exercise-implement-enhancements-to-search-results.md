@@ -1,3 +1,7 @@
+---
+lab:
+    title: 'Implement enhancements to search results'
+---
 
 You have an existing search service that a holiday booking app uses. You've seen that the relevance of search results is impacting the number of bookings you're getting. You've also recently added hotels in Portugal so would like to offer Portuguese as a supported language.
 
