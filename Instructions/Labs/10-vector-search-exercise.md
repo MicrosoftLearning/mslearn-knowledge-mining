@@ -19,13 +19,21 @@ You'll need the following to successfully this exercise:
 
 First set up your project by carrying out the following steps:
 
-1. Note the **URL** and **Key** from your Cognitive Search service.:::image type="content" source="../media/vector-search/search keys.png" alt-text="Illustration of location for Service name and Keys":::
+1. Note the **URL** and **Key** from your Cognitive Search service.
+
+    ![Illustration of location for Service name and Keys.](../media/vector-search/search keys.png)
+
 1. Download the [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection). 
-1. Open Postman and import the collection by selecting the **Import** button and drag and drop the collection folder into the box. :::image type="content" source="../media/vector-search/import.png" alt-text="*[Image of Import dialog box]*":::
+1. Open Postman and import the collection by selecting the **Import** button and drag and drop the collection folder into the box.
+
+    ![Image of Import dialog box](../media/vector-search/import.png)
+
 1. Select the **Fork** button to create a fork of the collection and add a unique name.
 1. Right-click your collection name and select **Edit**.
 1. Select the **Variables** tab and enter the following values using the search service and index names from your Cognitive Search service:
-:::image type="content" source="../media/vector-search/variables.png" alt-text="Diagram showing an example of variable settings":::
+
+![Diagram showing an example of variable settings](../media/vector-search/variables.png)
+
 1. Save your changes by selecting the **Save** button.
 
 You're ready to send your requests to the Azure Cognitive Search service.
