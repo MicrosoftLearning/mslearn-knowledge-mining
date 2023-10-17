@@ -15,8 +15,7 @@ In this exercise, you'll clone an existing C# solution and run it to work out th
 To save you time, select this Azure Resource Manager template to create resources you'll need later in the exercise:
 
 1. [![Deploy to Azure.](../media/07-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) select this link to create an Azure Cognitive Search service.
-    :::image type="content" source="../media/07-media/deploy-azure-resources.png" alt-text="A screenshot of the options shown when deploying resources to Azure.":::
-
+    ![A screenshot of the options shown when deploying resources to Azure.](../media/07-media/deploy-azure-resources.png)
 1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
 1. In **Region**, select a [supported region](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability) that is close to you.
 1. The **Resource Prefix** needs to be globally unique, enter a random numeric and lower-case character prefix, for example, **acs118245**.
@@ -27,15 +26,14 @@ To save you time, select this Azure Resource Manager template to create resource
 
 1. When deployment has finished, select **Go to resource group** to see all the resources that you've created.
 
-    :::image type="content" source="../media/07-media/azure-resources-created-small.png" alt-text="A screenshot showing all of the deployed Azure resources." lightbox="../media/07-media/azure-resources-created.png":::
+    ![A screenshot showing all of the deployed Azure resources.](../media/07-media/azure-resources-created.png)
 
 ### Copy Azure Cognitive Search service REST API information
 
 1. In the list of resources, select the search service you created. In the above example **acs118245-search-service**.
 1. Copy the search service name into a text file.
 
-    :::image type="content" source="../media/07-media/search-api-keys-exercise-version.png" alt-text="A screenshot of the keys section of a search service." lightbox="../media/07-media/search-api-keys-exercise-version.png":::
-
+    ![A screenshot of the keys section of a search service.](../media/07-media/search-api-keys-exercise-version.png)
 1. On the left, select **Keys**, then copy the **Primary admin key** into the same text file.
 
 ### Download example code
@@ -64,12 +62,10 @@ Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top o
 
 1. This opens the code editor inside Cloud Shell at the `/optimize-data-indexing/v11` folder.
 
-    :::image type="content" source="../media/07-media/setup-visual-studio-code-solution.png" alt-text="A screenshot of VS Code showing the setup notifications." lightbox="../media/07-media/setup-visual-studio-code-solution.png":::
-
+    ![A screenshot of VS Code showing the setup notifications.](../media/07-media/setup-visual-studio-code-solution.png)
 1. In the navigation on the left, expand the **OptimizeDataIndexing** folder, then select the **appsettings.json** file.
 
-    :::image type="content" source="../media/07-media/update-app-settings.png" alt-text="A screenshot showing the contents of the appsettings.json file." lightbox="../media/07-media/update-app-settings.png":::
-
+    ![A screenshot showing the contents of the appsettings.json file.](../media/07-media/update-app-settings.png)
 1. Paste in your search service name and primary admin key.
 
     ```json
@@ -88,8 +84,7 @@ Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top o
 1. In the terminal, enter `cd ./optimize-data-indexing/v11/OptimizeDataIndexing` then press **Enter** to change into the correct directory.
 1. Select the **Program.cs** file. Then, in the terminal, enter `dotnet run` and press **Enter**.
 
-    :::image type="content" source="../media/07-media/debug-application.png" alt-text="A screenshot showing the app running in VS Code with an exception." lightbox="../media/07-media/debug-application.png":::
-
+    ![A screenshot showing the app running in VS Code with an exception.](../media/07-media/debug-application.png)
 The output shows that in this case, the best performing batch size is 900 documents. As it reaches 3.688 MB per second.
 
 ### Edit the code to implement threading and a backoff and retry strategy
@@ -98,8 +93,7 @@ There's code commented out that's ready to change the app to use threads to uplo
 
 1. Make sure you've selected **Program.cs**.
 
-    :::image type="content" source="../media/07-media/edit-program-code.png" alt-text="A screenshot of VS Code showing the Program.cs file." lightbox="../media/07-media/edit-program-code.png":::
-
+    ![A screenshot of VS Code showing the Program.cs file.](../media/07-media/edit-program-code.png)
 1. Comment out lines 38 and 39 like this:
 
     ```csharp
@@ -123,16 +117,14 @@ There's code commented out that's ready to change the app to use threads to uplo
 
     The code that controls the batch size and number of threads is `await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8)`. The batch size is 1000 and the threads are eight.
 
-    :::image type="content" source="../media/07-media/thread-code-ready-small.png" alt-text="A screenshot showing all the edited code." lightbox="../media/07-media/thread-code-ready.png":::
-
+    ![A screenshot showing all the edited code.](../media/07-media/thread-code-ready.png)
     Your code should look like the above.
 
 1. Save your changes, press **CTRL**+**S**.
 1. Select your terminal, then press any key to end the running process if you haven't already.
 1. Run `dotnet run` in the terminal.
 
-    :::image type="content" source="../media/07-media/upload-hundred-thousand-documents.png" alt-text="A screenshot showing the completed messages in the console." lightbox="../media/07-media/upload-hundred-thousand-documents.png":::
-
+    ![A screenshot showing the completed messages in the console.](../media/07-media/upload-hundred-thousand-documents.png)
     The app will start eight threads, and then as each thread finishes writing a new message to the console:
 
     ```powershell
@@ -170,7 +162,7 @@ Explore the code in the `ExponentialBackoffAsync` to see how the code implements
 
 You can search and verify that the documents have been added to the index in the Azure portal.
 
-:::image type="content" source="../media/07-media/check-search-service-index.png" alt-text="A screenshot showing the search index with 100000 documents." lightbox="../media/07-media/check-search-service-index.png":::
+![A screenshot showing the search index with 100000 documents.](../media/07-media/check-search-service-index.png)
 
 ### Delete exercise resources
 

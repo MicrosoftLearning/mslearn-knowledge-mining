@@ -36,13 +36,13 @@ You'll now create a regression model and train it using an Azure AI Machine Lear
 
 1. From the list of prebuilt components, select **Regression - Automobile Price Prediction (Basic)**.
 
-    :::image type="content" source="../media/06-media/select-pre-built-components-new.png" alt-text="A screenshot showing selecting the prebuilt regression model." lightbox="../media/06-media/select-pre-built-components.png":::
+    ![A screenshot showing selecting the prebuilt regression model.](../media/06-media/select-pre-built-components-new.png)
 
 1. Select **Validate**.
 
 1. On the **Graph validation** pane, select the error **Select compute target in submission wizard**.
 
-    :::image type="content" source="../media/06-media/create-compute-instance-new.png" alt-text="A screenshot showing how to create a compute instance to train the model." lightbox="../media/06-media/create-compute-instance-new.png":::
+    ![A screenshot showing how to create a compute instance to train the model.](../media/06-media/create-compute-instance-new.png)
 1. In the **Select compute type** dropdown, choose **Compute instance**. Then select **Create Azure ML compute instance** underneath.
 1. In the **Compute name** field, enter a unique name (such as **compute-for-training**).
 1. Select **Review + create**, then select **Create**.
@@ -51,8 +51,7 @@ You'll now create a regression model and train it using an Azure AI Machine Lear
 
 1. Select **Validate** again, the pipeline should look good.
 
-    :::image type="content" source="../media/06-media/submit-pipeline.png" alt-text="A screenshot showing the pipeline looking good, and the Submit button highlighted." lightbox="../media/06-media/submit-pipeline.png":::
-
+    ![A screenshot showing the pipeline looking good, and the Submit button highlighted.](../media/06-media/submit-pipeline.png)
 1. Select **Basics** in the **Set up pipeline job** pane.
 1. Select **Create new** under the Experiment name.
 1. In **New experiment name**, enter **linear-regression-training**.
@@ -64,8 +63,7 @@ While your pipeline is training a linear regression model, you can create the re
 
 1. On the left, select **Compute**.
 
-    :::image type="content" source="../media/06-media/create-inference-cluster-new.png" alt-text="A screenshot showing how to create a new inference cluster." lightbox="../media/06-media/create-inference-cluster-new.png":::
-
+    ![A screenshot showing how to create a new inference cluster.](../media/06-media/create-inference-cluster-new.png)
 1. Select **Kubernetes clusters**, then select **+ New**.
 1. In the dropdown, select **AksCompute**.
 1. On the **Create AksCompute** pane, select **Create new**.
@@ -83,13 +81,11 @@ Your pipeline job should have finished. You'll download the `score.py` and `cond
 
 1. On the left, select **Jobs**.
 
-    :::image type="content" source="../media/06-media/completed-pipeline-new.png" alt-text="A screenshot showing the completed pipeline job." lightbox="../media/06-media/completed-pipeline-new.png":::
-
+    ![A screenshot showing the completed pipeline job.](../media/06-media/completed-pipeline-new.png)
 1. Select your experiment, then select your completed job in the table, for example, **Regression - Automobile Price Prediction (Basic)**. If you're prompted to save changes, select **Discard** for changes.
 1. In the designer, select **Job overview** in the top right, then select the **Train Model** node.
 
-    :::image type="content" source="../media/06-media/download-score-conda.png" alt-text="A screenshot showing how to download score.py." lightbox="../media/06-media/download-score-conda.png":::
-
+    ![A screenshot showing how to download score.py.](../media/06-media/download-score-conda.png)
 1. In the **Outputs + logs** tab, expand the **trained_model_outputs** folder.
 1. Next to `score.py`, select the more menu (**...**), then select **Download**.
 1. Next to `conda_env.yaml`, select the more menu (**...**), then select **Download**.
@@ -177,8 +173,7 @@ Your inference cluster should now be ready to use. You've also edited the scorin
 
 1. Select **Deploy**, then select **Real-time endpoint**.
 
-    :::image type="content" source="../media/06-media/04-select-endpoint.png" alt-text="A screenshot of the Select endpoint pane." lightbox="../media/06-media/04-select-endpoint.png":::
-
+    ![A screenshot of the Select endpoint pane.](../media/06-media/04-select-endpoint.png)
 1. For **Name**, enter **car-evaluation-endpoint**.
 1. For **Compute type**, select **Managed**.
 1. For **Authentication type**, select **Key-based authentication**.
@@ -241,8 +236,7 @@ Wait for the model to be deployed, it can take up to 10 minutes. You can check t
 
 1. Select **Consume**.
 
-    :::image type="content" source="../media/06-media/copy-rest-endpoint.png" alt-text="A screenshot showing how to copy the REST endpoint and primary key." lightbox="../media/06-media/copy-rest-endpoint.png":::
-
+    ![A screenshot showing how to copy the REST endpoint and primary key.](../media/06-media/copy-rest-endpoint.png)
 1. Copy the **REST endpoint**.
 1. Copy the **Primary key**.
 
@@ -255,7 +249,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 1. In the [Azure portal](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true), select Resource groups.
 1. Select **aml-for-acs-enrichment**.
 
-    :::image type="content" source="../media/06-media/navigate-storage-account.png" alt-text="A screenshot showing selecting a storage account in the Azure portal." lightbox="../media/06-media/navigate-storage-account.png":::
+    ![A screenshot showing selecting a storage account in the Azure portal.](../media/06-media/navigate-storage-account.png)
 1. Select the storage account, for example **amlforacsworks1440637584**.
 1. Select **Configuration** under **Settings**. Then set **Allow Blob anonymous acces** to **Enabled**.
 1. Select **Save**.
@@ -489,9 +483,7 @@ The updated skillset will now add a predicted value to the test car document in 
 1. On the **Overview** pane of your search service, select **Search explorer** at the top of the pane.
 1. Select **Search**.
 1. Scroll to the bottom of the results.
-
-    :::image type="content" source="../media/06-media/test-results-search-explorer.png" alt-text="A screenshot showing the predicted car price field added to the search results." lightbox="../media/06-media/test-results-search-explorer.png":::
-
+    ![A screenshot showing the predicted car price field added to the search results.](../media/06-media/test-results-search-explorer.png)
 You should see the populate field `predicted_price`.
 
 ### Delete exercise resources
