@@ -9,7 +9,7 @@ You want to explore how to create an Azure Cognitive Search index and upload doc
 
 In this exercise, you'll clone an existing C# solution and run it to work out the optimal batch size to upload documents. You'll then use this batch size and upload documents effectively using a threaded approach.
 
-> [!NOTE]
+> **Note**
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 
 ## Set up your Azure resources
@@ -43,7 +43,7 @@ To save you time, select this Azure Resource Manager template to create resource
 ### Download example code
 
 Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top of the Azure portal.
-> [!NOTE]
+> **Note**
 > If you're prompted to create an Azure Storage account select **Create storage**.
 
 1. Once it has finished starting up, clone the following example code repository by running the following in your Cloud Shell:

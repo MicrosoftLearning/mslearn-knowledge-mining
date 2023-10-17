@@ -11,7 +11,7 @@ You've built a search solution and now want to add Azure AI Services for languag
 
 In this exercise, you'll create an Azure Cognitive Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
 
-> [!NOTE]
+> **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 
 
@@ -42,7 +42,7 @@ To save you time, select this Azure ARM template to create resources you'll need
 1. Select **Review + create**.
 1. Select **Create**.
 
-    > [!NOTE]
+    > **Note**
     > There's an error shown, **You will need to Agree to the terms of service below to create this resource successfully.**, by selecting **Create** you are agreeing to them.
 
 1. Select **Go to resource group** to see all the resources that you've created.
@@ -81,7 +81,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
     :::image type="content" source="../media/04-media/download-sample-data.png" alt-text="A screenshot showing where to select to download tha sample zip data." lightbox="../media/04-media/download-sample-data.png":::
 1. Open the **Custom multi classification - movies summary.zip** file, and extract the folder containing all the files.
 
-    > [!NOTE]
+    > **Note**
     > You use these files to train a model in Language Studio, and will also index all the files in Azure Cognitive Search.
 
 1. In the [Azure portal](https://portal.azure.com/), select **Resource groups**, then select your resource group.

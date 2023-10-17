@@ -9,7 +9,7 @@ You have an existing search service that a holiday booking app uses. You've seen
 
 In this exercise, you'll add a scoring profile to improve the relevance of search results. Then you'll use Azure AI Services to add Portuguese descriptions for all your hotels.
 
-> [!NOTE]
+> **Note**
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 
 ## Create Azure resources

@@ -68,7 +68,7 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
     - Search service admin key
     - Search service query key
 
-> [!NOTE]
+> **Note**
 > If an error message appears in the output for the Azure AI Services Key, check the **Keys and Endpoint** page for your Azure AI Services resource in the Azure portal.
 
 14. In the Azure portal, refresh the resource group and verify that it contains the Azure Storage account, Azure AI Services resource, and Azure Cognitive Search resource.
