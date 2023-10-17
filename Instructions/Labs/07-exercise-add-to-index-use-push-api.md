@@ -3,6 +3,8 @@ lab:
     title: 'Add to an index using the push API'
 ---
 
+# Add to an index using the push API
+
 You want to explore how to create an Azure Cognitive Search index and upload documents to that index using C# code.
 
 In this exercise, you'll clone an existing C# solution and run it to work out the optimal batch size to upload documents. You'll then use this batch size and upload documents effectively using a threaded approach.

@@ -12,10 +12,10 @@ In this exercise, you'll create a custom skill that tabulates the frequency of i
 
 ## Clone the repository for this course
 
-If you have already cloned **AI-102-AIEngineer** code repository to the environment where you're working on this lab, open it in Visual Studio Code; otherwise, follow these steps to clone it now.
+If you have already cloned **mslearn-knowledge-mining** code repository to the environment where you're working on this lab, open it in Visual Studio Code; otherwise, follow these steps to clone it now.
 
 1. Start Visual Studio Code.
-2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/AI-102-AIEngineer` repository to a local folder (it doesn't matter which folder).
+2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` repository to a local folder (it doesn't matter which folder).
 3. When the repository has been cloned, open the folder in Visual Studio Code.
 4. Wait while additional files are installed to support the C# code projects in the repo.
 
@@ -23,14 +23,14 @@ If you have already cloned **AI-102-AIEngineer** code repository to the environm
 
 ## Create Azure resources
 
-> **Note**: If you have previously completed the **[Create an Azure Cognitive Search solution](22-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
+> **Note**: If you have previously completed the **[Create an Azure Cognitive Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
 
 1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
 2. View the **Resource groups** in your subscription.
 3. If you are using a restricted subscription in which a resource group has been provided for you, select the resource group to view its properties. Otherwise, create a new resource group with a name of your choice, and go to it when it has been created.
 4. On the **Overview** page for your resource group, note the **Subscription ID** and **Location**. You will need these values, along with the name of the resource group in subsequent steps.
-5. In Visual Studio Code, expand the **23-custom-search-skill** folder and select **setup.cmd**. You will use this batch script to run the Azure command line interface (CLI) commands required to create the Azure resources you need.
-6. Right-click the the **23-custom-search-skill** folder and select **Open in Integrated Terminal**.
+5. In Visual Studio Code, expand the **Labfiles/02-search-skill** folder and select **setup.cmd**. You will use this batch script to run the Azure command line interface (CLI) commands required to create the Azure resources you need.
+6. Right-click the the **02-search-skill** folder and select **Open in Integrated Terminal**.
 7. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
 
     ```
@@ -46,7 +46,7 @@ If you have already cloned **AI-102-AIEngineer** code repository to the environm
 
 10. In the output, find the **Name** value that corresponds with the location of your resource group (for example, for *East US* the corresponding name is *eastus*).
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
-12. In the terminal for the **23-custom-search-skill** folder, enter the following command to run the script:
+12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
 
     ```
     setup
@@ -78,7 +78,7 @@ Now that you have the necessary Azure resources, you can create a search solutio
 
 In this exercise, you'll use the Azure Cognitive Search REST interface to create these components by submitting JSON requests.
 
-1. In Visual Studio Code, in the **23-custom-search-skill** folder, expand the **create-search** folder and select **data_source.json**. This file contains a JSON definition for a data source named **margies-custom-data**.
+1. In Visual Studio Code, in the **02-search-skill** folder, expand the **create-search** folder and select **data_source.json**. This file contains a JSON definition for a data source named **margies-custom-data**.
 2. Replace the **YOUR_CONNECTION_STRING** placeholder with the connection string for your Azure storage account, which should resemble the following:
 
     ```
@@ -329,7 +329,7 @@ module.exports = async function (context, req) {
 
 Now you need to include your function as a custom skill in the search solution skillset, and map the results it produces to a field in the index. 
 
-1. In Visual Studio Code, in the **23-custom-search-skill/update-search** folder, open the **update-skillset.json** file. This contains the JSON definition of a skillset.
+1. In Visual Studio Code, in the **02-search-skill/update-search** folder, open the **update-skillset.json** file. This contains the JSON definition of a skillset.
 2. Review the skillset definition. It includes the same skills as before, as well as a new **WebApiSkill** skill named **get-top-words**.
 3. Edit the **get-top-words** skill definition to set the **uri** value to the URL for your Azure function (which you copied to the clipboard in the previous procedure), replacing **YOUR-FUNCTION-APP-URL**.
 4. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_COGNITIVE_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.

@@ -3,6 +3,8 @@ lab:
     title: 'Enrich a search index using Azure Machine Learning model'
 ---
 
+# Enrich a search index using Azure Machine Learning model
+
 You can use the power of machine learning to enrich a search index. To do this, you'll use a model trained in Azure AI Machine Learning studio and call it from a machine learning custom skillset.
 
 In this exercise, you'll create an Azure AI Machine Learning Studio model, then train, deploy, and test an endpoint using the model. Then you'll create an Azure Cognitive Search service, create sample data, and enrich an index using the Azure AI Machine Learning studio endpoint.
@@ -11,7 +13,7 @@ In this exercise, you'll create an Azure AI Machine Learning Studio model, then 
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 >
 
-### Create an Azure Machine Learning workspace
+## Create an Azure Machine Learning workspace
 
 Before you enrich your search index, create an Azure Machine Learning workspace. The workspace will give you access to the Azure AI Machine Learning studio, a graphical tool you can use to build AI models and deploy them for use.
 
@@ -28,7 +30,7 @@ Before you enrich your search index, create an Azure Machine Learning workspace.
 1. Wait for the Azure Machine Learning workspace to be deployed, then select **Go to resource**.
 1. On the Overview pane, select **Launch studio**.
 
-### Create a regression training pipeline
+## Create a regression training pipeline
 
 You'll now create a regression model and train it using an Azure AI Machine Learning Studio pipeline. You'll train your model on automobile price data. The model, once trained, will predict the price of an automobile based on its attributes.
 
@@ -58,7 +60,7 @@ You'll now create a regression model and train it using an Azure AI Machine Lear
 1. In **New experiment name**, enter **linear-regression-training**.
 1. Select **Review + Submit** , then select **Submit**.
 
-#### Create an inference cluster for the endpoint
+### Create an inference cluster for the endpoint
 
 While your pipeline is training a linear regression model, you can create the resources you need for the endpoint. This endpoint needs a Kubernetes cluster to process web requests to your model.
 
@@ -77,7 +79,7 @@ While your pipeline is training a linear regression model, you can create the re
 1. In **Leaf domain**, enter **aml-for-acs**.
 1. Select **Create**.
 
-#### Register your trained model
+### Register your trained model
 
 Your pipeline job should have finished. You'll download the `score.py` and `conda_env.yaml` files. Then you'll register your trained model.
 
@@ -100,7 +102,7 @@ Your pipeline job should have finished. You'll download the `score.py` and `cond
 1. Select **Next**.
 1. Select **Register**.
 
-#### Edit the scoring script to respond to Azure Cognitive Search correctly
+### Edit the scoring script to respond to Azure Cognitive Search correctly
 
 Azure Machine Learning Studio has downloaded two files to your web browser's default download location. You need to edit the score.py file to change how the JSON request and response are handled. You can use a text editor or a code editor like Visual Studio Code.
 
@@ -152,7 +154,7 @@ Azure Machine Learning Studio has downloaded two files to your web browser's def
     The other change is to only return the predicted price of the car instead of the whole JSON response.
 1. Save the changes in your text editor.
 
-### Create custom environment
+## Create custom environment
 
 Next, you'll create a custom environment so you can deploy to a real-time endpoint.
 
@@ -168,7 +170,7 @@ Next, you'll create a custom environment so you can deploy to a real-time endpoi
 1. Select **Next**, then select **Next** again.
 1. Select **Create** to create your custom environment.
 
-### Deploy the model with the updated scoring code <!--Option for web service deployment is greyed out. Can't go further after trying several different things.-->
+## Deploy the model with the updated scoring code <!--Option for web service deployment is greyed out. Can't go further after trying several different things.-->
 
 Your inference cluster should now be ready to use. You've also edited the scoring code to handle requests from your Azure Cognitive Search custom skillset. Let's create and test an endpoint for the model.
 
@@ -195,7 +197,7 @@ Your inference cluster should now be ready to use. You've also edited the scorin
 
 Wait for the model to be deployed, it can take up to 10 minutes. You can check the status in **Notifications** or the endpoints section of the Azure Machine Learning Studio.
 
-#### Test your trained model's endpoint
+### Test your trained model's endpoint
 
 1. On the left, select **Endpoints**.
 1. Select **car-evaluation-endpoint**.
@@ -250,7 +252,7 @@ Wait for the model to be deployed, it can take up to 10 minutes. You can check t
 
 Next, you create a new Cognitive Search service and enrich an index using a custom skillset.
 
-#### Create a test file
+### Create a test file
 
 1. In the [Azure portal](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true), select Resource groups.
 1. Select **aml-for-acs-enrichment**.
@@ -302,7 +304,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 1. In the **Upload blob** pane, select **Brows for files**, navigate to where you saved the JSON document, and select it.
 1. Select **Upload**.
 
-#### Create an Azure Cognitive Search resource
+### Create an Azure Cognitive Search resource
 
 1. In the Azure portal, on the home page, select **+ Create a resource**.
 1. Search for **Azure Cognitive Search**, then select **Azure Cognitive Search**.
@@ -322,7 +324,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 1. Select **Select**.
 1. Select **Next: Add cognitive skills (Optional)**.
 
-#### Add cognitive skills
+### Add cognitive skills
 
 1. Expand **Add enrichments**, then select **Extract people names**.
 1. Select **Next: Customize target index**.
@@ -333,7 +335,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 1. Select **Next: Create an indexer**.
 1. Select **Submit**.
 
-### Add the AML Skill to the skillset
+## Add the AML Skill to the skillset
 
 You'll now replace the people names enrichment with the Azure Machine Learning custom skillset.
 
@@ -464,7 +466,7 @@ You'll now replace the people names enrichment with the Azure Machine Learning c
 
 1. Select **Save**.
 
-#### Update the output field mappings
+### Update the output field mappings
 
 1. Go back to the **Overview** pane, and select **Indexers**, then select the **azureblob-indexer**.
 1. Select the **Indexer Definition (JSON)** tab, then change the **outputFieldMappings** value to:
@@ -482,7 +484,7 @@ You'll now replace the people names enrichment with the Azure Machine Learning c
 1. Select **Reset**, then select **Yes**.
 1. Select **Run**, then select **Yes**.
 
-### Test index enrichment
+## Test index enrichment
 
 The updated skillset will now add a predicted value to the test car document in your index. To test this, follow these steps.
 
@@ -494,7 +496,7 @@ The updated skillset will now add a predicted value to the test car document in 
 
 You should see the populate field `predicted_price`.
 
-### Delete exercise resources
+## Delete exercise resources
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 

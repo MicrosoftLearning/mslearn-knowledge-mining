@@ -3,6 +3,8 @@ lab:
     title: 'Use the REST API to run vector search queries'
 ---
 
+# Use the REST API to run vector search queries
+
 In this exercise you'll set up your project, create an index, upload your documents, and run queries.
 
 You'll need the following to successfully this exercise:
@@ -10,7 +12,7 @@ You'll need the following to successfully this exercise:
 - The [Postman app](https://www.postman.com/downloads/)
 - An Azure subscription
 - Azure Cognitive Search service
-- The [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection) *Vector-Search-Quickstart.postman_collection v1.0 json*. 
+- The [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection) *Vector-Search-Quickstart.postman_collection v1.0 json*.
 
 > **Note**
 > You can find more information about the Postman app [here](https://learn.microsoft.com/en-us/azure/search/search-get-started-rest) if required.

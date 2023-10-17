@@ -3,6 +3,8 @@ lab:
     title: 'Implement enhancements to search results'
 ---
 
+# Implement enhancements to search results
+
 You have an existing search service that a holiday booking app uses. You've seen that the relevance of search results is impacting the number of bookings you're getting. You've also recently added hotels in Portugal so would like to offer Portuguese as a supported language.
 
 In this exercise, you'll add a scoring profile to improve the relevance of search results. Then you'll use Azure AI Services to add Portuguese descriptions for all your hotels.
@@ -10,7 +12,7 @@ In this exercise, you'll add a scoring profile to improve the relevance of searc
 > [!NOTE]
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 
-### Create Azure resources
+## Create Azure resources
 
 You'll create a Cognitive Search Service and import sample hotel data.
 
@@ -40,7 +42,7 @@ Import the sample data.
 
     :::image type="content" source="../media/05-media/add-cognitive-services-new-small.png" alt-text="A screenshot showing selecting, adding, Azure AI Services."lightbox="../media/05-media/add-cognitive-services-new.png":::
 
-#### Create an Azure AI Service to support translations
+### Create an Azure AI Service to support translations
 
 1. In the new tab, sign in to the Azure portal.
 1. In **Resource group**, select the **learn-advanced-search**.
@@ -52,7 +54,7 @@ Import the sample data.
 1. Select **Create**.
 1. When the resources have been created, close the tab.
 
-#### Add a translation enrichment
+### Add a translation enrichment
 
 1. On the **Add cognitive skills (Optional)** tab, select Refresh.
 1. Select the new service, **learn-cognitive-translator-12345**.
@@ -63,7 +65,7 @@ Import the sample data.
 1. Select **Translate text**, change the **Target Language** to **Portuguese**, then change the **Field name** to **Description_pt**.
 1. Select **Next: Customize target index**.
 
-#### Change the field to store translated text
+### Change the field to store translated text
 
 1. On the **Customize target index** tab, scroll to the bottom of the field list and change the **Analyzer** to **Portuguese (Portugal) - Microsoft** for the **Description_pt** field.
 1. Select **Next: Create an indexer**.
@@ -80,7 +82,7 @@ Import the sample data.
 
 The Azure portal assumes the first field in the document needs to be translated. So it's currently using the translation skill to translate the `HotelId`.
 
-#### Update the skillset to translate the correct field in the document
+### Update the skillset to translate the correct field in the document
 
 1. At the top of the page, select the search service, **advanced-search-service-12345 |Indexes** link.
 1. Select **Skillsets** under Search management on the left pane, then select **hotels-sample-skillset**.
@@ -116,7 +118,7 @@ The Azure portal assumes the first field in the document needs to be translated.
 1. Select **Reset**, then **Yes**.
 1. Select **Run** then select **Yes**.
 
-#### Test the updated index
+### Test the updated index
 
 1. At the top of the page, select the search service, **advanced-search-service-12345 | Indexers** link.
 1. On the **Overview** pane, select **Indexes**, then select **hotels-sample-index**.
@@ -149,7 +151,7 @@ The Azure portal assumes the first field in the document needs to be translated.
 
 This hotel has matched the term lake in the `HotelName` field and on view in the `Tags` field. You'd like to boost matches of terms in the `Description` field over the hotel's name. Ideally, this hotel should be last in the results.
 
-### Add a scoring profile to improve search results
+## Add a scoring profile to improve search results
 
 1. Select the **Scoring profiles** tab.
 1. Select **+ Add scoring profile**.
@@ -166,7 +168,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 1. Select **Save**.
 1. Select **Save** at the top.
 
-#### Test the updated index
+### Test the updated index
 
 1. At the top of the page, select the search service **advanced-search-service-12345 | Indexes** link.
 1. On the **Overview** pane, select **Indexes**, then select **hotels-sample-index**.
@@ -192,7 +194,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 
     The search score has increased, from **0.9433406** to **3.5707965**. However, all the other hotels have higher calculated scores. This hotel is now last in the results.
 
-### Delete exercise resources
+## Delete exercise resources
 
 Now that you've completed the exercise, delete all the resources you no longer need.
 

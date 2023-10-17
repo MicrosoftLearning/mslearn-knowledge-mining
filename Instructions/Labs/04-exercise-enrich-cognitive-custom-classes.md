@@ -3,6 +3,8 @@ lab:
     title: 'Enrich a cognitive search index with custom classes'
 ---
 
+# Enrich a cognitive search index with custom classes
+
 You've built a search solution and now want to add Azure AI Services for language enrichments to your indexes.
 
 :::image type="content" source="../media/04-media/exercise-overview.png" alt-text="A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App." border="false":::
@@ -22,7 +24,6 @@ Install these tools to complete this exercise. You can still follow along with t
 1. Install [Azure Tools Extensions for VS Code](https://code.visualstudio.com/docs/azure/extensions)
 1. Install [Python 3.8](https://www.python.org/downloads/release/python-380/) for your operating system.
 1. Install [Python Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-
 
 ## Set up your Azure resources
 

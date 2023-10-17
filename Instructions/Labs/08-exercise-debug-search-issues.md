@@ -3,6 +3,8 @@ lab:
     title: 'Debug search issues'
 ---
 
+# Debug search issues
+
 You've built your search solution but have noticed that there are some warnings on the indexer.
 
 In this exercise, you'll create an Azure Cognitive Search solution, import some sample data, and then resolve a warning on the indexer.
