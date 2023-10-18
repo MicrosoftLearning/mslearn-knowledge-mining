@@ -9,11 +9,12 @@ You've built a search solution and now want to add Azure AI Services for languag
 
 :::image type="content" source="../media/04-media/exercise-overview.png" alt-text="A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App." border="false":::
 
+![A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App.](../media/04-media/exercise-overview.png)
+
 In this exercise, you'll create an Azure Cognitive Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
 
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
-
 
 ## Set up your development environment with Python, VS Code and VS Code Extensions
 
@@ -33,8 +34,7 @@ To save you time, select this Azure ARM template to create resources you'll need
 
 1. [![Deploy to Azure.](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) select this link to create your starting resources. You might need to copy and paste the [direct link](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) into your search bar.
 
-    :::image type="content" source="../media/04-media/deploy-azure-resources.png" alt-text="A screenshot of the options shown when deploying resources to Azure.":::
-
+    ![A screenshot of the options shown when deploying resources to Azure.](../media/04-media/deploy-azure-resources.png)
 1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
 1. In **Region**, select a [supported region](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability) that is close to you.
 1. The **Resource Prefix** needs to be globally unique, enter a random numeric and lower-case character prefix, for example **acs18245**.
@@ -47,8 +47,7 @@ To save you time, select this Azure ARM template to create resources you'll need
 
 1. Select **Go to resource group** to see all the resources that you've created.
 
-    :::image type="content" source="../media/04-media/azure-resources-created.png" alt-text="A screenshot of the deployed resources." lightbox="../media/04-media/azure-resources-created.png":::
-
+    ![A screenshot of the deployed resources.](../media/04-media/azure-resources-created.png)
 You'll be setting up an Azure Cognitive Search index, creating an Azure function, and creating a Language Studio project to identify movie genres from their summaries.
 
 ### Upload sample data to train language services
@@ -78,7 +77,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. Download the [sample data](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/language-service/Custom%20text%20classification/Custom%20multi%20classification%20-%20movies%20summary.zip) from GitHub, save it locally on your machine.
 
-    :::image type="content" source="../media/04-media/download-sample-data.png" alt-text="A screenshot showing where to select to download tha sample zip data." lightbox="../media/04-media/download-sample-data.png":::
+    ![A screenshot showing where to select to download tha sample zip data.](../media/04-media/download-sample-data.png)
 1. Open the **Custom multi classification - movies summary.zip** file, and extract the folder containing all the files.
 
     > **Note**
@@ -87,15 +86,13 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 1. In the [Azure portal](https://portal.azure.com/), select **Resource groups**, then select your resource group.
 1. Select the storage account you created, for example **acs18245str**.
 
-    :::image type="content" source="../media/04-media/select-azure-blob-storage.png" alt-text="A screenshot showing how to create a new storage container." lightbox="../media/04-media/select-azure-blob-storage.png":::
-
+    ![A screenshot showing how to create a new storage container.](../media/04-media/select-azure-blob-storage.png)
 1. Select **Containers** from the left, then select **+ Container**.
 1. In the **New container** pane, in **Name**, enter **language-studio-training-data**.
 1. In **Anonymous access level**, choose **Container (anonymous read access for containers and blobs)**.
 1. Select **Create**.
 1. Select the new container you just created, **language-studio-training-data**.
-    :::image type="content" source="../media/04-media/upload-files.png" alt-text="A screenshot of uploading files into the container." lightbox="../media/04-media/upload-files.png":::
-
+    ![A screenshot of uploading files into the container.](../media/04-media/upload-files.png)
 1. Select **Upload** at the top of the pane.
 1. In the **Upload blob** pane, select **Browse for files**.
 1. Navigate to where you downloaded the sample files, select all the text (`.txt`) and json (`.json`) files.
@@ -109,12 +106,10 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 1. Select **Create**.
 1. Select the option that includes **Custom text classification and Custom named entity recognition**.
 
-    :::image type="content" source="../media/04-media/select-additional-features.png" alt-text="A screenshot showing adding the custom text classification feature.":::
-
+    ![A screenshot showing adding the custom text classification feature.](../media/04-media/select-additional-features.png)
 1. Select **Continue to create your resource**.
 
-    :::image type="content" source="../media/04-media/enter-language-service-information.png" alt-text="A screenshot showing the information needed to create a language service.":::
-
+    ![A screenshot showing the information needed to create a language service.](../media/04-media/enter-language-service-information.png)
 1. In **Resource group**, choose **cog-search-language-exe**.
 1. In **Region**, select the region you used above.
 1. In **Name**, enter **learn-language-service-for-custom-text**. This needs to be unique globally, so you might need to add a random numbers or characters at the end of it.
@@ -126,8 +121,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 1. Wait for the resources to be deployed, then select **Go to resource group**.
 1. Select **learn-language-service-for-custom-text**.
 
-    :::image type="content" source="../media/04-media/started-language-studio.png" alt-text="A screenshot showing where to select to start Language Studio.":::
-
+    ![A screenshot showing where to select to start Language Studio.](../media/04-media/started-language-studio.png)
 1. Scroll down on the **Overview** pane, and select **Get started with Language Studio**.
 1. If you are prompted to choose a Language resource select the resource you created earlier.
 
@@ -135,15 +129,14 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. On the Language Studio home page, select **Create new**, then select **Custom text classification**.
 
-    :::image type="content" source="../media/04-media/create-custom-text-classification-project-small.png" lightbox="../media/04-media/create-custom-text-classification-project.png"alt-text="A screenshot showing how to select the create a new custom text classification project.":::
+    ![A screenshot showing how to select the create a new custom text classification project.](../media/04-media/create-custom-text-classification-project.png)
 
 1. Select **Next**.
 
-    :::image type="content" source="../media/04-media/select-project-type.png" alt-text="A screenshot showing the multi label classification project type selected.":::
-
+    ![A screenshot showing the multi label classification project type selected.](../media/04-media/select-project-type.png)
 1. Select **Multi label classification**, then select **Next**.
 
-    :::image type="content" source="../media/04-media/enter-basic-information.png" alt-text="A screenshot showing the basic information for a project.":::
+    ![A screenshot showing the basic information for a project.](../media/04-media/enter-basic-information.png)
 
 1. In **Name**, enter **movie-genre-classifier**.
 1. In **Text primary language**, select **English (US)**.
@@ -151,7 +144,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 1. Select **Yes, enable multi-lingual dataset**.
 1. Select **Next**.
 
-    :::image type="content" source="../media/04-media/choose-container.png" alt-text="A screenshot showing selecting the container with sample data in.":::
+    ![A screenshot showing selecting the container with sample data in.](../media/04-media/choose-container.png)
 
 1. In **Blob storage container**, choose **language-studio-training-data**.
 1. Select **Yes, my documents are already labeled and I have a correctly formatted JSON labels file**.
@@ -163,11 +156,11 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. On the left, select **Training jobs**.
 
-    :::image type="content" source="../media/04-media/train-jobs-small.png" alt-text="A screenshot showing how to create to training job.":::
+    ![A screenshot showing how to create to training job.](../media/04-media/train-jobs.png)
 
 1. Select **+ Start a training job**.
 
-    :::image type="content" source="../media/04-media/start-training-job.png" alt-text="A screenshot showing the information needed to create a training job.":::
+    ![A screenshot showing the information needed to create a training job.](../media/04-media/start-training-job.png)
 1. In **Train a new modal**, enter **movie-genre-classifier**.
 1. Select **Train**.
 1. Training the classifier model should take less than 10 minutes. Wait for the status to change to **Training succeeded**.
@@ -176,11 +169,10 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. On the left, select **Deploying a model**.
 
-    :::image type="content" source="../media/04-media/deploy-model.png" alt-text="A screenshot showing how to deploy a model.":::
-
+    ![A screenshot showing how to deploy a model.](../media/04-media/deploy-model.png)
 1. Select **Add a deployment**.
 
-    :::image type="content" source="../media/04-media/add-deployment.png" alt-text="A screenshot showing the information needed to deploy a model.":::
+    ![A screenshot showing the information needed to deploy a model.](../media/04-media/add-deployment.png)
 1. In **Create a new deployment name**, enter **test-release**.
 1. In **Model**, select **movie-genre-classifier**.
 1. Select **Deploy**.
@@ -209,25 +201,23 @@ Create a search index that you can enrich with this model, you'll index all the 
 
 1. Select **Import data**.
 
-    :::image type="content" source="../media/04-media/connect-data.png" alt-text="A screenshot showing the data connection information.":::
-
+    ![A screenshot showing the data connection information.](../media/04-media/connect-data.png)
 1. In **Data Source**, select **Azure Blob Storage**.
 1. In **Data source name**, enter **movie-summaries**.
 1. Select **Choose an existing connection**, select your storage account, then select the container you just created, **search-data**.
 1. Select **Add cognitive skills (optional)**.
 1. Expand the **Attach AI Services** section, then select the Azure AI service below free.
 
-    :::image type="content" source="../media/04-media/attach-cognitive-services-small.png" lightbox="../media/04-media/attach-cognitive-services.png" alt-text="A screenshot showing attaching Azure AI services.":::
-
+    ![A screenshot showing attaching Azure AI services.](../media/04-media/attach-cognitive-services.png)
 1. Expand the **Add enrichments** section.
 
-    :::image type="content" source="../media/04-media/add-enrichments.png" alt-text="A screenshot showing the limited enrichments selected.":::
+    ![A screenshot showing the limited enrichments selected.](../media/04-media/add-enrichments.png)
 1. Leave all the fields with their default values, then select **Extract people names**.
 1. Select **Extract key phrases**.
 1. Select **Detect language**.
 1. Select **Next: Customize target index**.
 
-    :::image type="content" source="../media/04-media/customize-target-index.png" alt-text="A screenshot showing the field customizations.":::
+    ![A screenshot showing the field customizations.](../media/04-media/customize-target-index.png)
 1. Leave all the fields with their default values, for **metadata_storage_name** select **Retrievable** and **Searchable**.
 1. Select **Next: Create an indexer**.
 1. Select **Submit**.
@@ -246,17 +236,14 @@ You'll now create a Python function app that your cognitive search custom skills
 
 1. In Visual Studio Code, open the **movie-genre-function** folder you've just cloned.
 
-    :::image type="content" source="../media/04-media/optimize-visual-studio-code.png" alt-text="A screenshot of Visual Studio Code showing the optimize function app dialog.":::
+    ![A screenshot of Visual Studio Code showing the optimize function app dialog.](../media/04-media/optimize-visual-studio-code.png)
 1. If you've installed all the required extensions, you're prompted to optimize the project. Select **Yes**.
-
-    :::image type="content" source="../media/04-media/select-python-interpreter.png" alt-text="A screenshot showing selecting version 3.8 of the Python interpreter.":::
-
+    ![A screenshot showing selecting version 3.8 of the Python interpreter.](../media/04-media/select-python-interpreter.png)
 1. Select your Python interpreter, it should be version 3.8.
 1. The workspace will be updated, if you're asked to connect it to the workspace folder, select **Yes**.
 1. Press **F5** to debug the app.
 
-    :::image type="content" source="../media/04-media/test-function-app.png" alt-text="A screenshot showing the function app running.":::
-
+    ![A screenshot showing the function app running.](../media/04-media/test-function-app.png)
     If the app is running you should see a localhost URL that you can use for local testing.
 
 1. Stop debugging the app, press **SHIFT** + **F5**.
@@ -270,29 +257,24 @@ You'll now create a Python function app that your cognitive search custom skills
 1. Select the same location you used above.
 
 1. In the left navigation, select the **Azure** extension.
-
-    :::image type="content" source="../media/04-media/deploy-function-app.png" alt-text="A screenshot showing the menu option to deploy a function app to Azure.":::
-
+    ![A screenshot showing the menu option to deploy a function app to Azure.](../media/04-media/deploy-function-app.png)
 1. Expand **Resources**, expand **Function App** under your subscription, then right-click on the function, for example **acs13245-function-app**.
 1. Select **Deploy to Function App**. Wait for the app to be deployed.
 1. Expand the app, right-click on **Application Settings**, select **Download Remote Settings**.
 1. On the left, select **Explorer**, then select **local.settings.json**.
 
-    :::image type="content" source="../media/04-media/edit-local-settings.png" alt-text="A screenshot of the download app settings.":::
-
+    ![A screenshot of the download app settings.](../media/04-media/edit-local-settings.png)
 The function app needs to be connected to your custom text classification model. Follow these steps to get the configuration settings.
 
 1. In your browser, navigate to **Language Studio**, you should be on the **Deploying a model** page.
 
-    :::image type="content" source="../media/04-media/copy-prediction-endpoint-small.png" source="../media/04-media/copy-prediction-endpoint.png"alt-text="A screenshot showing where to copy the prediction endpoint from.":::
-
+    ![A screenshot showing where to copy the prediction endpoint from](../media/04-media/copy-prediction-endpoint.png)
 1. Select your model. Then select **Get prediction URL**.
 1. Select the copy icon next to the **Prediction URL**.
 1. In Visual Studio Code, at the bottom of **local.settings.json**, paste the prediction URL.
 1. In **Language Studio**, on the left, select **Project settings**.
 
-    :::image type="content" source="../media/04-media/project-settings-primary-key.png" alt-text="A screenshot showing where to copy the primary key for language services from.":::
-
+    ![A screenshot showing where to copy the primary key for language services from.](../media/04-media/project-settings-primary-key.png)
 1. Select the copy icon next to the **Primary key**.
 1. In Visual Studio Code, at the bottom of **local.settings.json**, paste the primary key.
 1. Edit the settings to add these four lines at the bottom, copy the endpoint into the `TA_ENDPOINT` value.
@@ -338,13 +320,11 @@ There's a sample query you can use to test that your function app and classifier
 
 1. On the left, select **Explorer**, expand the **customtectcla** folder, then select **sample.dat**.
 
-    :::image type="content" source="../media/04-media/copy-sample-query.png" alt-text="A screenshot showing the sample JSON query.":::
-
+    ![A screenshot showing the sample JSON query.](../media/04-media/copy-sample-query.png)
 1. Copy the contents of the file.
 1. On the left, select the **Azure** extension.
 
-    :::image type="content" source="../media/04-media/execute-remote-function.png" alt-text="A screenshot showing how to execute a remote function app from inside Visual Studio Code.":::
-
+    ![A screenshot showing how to execute a remote function app from inside Visual Studio Code.](../media/04-media/execute-remote-function.png)
 1. Under the **Function App**, expand **Functions**, right-click on **customtextcla**, then select **Execute Function now**.
 1. In **Enter request body**, paste the sample data you copied, then press **Enter**.
 
@@ -352,8 +332,7 @@ There's a sample query you can use to test that your function app and classifier
 
 1. Expand the notification to see the whole results.
 
-    :::image type="content" source="../media/04-media/executed-function-json-response.png" alt-text="A screenshot of the JSON response from the executed function app.":::
-
+    ![A screenshot of the JSON response from the executed function app.](../media/04-media/executed-function-json-response.png)
     The JSON response should look like this:
 
     ```json
@@ -420,8 +399,7 @@ You need a place to store the enrichment returned by your new function app. Foll
 
     Your index should now look like this.
 
-    :::image type="content" source="../media/04-media/edit-azure-blob-index-fields.png" alt-text="A screenshot of the edited index JSON." lightbox="../media/04-media/edit-azure-blob-index-fields.png":::
-
+    ![A screenshot of the edited index JSON.](../media/04-media/edit-azure-blob-index-fields.png)
 1. Select **Save**.
 
 ### Edit the custom skillset to call your function app
@@ -432,8 +410,7 @@ The cognitive search index needs a way to have these new fields populated. Edit 
 
 1. On the **Overview** pane, select **Skillsets**.
 
-    :::image type="content" source="../media/04-media/select-custom-skillset-small.png" alt-text="A screenshot showing selecting the custom skillset." lightbox="../media/04-media/select-custom-skillset.png":::
-
+    ![A screenshot showing selecting the custom skillset.](../media/04-media/select-custom-skillset.png)
 1. Select **azureblob-skillset**.
 1. Add the custom skillset definition below, by pasting it as the first skillset.
 
@@ -472,8 +449,7 @@ You need to change the `"uri": "URI"` to point to your function app.
 
 1. In Visual Studio Code, select the **Azure** extension.
 
-    :::image type="content" source="../media/04-media/copy-function-url.png" alt-text="A screenshot showing how to select the URL for a function app.":::
-
+    ![A screenshot showing how to select the URL for a function app.](../media/04-media/copy-function-url.png)
 1. Under **Functions**, right-click **customtextcla**, then select **Copy Function Url**.
 1. On the Azure portal, replace the URI with the copied function URL. 
 1. Select **Save**.
@@ -484,8 +460,7 @@ You now have fields to store the enrichment, a skillset to call your function ap
 
 1. At the top of the page, select the search service, for example, **acs18245-search-service | Skillsets** link.
 
-    :::image type="content" source="../media/04-media/select-search-indexer-small.png" alt-text="A screenshot showing selecting the search indexer." lightbox="../media/04-media/select-search-indexer.png":::
-
+    ![A screenshot showing selecting the search indexer.](../media/04-media/select-search-indexer.png)
 1. On the **Overview** pane, select **Indexers**.
 1. Select **azureblob-indexer**.
 1. Select **Indexer Definition (JSON)**.
@@ -500,8 +475,7 @@ You now have fields to store the enrichment, a skillset to call your function ap
 
     The indexer JSON definition should now look like this:
 
-    :::image type="content" source="../media/04-media/add-output-fields-indexer.png" alt-text="A screenshot showing the edited JSON of an indexer with added output fields." lightbox="../media/04-media/add-output-fields-indexer.png":::
-
+    ![A screenshot showing the edited JSON of an indexer with added output fields.](../media/04-media/add-output-fields-indexer.png)
 1. Select **Save**.
 1. Select **Reset**, then select **Yes**.
 1. Select **Run**, then select **Yes**.
@@ -511,8 +485,7 @@ You now have fields to store the enrichment, a skillset to call your function ap
 1. Select **Execution history**.
 1. Check that the indexer has successfully run against the 210 documents.
 
-    :::image type="content" source="../media/04-media/check-indexer-results-small.png" alt-text="A screenshot showing the successful run of the indexer." lightbox="../media/04-media/check-indexer-results.png":::
-
+    ![A screenshot showing the successful run of the indexer.](../media/04-media/check-indexer-results.png)
     You might need to select **Refresh** to update the status of the indexer.
 
 ## Test your enriched search index
@@ -522,8 +495,7 @@ You now have fields to store the enrichment, a skillset to call your function ap
 1. On the **Overview** pane, select **Indexes**.
 1. Select **azurebob-index**.
 
-    :::image type="content" source="../media/04-media/enriched-index-small.png" alt-text="A screenshot showing an enriched search index." lightbox="../media/04-media/enriched-index.png":::
-
+    ![A screenshot showing an enriched search index.](../media/04-media/enriched-index.png)
 1. Select **Search**.
 1. Explore the search results.
 

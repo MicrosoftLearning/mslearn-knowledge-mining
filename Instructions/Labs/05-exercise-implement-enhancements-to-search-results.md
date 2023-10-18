@@ -34,13 +34,13 @@ Import the sample data.
 
 1. On the **Overview** pane, select **Import data**.
 
-    :::image type="content" source="../media/05-media/import-data-new-small.png" alt-text="A screenshot showing the import data menu." lightbox="../media/05-media/import-data-new.png":::
+    ![A screenshot showing the import data menu.](../media/05-media/import-data-new.png)
 1. On the **Import data** pane, in the **Data source** dropdown, select **Samples**.
 1. Select **hotels-sample**.
 
 1. On the **Add cognitive skills (Optional)** tab, expand **Attach AI  Services**, then select **Create new AI Services resource**.
 
-    :::image type="content" source="../media/05-media/add-cognitive-services-new-small.png" alt-text="A screenshot showing selecting, adding, Azure AI Services."lightbox="../media/05-media/add-cognitive-services-new.png":::
+    ![A screenshot showing selecting, adding, Azure AI Services.](../media/05-media/add-cognitive-services-new.png)
 
 ### Create an Azure AI Service to support translations
 
@@ -59,9 +59,7 @@ Import the sample data.
 1. On the **Add cognitive skills (Optional)** tab, select Refresh.
 1. Select the new service, **learn-cognitive-translator-12345**.
 1. Expand the **Add enrichments** section.
-
-    :::image type="content" source="../media/05-media/add-translation-enrichment-new-small.png" alt-text="A screenshot showing adding Portuguese translation." lightbox="../media/05-media/add-translation-enrichment-new.png":::
-
+    ![A screenshot showing adding Portuguese translation.](../media/05-media/add-translation-enrichment-new.png)
 1. Select **Translate text**, change the **Target Language** to **Portuguese**, then change the **Field name** to **Description_pt**.
 1. Select **Next: Customize target index**.
 
@@ -158,7 +156,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 1. In **Profile name**, enter **boost-description-categories**.
 1. Add the following fields and weights under **Weights**:
 
-    :::image type="content" source="../media/05-media/add-weights-new.png" alt-text="A screenshot of weights being added to a scoring profile."lightbox="../media/05-media/add-weights-new.png":::
+    ![A screenshot of weights being added to a scoring profile.](../media/05-media/add-weights-new.png)
 1. In **Field name**, select **Description**.
 1. For **Weight**, enter **5**.
 1. In **Field name**, select **Category**.

@@ -56,7 +56,7 @@ To configure semantic ranking, follow these steps:
 1. On your index page, select **Save**.
 1. From the Azure portal home page, select **All resources** and select your search service.
 1. On the navigation bar, in **Search management**, select **Indexes**.
-:::image type="content" source="../media/semantic-search/indexes.png" alt-text="Screenshot of Indexes button.":::
+    ![Screenshot of Indexes button.](../media/semantic-search/indexes.png)
 1. Select your index.
 1. Select **Search explorer**.
 1. Select **View** and select **JSON view**.
