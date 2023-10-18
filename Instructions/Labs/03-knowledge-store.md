@@ -56,7 +56,6 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
     setup
     ```
     > **Note**: The Search CLI module is in preview, and may get stuck in the *- Running ..* process. If this happens for over 2 minutes, press CTRL+C to cancel the long-running operation, and then select **N** when asked if you want to terminate the script. It should then complete successfully.
-    >
     > If the script fails, ensure you saved it with the correct variable names and try again.
 
 13. When the script completes, review the output it displays and note the following information about your Azure resources (you will need these values later):

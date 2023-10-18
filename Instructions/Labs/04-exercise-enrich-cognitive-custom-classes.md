@@ -7,10 +7,6 @@ lab:
 
 You've built a search solution and now want to add Azure AI Services for language enrichments to your indexes.
 
-:::image type="content" source="../media/04-media/exercise-overview.png" alt-text="A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App." border="false":::
-
-![A diagram showing the components of this exercise. Azure Cognitive Search, Azure AI Language, and a Function App.](../media/04-media/exercise-overview.png)
-
 In this exercise, you'll create an Azure Cognitive Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
 
 > **Note**

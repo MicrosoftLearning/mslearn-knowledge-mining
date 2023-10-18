@@ -56,24 +56,26 @@ To configure semantic ranking, follow these steps:
 1. On your index page, select **Save**.
 1. From the Azure portal home page, select **All resources** and select your search service.
 1. On the navigation bar, in **Search management**, select **Indexes**.
+
     ![Screenshot of Indexes button.](../media/semantic-search/indexes.png)
+
 1. Select your index.
 1. Select **Search explorer**.
 1. Select **View** and select **JSON view**.
 1. In JSON query editor type the following text:
 
-```json
-    {
-        "queryType": "semantic",
-        "queryLanguage" : "en-us",
-        "search": "all hotels near the water" , 
-        "semanticConfiguration": "hotels-conf" , 
-        "searchFields": "",
-        "speller": "lexicon" , 
-        "answers": "extractive|count-3",
-        "count": true
-    }
-```
+    ```json
+        {
+            "queryType": "semantic",
+            "queryLanguage" : "en-us",
+            "search": "all hotels near the water" , 
+            "semanticConfiguration": "hotels-conf" , 
+            "searchFields": "",
+            "speller": "lexicon" , 
+            "answers": "extractive|count-3",
+            "count": true
+        }
+    ```
 
 1. Select **Search**.
 1. Review the results of the query.
@@ -84,8 +86,6 @@ If you no longer require the Azure Cognitive Search service, you should delete t
 
 >**Note**
 > Deleting your Cognitive Search service ensures your subscription won't be charged for Cognitive Search resources. You will however be charged a small amount for data storage as long as the storage exists in your subscription. If you have finished exploring the Cognitive Search service, you can delete the Cognitive Search service and associated resources. However, if you plan to complete any other labs in this series, you will need to recreate it.
->
 > To delete your resources:
->
 > 1. In the [Azure portal](https://portal.azure.com?azure-portal=true), in the **Resource groups** page, open the resource group you specified when creating your Cognitive Search service.
 > 1. Click **Delete resource group**, type the resource group name to confirm you want to delete it, and select **Delete**.

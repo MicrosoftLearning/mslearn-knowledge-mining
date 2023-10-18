@@ -34,7 +34,7 @@ First set up your project by carrying out the following steps:
 1. Right-click your collection name and select **Edit**.
 1. Select the **Variables** tab and enter the following values using the search service and index names from your Cognitive Search service:
 
-![Diagram showing an example of variable settings](../media/vector-search/variables.png)
+    ![Diagram showing an example of variable settings](../media/vector-search/variables.png)
 
 1. Save your changes by selecting the **Save** button.
 
