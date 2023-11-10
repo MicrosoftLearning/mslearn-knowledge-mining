@@ -81,7 +81,7 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
 1. In Visual Studio Code, in the **02-search-skill** folder, expand the **create-search** folder and select **data_source.json**. This file contains a JSON definition for a data source named **margies-custom-data**.
 2. Replace the **YOUR_CONNECTION_STRING** placeholder with the connection string for your Azure storage account, which should resemble the following:
 
-    ```
+    ```json
     DefaultEndpointsProtocol=https;AccountName=ai102str123;AccountKey=12345abcdefg...==;EndpointSuffix=core.windows.net
     ```
 
@@ -157,8 +157,8 @@ to create a new function with the following settings:
     - **Template details**:
         - **New Function**: wordcount
         - **Authorization level**: Function
-1. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
-1. Replace the default function code with the following code:
+4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
+5. Replace the default function code with the following code:
 
     ```javascript
     module.exports = async function (context, req) {
@@ -261,7 +261,7 @@ to create a new function with the following settings:
 6. Save the function by selecting **Save** and then open the **Test/Run** pane.
 7. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure Cognitive Search skill in which records containing data for one or more documents are submitted for processing:
 
-    ```
+    ```json
     {
         "values": [
             {
@@ -283,10 +283,10 @@ to create a new function with the following settings:
         ]
     }
     ```
-    
+
 8. Select **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure Cognitive Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
 
-    ```
+    ```json
     {
     "values": [
         {
