@@ -33,14 +33,14 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
 6. Right-click the the **02-search-skill** folder and select **Open in Integrated Terminal**.
 7. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
 
-    ```
+    ```powershell
     az login --output none
     ```
 
 8. When prompted, sign into your Azure subscription. Then return to Visual Studio Code and wait for the sign-in process to complete.
 9. Run the following command to list Azure locations.
 
-    ```
+    ```powershell
     az account list-locations -o table
     ```
 
@@ -48,8 +48,8 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
 12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
 
-    ```
-    setup
+    ```powershell
+    .\setup
     ```
 
     > **Note**: The Search CLI module is in preview, and may get stuck in the *- Running ..* process. If this happens for over 2 minutes, press CTRL+C to cancel the long-running operation, and then select **N** when asked if you want to terminate the script. It should then complete successfully.
@@ -107,8 +107,8 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
 14. Right-click the the **create-search** folder and select **Open in Integrated Terminal**.
 15. In the terminal pane for the **create-search** folder, enter the following command run the batch script.
 
-    ```
-    create-search
+    ```powershell
+    .\create-search
     ```
 
 16. When the script completes, in the Azure portal, on the page for your Azure Cognitive Search resource, select the **Indexers** page and wait for the indexing process to complete.
@@ -122,7 +122,7 @@ Now that you have an index, you can search it.
 1. At the top of the blade for your Azure Cognitive Search resource, select **Search explorer**.
 2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
-    ```
+    ```json
     search=London&$select=url,sentiment,keyphrases&$filter=metadata_author eq 'Reviewer' and sentiment eq 'positive'
     ```
 
@@ -148,7 +148,8 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Region**: *The same region as your Azure Cognitive Search resource*
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. In the blade for your Function App, in the pane on the left, select the **Functions** tab. Then create a new function with the following settings:
+3. On the **Overview** page select **Create in Azure portal** option
+to create a new function with the following settings:
     - **Setup a development environment**"
         - **Development environment**: Develop in portal
     - **Select a template**"
@@ -156,8 +157,8 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Template details**:
         - **New Function**: wordcount
         - **Authorization level**: Function
-4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
-5. Replace the default function code with the following code:
+1. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
+1. Replace the default function code with the following code:
 
     ```javascript
     module.exports = async function (context, req) {
@@ -350,8 +351,8 @@ Now you need to include your function as a custom skill in the search solution s
 13. Right-click the the **update-search** folder and select **Open in Integrated Terminal**.
 14. In the terminal pane for the **update-search** folder, enter the following command run the batch script.
 
-    ```
-    update-search
+    ```powershell
+    .\update-search
     ```
 
 15. When the script completes, in the Azure portal, on the page for your Azure Cognitive Search resource, select the **Indexers** page and wait for the indexing process to complete.
@@ -365,7 +366,7 @@ Now that you have an index, you can search it.
 1. At the top of the blade for your Azure Cognitive Search resource, select **Search explorer**.
 2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
-    ```
+    ```json
     search=Las Vegas&$select=url,top_words
     ```
 
