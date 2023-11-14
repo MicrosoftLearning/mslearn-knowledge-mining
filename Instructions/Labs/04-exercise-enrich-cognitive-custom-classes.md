@@ -32,7 +32,7 @@ To save you time, select this Azure ARM template to create resources you'll need
 
     ![A screenshot of the options shown when deploying resources to Azure.](../media/04-media/deploy-azure-resources.png)
 1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
-1. In **Region**, select a [supported region](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability) that is close to you.
+1. In **Region**, select a [supported region](https://learn.microsoft.com/en-us/azure/ai-services/language-service/concepts/regional-support) that is close to you.
 1. The **Resource Prefix** needs to be globally unique, enter a random numeric and lower-case character prefix, for example **acs18245**.
 1. In **Location**, select the same region you chose above.
 1. Select **Review + create**.
@@ -81,12 +81,13 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. In the [Azure portal](https://portal.azure.com/), select **Resource groups**, then select your resource group.
 1. Select the storage account you created, for example **acs18245str**.
+1. Select **Configuration** from the left pane, select the **Enable** option for the *Allow Blob anonymous access* setting and then select **Save** at the top of the page.
 
     ![A screenshot showing how to create a new storage container.](../media/04-media/select-azure-blob-storage.png)
+
 1. Select **Containers** from the left, then select **+ Container**.
 1. In the **New container** pane, in **Name**, enter **language-studio-training-data**.
-1. In **Anonymous access level**, choose **Container (anonymous read access for containers and blobs)**.
-1. Select **Create**.
+1. In **Anonymous access level**, choose **Container (anonymous read access for containers and blobs)** and select **Create**.
 1. Select the new container you just created, **language-studio-training-data**.
     ![A screenshot of uploading files into the container.](../media/04-media/upload-files.png)
 1. Select **Upload** at the top of the pane.
@@ -98,8 +99,8 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 ### Create a language resource
 
 1. In the breadcrumb link at the top of the page, select **Home**.
+1. Select **+ Create a resource** and search for *Language service*.
 1. Select **Create** under **Language Service**.
-1. Select **Create**.
 1. Select the option that includes **Custom text classification and Custom named entity recognition**.
 
     ![A screenshot showing adding the custom text classification feature.](../media/04-media/select-additional-features.png)
@@ -119,7 +120,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
     ![A screenshot showing where to select to start Language Studio.](../media/04-media/started-language-studio.png)
 1. Scroll down on the **Overview** pane, and select **Get started with Language Studio**.
-1. If you are prompted to choose a Language resource select the resource you created earlier.
+1. Sign in the language studio. If you are prompted to choose a Language resource select the resource you created earlier.
 
 ### Create a custom text classification project in Language Studio
 
@@ -202,7 +203,7 @@ Create a search index that you can enrich with this model, you'll index all the 
 1. In **Data source name**, enter **movie-summaries**.
 1. Select **Choose an existing connection**, select your storage account, then select the container you just created, **search-data**.
 1. Select **Add cognitive skills (optional)**.
-1. Expand the **Attach AI Services** section, then select the Azure AI service below free.
+1. Expand the **Attach AI Services** section, then select the Azure AI service you created eralier.
 
     ![A screenshot showing attaching Azure AI services.](../media/04-media/attach-cognitive-services.png)
 1. Expand the **Add enrichments** section.
@@ -224,7 +225,8 @@ The indexer will run and create an index of the 210 text files. You don't need t
 
 You'll now create a Python function app that your cognitive search custom skillset will call. The function app will use your custom text classifier model to enrich your search index.
 
-1. In the terminal, clone this GitHub repository to your machine.
+
+1. Open VScode, and, in the terminal, clone this GitHub repository to your machine.
 
     ```bash
     git clone https://github.com/MicrosoftLearning/mslearn-doc-intelligence movie-genre-function
@@ -314,7 +316,7 @@ The function app needs to be connected to your custom text classification model.
 
 There's a sample query you can use to test that your function app and classifier model are working correctly.
 
-1. On the left, select **Explorer**, expand the **customtectcla** folder, then select **sample.dat**.
+1. On the left, select **Explorer**, expand the **customtextcla** folder, then select **sample.dat**.
 
     ![A screenshot showing the sample JSON query.](../media/04-media/copy-sample-query.png)
 1. Copy the contents of the file.
