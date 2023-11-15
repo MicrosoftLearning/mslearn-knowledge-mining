@@ -72,9 +72,11 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
 1. Set its **Anonymous access level** to **Container(anonymous read access for containers and blobs)**.
 
+    > **Note**: You may need to enable blob anonymous in order to select this option. To do so, in the storage account go to **Configuration** , set **Allow Blob anonymous access** to **Enabled** and then select **Save**.
+
 1. Select **Create**.
 1. Select your new container in the list, then select **Select**.
-
+1. Select **hotel-sample-indexer** for the **Indexer Template**.
 1. Select **Save Session**.
 
     The dependency graph shows you that for each document there's an error on three skills.
@@ -88,7 +90,7 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
     *Invalid language code '(Unknown)'. Supported languages: ar,cs,da,de,en,es,fi,fr,hu,it,ja,ko,nl,no,pl,pt-BR,pt-PT,ru,sv,tr,zh-Hans. For additional details see https://aka.ms/language-service/language-support.*
 
-If you look back at the dependency graph, the Language detection skill has outputs to the three skills with warnings. Also the skill input causing the error is `languageCode`.
+    If you look back at the dependency graph, the Language detection skill has outputs to the three skills with warnings. Also the skill input causing the error is `languageCode`.
 
 1. In the dependency graph, select **Language detection**.
 
