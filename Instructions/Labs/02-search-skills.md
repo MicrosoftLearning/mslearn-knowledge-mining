@@ -122,8 +122,9 @@ Now that you have an index, you can search it.
 1. At the top of the blade for your Azure Cognitive Search resource, select **Search explorer**.
 2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
+<!--- This is necessary formatting to remove prepended space in code block causing student errors --->
     ```json
-    search=London&$select=url,sentiment,keyphrases&$filter=metadata_author eq 'Reviewer' and sentiment eq 'positive'
+search=London&$select=url,sentiment,keyphrases&$filter=metadata_author eq 'Reviewer' and sentiment eq 'positive'
     ```
 
     This query retrieves the **url**, **sentiment**, and **keyphrases** for all documents that mention *London* authored by *Reviewer* that have a positive **sentiment** label (in other words, positive reviews that mention London)
@@ -367,7 +368,7 @@ Now that you have an index, you can search it.
 2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
     ```json
-    search=Las Vegas&$select=url,top_words
+search=Las Vegas&$select=url,top_words
     ```
 
     This query retrieves the **url** and **top_words** fields for all documents that mention *Las Vegas*.
