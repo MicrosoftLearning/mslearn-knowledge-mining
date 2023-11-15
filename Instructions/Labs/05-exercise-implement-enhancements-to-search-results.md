@@ -18,7 +18,7 @@ You'll create a Cognitive Search Service and import sample hotel data.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true).
 1. Select **+ Create a resource**.
-1. Search for **cognitive search**, and then select **Azure Cognitive Search**.
+1. Search for **ai search**, and then select **Azure AI Search**.
 1. Select **Create**.
 1. Select **Create new** under Resource group, name it **learn-advanced-search**.
 1. In **Service name**, enter **advanced-search-service-12345**. The name needs to be globally unique so add random numbers to the end of the name.
@@ -168,8 +168,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 
 ### Test the updated index
 
-1. At the top of the page, select the search service **advanced-search-service-12345 | Indexes** link.
-1. On the **Overview** pane, select **Indexes**, then select **hotels-sample-index**.
+1. Return to the **Search explorer** tab of the **hotels-sample-index** page.
 1. In the **Query string**, enter the same search as before:
 
     `lake + view&$select=HotelName,Description,Category,Tags&$count=true`
