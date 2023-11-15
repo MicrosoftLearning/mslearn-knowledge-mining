@@ -168,6 +168,7 @@ Now that you have an index, you can search it.
 
 4. Try the following query string:
 
+<!--- This is necessary formatting to remove prepended space causing students errors --->
     ```json
 search=*&$count=true&$select=metadata_storage_name,metadata_author,locations
     ```
