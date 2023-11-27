@@ -14,11 +14,11 @@ In this exercise, you'll add a scoring profile to improve the relevance of searc
 
 ## Create Azure resources
 
-You'll create a Cognitive Search Service and import sample hotel data.
+You'll create am Azure AI Search Service and import sample hotel data.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true).
 1. Select **+ Create a resource**.
-1. Search for **cognitive search**, and then select **Azure Cognitive Search**.
+1. Search for **search**, and then select **Azure AI Search**.
 1. Select **Create**.
 1. Select **Create new** under Resource group, name it **learn-advanced-search**.
 1. In **Service name**, enter **advanced-search-service-12345**. The name needs to be globally unique so add random numbers to the end of the name.

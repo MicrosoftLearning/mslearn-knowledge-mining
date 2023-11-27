@@ -7,7 +7,7 @@ lab:
 
 You've built your search solution but have noticed that there are some warnings on the indexer.
 
-In this exercise, you'll create an Azure Cognitive Search solution, import some sample data, and then resolve a warning on the indexer.
+In this exercise, you'll create an Azure AI Search solution, import some sample data, and then resolve a warning on the indexer.
 
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
@@ -126,4 +126,4 @@ If you look back at the dependency graph, the Language detection skill has outpu
     ![A screenshot showing everything resolved.](../media/08-media/warnings-fixed-indexer.png)
 
 > [!TIP]
-> Now you've completed the exercise, if you've finished exploring Azure Cognitive Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.
+> Now you've completed the exercise, if you've finished exploring Azure AI Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.
