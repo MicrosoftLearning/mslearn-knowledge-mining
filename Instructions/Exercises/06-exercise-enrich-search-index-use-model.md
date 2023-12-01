@@ -98,7 +98,7 @@ Your pipeline job should have finished. You'll download the `score.py` and `cond
 1. Select **Next**.
 1. Select **Register**.
 
-### Edit the scoring script to respond to Azure Cognitive Search correctly
+### Edit the scoring script to respond to Azure AI Search correctly
 
 Azure Machine Learning Studio has downloaded two files to your web browser's default download location. You need to edit the score.py file to change how the JSON request and response are handled. You can use a text editor or a code editor like Visual Studio Code.
 
@@ -150,7 +150,7 @@ Azure Machine Learning Studio has downloaded two files to your web browser's def
     The other change is to only return the predicted price of the car instead of the whole JSON response.
 1. Save the changes in your text editor.
 
-## Create custom environment
+## Create a custom environment
 
 Next, you'll create a custom environment so you can deploy to a real-time endpoint.
 
@@ -242,7 +242,7 @@ Wait for the model to be deployed, it can take up to 10 minutes. You can check t
 1. Copy the **REST endpoint**.
 1. Copy the **Primary key**.
 
-### Integrate an Azure Machine Learning model with Azure Cognitive Search
+### Integrate an Azure Machine Learning model with Azure AI Search
 
 Next, you create a new Cognitive Search service and enrich an index using a custom skillset.
 
@@ -298,10 +298,10 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 1. In the **Upload blob** pane, select **Brows for files**, navigate to where you saved the JSON document, and select it.
 1. Select **Upload**.
 
-### Create an Azure Cognitive Search resource
+### Create an Azure AI Search resource
 
 1. In the Azure portal, on the home page, select **+ Create a resource**.
-1. Search for **Azure Cognitive Search**, then select **Azure Cognitive Search**.
+1. Search for **search**, then select **Azure AI Search**.
 1. Select **Create**.
 1. In **Resource Group**, select **aml-for-acs-enrichment**.
 1. In Service name, enter **acs-enriched**.

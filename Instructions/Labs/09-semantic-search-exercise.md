@@ -6,7 +6,7 @@ lab:
 # Set up semantic search
 
 > **Note**
-> To complete this lab, you will need an [Azure subscription](https://azure.microsoft.com/free?azure-portal=true) in which you have administrative access. This exercise also requires the Azure Cognitive Search service with a billable tier.
+> To complete this lab, you will need an [Azure subscription](https://azure.microsoft.com/free?azure-portal=true) in which you have administrative access. This exercise also requires the Azure AI Search service with a billable tier.
 
 In this exercise, you will add semantic search to an index and use semantic search for a query.
 
@@ -82,10 +82,10 @@ To configure semantic ranking, follow these steps:
 
 ## Clean-up
 
-If you no longer require the Azure Cognitive Search service, you should delete this service from your Azure subscription to reduce costs.
+If you no longer require the Azure AI Search service, you should delete the resource from your Azure subscription to reduce costs.
 
 >**Note**
-> Deleting your Cognitive Search service ensures your subscription won't be charged for Cognitive Search resources. You will however be charged a small amount for data storage as long as the storage exists in your subscription. If you have finished exploring the Cognitive Search service, you can delete the Cognitive Search service and associated resources. However, if you plan to complete any other labs in this series, you will need to recreate it.
+> Deleting your Azure AI Search service ensures your subscription won't be charged for resources. You will however be charged a small amount for data storage as long as the storage exists in your subscription. If you have finished exploring the Cognitive Search service, you can delete the Cognitive Search service and associated resources. However, if you plan to complete any other labs in this series, you will need to recreate it.
 > To delete your resources:
 > 1. In the [Azure portal](https://portal.azure.com?azure-portal=true), in the **Resource groups** page, open the resource group you specified when creating your Cognitive Search service.
 > 1. Click **Delete resource group**, type the resource group name to confirm you want to delete it, and select **Delete**.

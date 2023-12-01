@@ -1,29 +1,31 @@
 ---
 lab:
-    title: 'Create a Custom Skill for Azure Cognitive Search'
+    title: 'Create a Custom Skill for Azure AI Search'
     module: 'Module 12 - Creating a Knowledge Mining Solution'
 ---
 
-# Create a Custom Skill for Azure Cognitive Search
+# Create a Custom Skill for Azure AI Search
 
-Azure Cognitive Search uses an enrichment pipeline of cognitive skills to extract AI-generated fields from documents and include them in a search index. There's a comprehensive set of built-in skills that you can use, but if you have a specific requirement that isn't met by these skills, you can create a custom skill.
+Azure AI Search uses an enrichment pipeline of AI skills to extract AI-generated fields from documents and include them in a search index. There's a comprehensive set of built-in skills that you can use, but if you have a specific requirement that isn't met by these skills, you can create a custom skill.
 
 In this exercise, you'll create a custom skill that tabulates the frequency of individual words in a document to generate a list of the top five most used words, and add it to a search solution for Margie's Travel - a fictitious travel agency.
 
-## Clone the repository for this course
+## Prepare to develop an app in Visual Studio Code
 
-If you have already cloned **mslearn-knowledge-mining** code repository to the environment where you're working on this lab, open it in Visual Studio Code; otherwise, follow these steps to clone it now.
+You'll develop your search app using Visual Studio Code. The code files for your app have been provided in a GitHub repo.
+
+> **Tip**: If you have already cloned the **mslearn-knowledge-mining** repo, open it in Visual Studio code. Otherwise, follow these steps to clone it to your development environment.
 
 1. Start Visual Studio Code.
-2. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` repository to a local folder (it doesn't matter which folder).
-3. When the repository has been cloned, open the folder in Visual Studio Code.
-4. Wait while additional files are installed to support the C# code projects in the repo.
+1. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` repository to a local folder (it doesn't matter which folder).
+1. When the repository has been cloned, open the folder in Visual Studio Code.
+1. Wait while additional files are installed to support the C# code projects in the repo.
 
     > **Note**: If you are prompted to add required assets to build and debug, select **Not Now**.
 
 ## Create Azure resources
 
-> **Note**: If you have previously completed the **[Create an Azure Cognitive Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
+> **Note**: If you have previously completed the **[Create an Azure AI Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
 
 1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
 2. View the **Resource groups** in your subscription.
@@ -46,7 +48,7 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
 
 10. In the output, find the **Name** value that corresponds with the location of your resource group (for example, for *East US* the corresponding name is *eastus*).
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
-12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
+12. In the terminal for the **23-custom-search-skill** folder, enter the following command to run the script:
 
     ```
     setup
@@ -65,7 +67,7 @@ If you have already cloned **mslearn-knowledge-mining** code repository to the e
     - Search service admin key
     - Search service query key
 
-14. In the Azure portal, refresh the resource group and verify that it contains the Azure Storage account, Azure AI Services resource, and Azure Cognitive Search resource.
+14. In the Azure portal, refresh the resource group and verify that it contains the Azure Storage account, Azure AI Services resource, and Azure AI Search resource.
 
 ## Create a search solution
 
@@ -76,7 +78,7 @@ Now that you have the necessary Azure resources, you can create a search solutio
 - An **index** that defines a searchable set of document records.
 - An **indexer** that extracts the documents from the data source, applies the skillset, and populates the index.
 
-In this exercise, you'll use the Azure Cognitive Search REST interface to create these components by submitting JSON requests.
+In this exercise, you'll use the Azure AI Search REST interface to create these components by submitting JSON requests.
 
 1. In Visual Studio Code, in the **02-search-skill** folder, expand the **create-search** folder and select **data_source.json**. This file contains a JSON definition for a data source named **margies-custom-data**.
 2. Replace the **YOUR_CONNECTION_STRING** placeholder with the connection string for your Azure storage account, which should resemble the following:
@@ -89,7 +91,7 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
 
 3. Save and close the updated JSON file.
 4. In the **create-search** folder, open **skillset.json**. This file contains a JSON definition for a skillset named **margies-custom-skillset**.
-5. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_COGNITIVE_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
+5. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_AI_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
 
     *You can find the keys on the **Keys and Endpoint** page for your Azure AI Services resource in the Azure portal.*
 
@@ -98,10 +100,10 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
 8. Review the JSON for the index, then close the file without making any changes.
 9. In the **create-search** folder, open **indexer.json**. This file contains a JSON definition for an indexer named **margies-custom-indexer**.
 10. Review the JSON for the indexer, then close the file without making any changes.
-11. In the **create-search** folder, open **create-search.cmd**. This batch script uses the cURL utility to submit the JSON definitions to the REST interface for your Azure Cognitive Search resource.
-12. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure Cognitive Search resource.
+11. In the **create-search** folder, open **create-search.cmd**. This batch script uses the cURL utility to submit the JSON definitions to the REST interface for your Azure AI Search resource.
+12. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure AI Search resource.
 
-    *You can find these values on the **Overview** and **Keys** pages for your Azure Cognitive Search resource in the Azure portal.*
+    *You can find these values on the **Overview** and **Keys** pages for your Azure AI Search resource in the Azure portal.*
 
 13. Save the updated batch file.
 14. Right-click the the **create-search** folder and select **Open in Integrated Terminal**.
@@ -111,7 +113,7 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
     create-search
     ```
 
-16. When the script completes, in the Azure portal, on the page for your Azure Cognitive Search resource, select the **Indexers** page and wait for the indexing process to complete.
+16. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.
 
     *You can select **Refresh** to track the progress of the indexing operation. It may take a minute or so to complete.*
 
@@ -119,7 +121,7 @@ In this exercise, you'll use the Azure Cognitive Search REST interface to create
 
 Now that you have an index, you can search it.
 
-1. At the top of the blade for your Azure Cognitive Search resource, select **Search explorer**.
+1. At the top of the blade for your Azure AI Search resource, select **Search explorer**.
 2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
     ```
@@ -130,7 +132,7 @@ Now that you have an index, you can search it.
 
 ## Create an Azure Function for a custom skill
 
-The search solution includes a number of built-in cognitive skills that enrich the index with information from the documents, such as the sentiment scores and lists of key phrases seen in the previous task.
+The search solution includes a number of built-in AI skills that enrich the index with information from the documents, such as the sentiment scores and lists of key phrases seen in the previous task.
 
 You can enhance the index further by creating custom skills. For example, it might be useful to identify the words that are used most frequently in each document, but no built-in skill offers this functionality.
 
@@ -140,12 +142,12 @@ To implement the word count functionality as a custom skill, you'll create an Az
 
 1. In the Azure Portal, on the **Home** page, create a new **Function App** resource with the following settings:
     - **Subscription**: *Your subscription*
-    - **Resource Group**: *The same resource group as your Azure Cognitive Search resource*
+    - **Resource Group**: *The same resource group as your Azure AI Search resource*
     - **Function App name**: *A unique name*
     - **Publish**: Code
     - **Runtime stack**: Node.js
     - **Version**: 14 LTS
-    - **Region**: *The same region as your Azure Cognitive Search resource*
+    - **Region**: *The same region as your Azure AI Search resource*
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
 3. In the blade for your Function App, in the pane on the left, select the **Functions** tab. Then create a new function with the following settings:
@@ -159,106 +161,106 @@ To implement the word count functionality as a custom skill, you'll create an Az
 4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
 5. Replace the default function code with the following code:
 
-    ```javascript
-    module.exports = async function (context, req) {
-        context.log('JavaScript HTTP trigger function processed a request.');
-    
-        if (req.body && req.body.values) {
-    
-            vals = req.body.values;
-    
-            // Array of stop words to be ignored
-            var stopwords = ['', 'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 
-            "youre", "youve", "youll", "youd", 'your', 'yours', 'yourself', 
-            'yourselves', 'he', 'him', 'his', 'himself', 'she', "shes", 'her', 
-            'hers', 'herself', 'it', "its", 'itself', 'they', 'them', 
-            'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 
-            'this', 'that', "thatll", 'these', 'those', 'am', 'is', 'are', 'was',
-            'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 
-            'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 
-            'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 
-            'about', 'against', 'between', 'into', 'through', 'during', 'before', 
-            'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 
-            'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 
-            'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 
-            'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 
-            'only', 'own', 'same', 'so', 'than', 'too', 'very', 'can', 'will',
-            'just', "dont", 'should', "shouldve", 'now', "arent", "couldnt", 
-            "didnt", "doesnt", "hadnt", "hasnt", "havent", "isnt", "mightnt", "mustnt",
-            "neednt", "shant", "shouldnt", "wasnt", "werent", "wont", "wouldnt"];
-    
-            res = {"values":[]};
-    
-            for (rec in vals)
-            {
-                // Get the record ID and text for this input
-                resVal = {recordId:vals[rec].recordId, data:{}};
-                txt = vals[rec].data.text;
-    
-                // remove punctuation and numerals
-                txt = txt.replace(/[^ A-Za-z_]/g,"").toLowerCase();
-    
-                // Get an array of words
-                words = txt.split(" ")
-    
-                // count instances of non-stopwords
-                wordCounts = {}
-                for(var i = 0; i < words.length; ++i) {
-                    word = words[i];
-                    if (stopwords.includes(word) == false )
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    if (req.body && req.body.values) {
+
+        vals = req.body.values;
+
+        // Array of stop words to be ignored
+        var stopwords = ['', 'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 
+        "youre", "youve", "youll", "youd", 'your', 'yours', 'yourself', 
+        'yourselves', 'he', 'him', 'his', 'himself', 'she', "shes", 'her', 
+        'hers', 'herself', 'it', "its", 'itself', 'they', 'them', 
+        'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 
+        'this', 'that', "thatll", 'these', 'those', 'am', 'is', 'are', 'was',
+        'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 
+        'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 
+        'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 
+        'about', 'against', 'between', 'into', 'through', 'during', 'before', 
+        'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 
+        'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 
+        'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 
+        'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 
+        'only', 'own', 'same', 'so', 'than', 'too', 'very', 'can', 'will',
+        'just', "dont", 'should', "shouldve", 'now', "arent", "couldnt", 
+        "didnt", "doesnt", "hadnt", "hasnt", "havent", "isnt", "mightnt", "mustnt",
+        "neednt", "shant", "shouldnt", "wasnt", "werent", "wont", "wouldnt"];
+
+        res = {"values":[]};
+
+        for (rec in vals)
+        {
+            // Get the record ID and text for this input
+            resVal = {recordId:vals[rec].recordId, data:{}};
+            txt = vals[rec].data.text;
+
+            // remove punctuation and numerals
+            txt = txt.replace(/[^ A-Za-z_]/g,"").toLowerCase();
+
+            // Get an array of words
+            words = txt.split(" ")
+
+            // count instances of non-stopwords
+            wordCounts = {}
+            for(var i = 0; i < words.length; ++i) {
+                word = words[i];
+                if (stopwords.includes(word) == false )
+                {
+                    if (wordCounts[word])
                     {
-                        if (wordCounts[word])
-                        {
-                            wordCounts[word] ++;
-                        }
-                        else
-                        {
-                            wordCounts[word] = 1;
-                        }
+                        wordCounts[word] ++;
+                    }
+                    else
+                    {
+                        wordCounts[word] = 1;
                     }
                 }
-    
-                // Convert wordcounts to an array
-                var topWords = [];
-                for (var word in wordCounts) {
-                    topWords.push([word, wordCounts[word]]);
-                }
-    
-                // Sort in descending order of count
-                topWords.sort(function(a, b) {
-                    return b[1] - a[1];
-                });
-    
-                // Get the first ten words from the first array dimension
-                resVal.data.text = topWords.slice(0,9)
-                  .map(function(value,index) { return value[0]; });
-    
-                res.values[rec] = resVal;
-            };
-    
-            context.res = {
-                body: JSON.stringify(res),
-                headers: {
-                'Content-Type': 'application/json'
             }
-    
-            };
-        }
-        else {
-            context.res = {
-                status: 400,
-                body: {"errors":[{"message": "Invalid input"}]},
-                headers: {
-                'Content-Type': 'application/json'
-            }
-    
-            };
-        }
-    };
-    ```
 
-6. Save the function by selecting **Save** and then open the **Test/Run** pane.
-7. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure Cognitive Search skill in which records containing data for one or more documents are submitted for processing:
+            // Convert wordcounts to an array
+            var topWords = [];
+            for (var word in wordCounts) {
+                topWords.push([word, wordCounts[word]]);
+            }
+
+            // Sort in descending order of count
+            topWords.sort(function(a, b) {
+                return b[1] - a[1];
+            });
+
+            // Get the first ten words from the first array dimension
+            resVal.data.text = topWords.slice(0,9)
+              .map(function(value,index) { return value[0]; });
+
+            res.values[rec] = resVal;
+        };
+
+        context.res = {
+            body: JSON.stringify(res),
+            headers: {
+            'Content-Type': 'application/json'
+        }
+
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: {"errors":[{"message": "Invalid input"}]},
+            headers: {
+            'Content-Type': 'application/json'
+        }
+
+        };
+    }
+};
+```
+
+6. Save the function and then open the **Test/Run** pane.
+7. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure AI Search skill in which records containing data for one or more documents are submitted for processing:
 
     ```
     {
@@ -283,7 +285,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
     }
     ```
     
-8. Select **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure Cognitive Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
+8. Click **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure AI Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
 
     ```
     {
@@ -332,7 +334,7 @@ Now you need to include your function as a custom skill in the search solution s
 1. In Visual Studio Code, in the **02-search-skill/update-search** folder, open the **update-skillset.json** file. This contains the JSON definition of a skillset.
 2. Review the skillset definition. It includes the same skills as before, as well as a new **WebApiSkill** skill named **get-top-words**.
 3. Edit the **get-top-words** skill definition to set the **uri** value to the URL for your Azure function (which you copied to the clipboard in the previous procedure), replacing **YOUR-FUNCTION-APP-URL**.
-4. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_COGNITIVE_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
+4. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_AI_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
 
     *You can find the keys on the **Keys and Endpoint** page for your Azure AI Services resource in the Azure portal.*
 
@@ -341,10 +343,10 @@ Now you need to include your function as a custom skill in the search solution s
 7. Review the JSON for the index, then close the file without making any changes.
 8. In the **update-search** folder, open **update-indexer.json**. This file contains a JSON definition for the **margies-custom-indexer**, with an additional mapping for the **top_words** field.
 9. Review the JSON for the indexer, then close the file without making any changes.
-10. In the **update-search** folder, open **update-search.cmd**. This batch script uses the cURL utility to submit the updated JSON definitions to the REST interface for your Azure Cognitive Search resource.
-11. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure Cognitive Search resource.
+10. In the **update-search** folder, open **update-search.cmd**. This batch script uses the cURL utility to submit the updated JSON definitions to the REST interface for your Azure AI Search resource.
+11. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure AI Search resource.
 
-    *You can find these values on the **Overview** and **Keys** pages for your Azure Cognitive Search resource in the Azure portal.*
+    *You can find these values on the **Overview** and **Keys** pages for your Azure AI Search resource in the Azure portal.*
 
 12. Save the updated batch file.
 13. Right-click the the **update-search** folder and select **Open in Integrated Terminal**.
@@ -354,7 +356,7 @@ Now you need to include your function as a custom skill in the search solution s
     update-search
     ```
 
-15. When the script completes, in the Azure portal, on the page for your Azure Cognitive Search resource, select the **Indexers** page and wait for the indexing process to complete.
+15. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.
 
     *You can select **Refresh** to track the progress of the indexing operation. It may take a minute or so to complete.*
 
@@ -362,15 +364,18 @@ Now you need to include your function as a custom skill in the search solution s
 
 Now that you have an index, you can search it.
 
-1. At the top of the blade for your Azure Cognitive Search resource, select **Search explorer**.
-2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
+1. At the top of the blade for your Azure AI Search resource, select **Search explorer**.
+2. In Search explorer, change the view to **JSON view**, and then submit the following search query:
 
-    ```
-    search=Las Vegas&$select=url,top_words
+    ```json
+    {
+      "search": "Las Vegas",
+      "select": "url,top_words"
+    }
     ```
 
     This query retrieves the **url** and **top_words** fields for all documents that mention *Las Vegas*.
 
 ## More information
 
-To learn more about creating custom skills for Azure Cognitive Search, see the [Azure Cognitive Search documentation](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).
+To learn more about creating custom skills for Azure AI Search, see the [Azure AI Search documentation](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).

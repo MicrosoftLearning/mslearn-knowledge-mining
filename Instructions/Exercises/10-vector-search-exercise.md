@@ -11,7 +11,7 @@ You'll need the following to successfully this exercise:
 
 - The [Postman app](https://www.postman.com/downloads/)
 - An Azure subscription
-- Azure Cognitive Search service
+- Azure AI Search service
 - The [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection) *Vector-Search-Quickstart.postman_collection v1.0 json*.
 
 > **Note**

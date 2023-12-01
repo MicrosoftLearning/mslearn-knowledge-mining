@@ -5,7 +5,7 @@ lab:
 
 # Add to an index using the push API
 
-You want to explore how to create an Azure Cognitive Search index and upload documents to that index using C# code.
+You want to explore how to create an Azure AI Search index and upload documents to that index using C# code.
 
 In this exercise, you'll clone an existing C# solution and run it to work out the optimal batch size to upload documents. You'll then use this batch size and upload documents effectively using a threaded approach.
 
@@ -24,13 +24,11 @@ To save you time, select this Azure Resource Manager template to create resource
 1. In **Location**, select the same region you chose above.
 1. Select **Review + create**.
 1. Select **Create**.
-
-
 1. When deployment has finished, select **Go to resource group** to see all the resources that you've created.
 
     ![A screenshot showing all of the deployed Azure resources.](../media/07-media/azure-resources-created.png)
 
-### Copy Azure Cognitive Search service REST API information
+### Copy Azure AI Search service REST API information
 
 1. In the list of resources, select the search service you created. In the above example **acs118245-search-service**.
 1. Copy the search service name into a text file.

@@ -1,13 +1,13 @@
 ---
 lab:
-    title: 'Enrich a cognitive search index with custom classes'
+    title: 'Enrich an AI search index with custom classes'
 ---
 
-# Enrich a cognitive search index with custom classes
+# Enrich an AI search index with custom classes
 
 You've built a search solution and now want to add Azure AI Services for language enrichments to your indexes.
 
-In this exercise, you'll create an Azure Cognitive Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
+In this exercise, you'll create an Azure AI Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
 
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
@@ -175,7 +175,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 Leave this web page open for later in this exercise.
 
-### Create a Cognitive Search index
+### Create an Azure AI Search index
 
 Create a search index that you can enrich with this model, you'll index all the text files that contain the movie summaries you've already downloaded.
 
@@ -191,7 +191,7 @@ Create a search index that you can enrich with this model, you'll index all the 
 1. Select **Upload** in the pane.
 1. Close the **Upload blob** pane.
 
-### Import documents into Cognitive Search
+### Import documents into Azure AI Search
 
 1. On the left, select **Resource groups**, select your resource group, then select your search service.
 
@@ -344,7 +344,7 @@ There's a sample query you can use to test that your function app and classifier
     }
     ```
 
-### Add a field to your cognitive search index
+### Add a field to your search index
 
 You need a place to store the enrichment returned by your new function app. Follow these steps to add a new compound field to store the text classification and confidence score.
 
