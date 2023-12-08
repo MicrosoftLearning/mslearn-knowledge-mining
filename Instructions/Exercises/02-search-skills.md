@@ -28,18 +28,22 @@ You'll develop your search app using Visual Studio Code. The code files for your
 > **Note**: If you have previously completed the **[Create an Azure AI Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
 
 1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
-2. View the **Resource groups** in your subscription.
-3. If you are using a restricted subscription in which a resource group has been provided for you, select the resource group to view its properties. Otherwise, create a new resource group with a name of your choice, and go to it when it has been created.
-4. On the **Overview** page for your resource group, note the **Subscription ID** and **Location**. You will need these values, along with the name of the resource group in subsequent steps.
-5. In Visual Studio Code, expand the **Labfiles/02-search-skill** folder and select **setup.cmd**. You will use this batch script to run the Azure command line interface (CLI) commands required to create the Azure resources you need.
-6. Right-click the the **02-search-skill** folder and select **Open in Integrated Terminal**.
-7. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
+2. In the top search bar, search for *Azure AI services*, select **Azure AI Services**, and create an Azure AI services multi-service account resource with the following settings:
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Choose or create a resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided)*
+    - **Region**: *Choose from available regions geographically close to you*
+    - **Name**: *Enter a unique name*
+    - **Pricing tier**: Standard S0
+1. Once deployed, go to the resource and on the **Overview** page, note the **Subscription ID** and **Location**. You will need these values, along with the name of the resource group in subsequent steps. 
+1. In Visual Studio Code, expand the **Labfiles/02-search-skill** folder and select **setup.cmd**. You will use this batch script to run the Azure command line interface (CLI) commands required to create the Azure resources you need.
+1. Right-click the the **02-search-skill** folder and select **Open in Integrated Terminal**.
+1. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
 
     ```
     az login --output none
     ```
 
-8. When prompted, sign into your Azure subscription. Then return to Visual Studio Code and wait for the sign-in process to complete.
+8. When prompted, select or sign into your Azure subscription. Then return to Visual Studio Code and wait for the sign-in process to complete.
 9. Run the following command to list Azure locations.
 
     ```
@@ -48,21 +52,17 @@ You'll develop your search app using Visual Studio Code. The code files for your
 
 10. In the output, find the **Name** value that corresponds with the location of your resource group (for example, for *East US* the corresponding name is *eastus*).
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
-12. In the terminal for the **23-custom-search-skill** folder, enter the following command to run the script:
+12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
 
     ```
     setup
     ```
 
-    > **Note**: The Search CLI module is in preview, and may get stuck in the *- Running ..* process. If this happens for over 2 minutes, press CTRL+C to cancel the long-running operation, and then select **N** when asked if you want to terminate the script. It should then complete successfully.
-    >
-    > If the script fails, ensure you saved it with the correct variable names and try again.
+    > **Note**: If the script fails, ensure you saved it with the correct variable names and try again.
 
 13. When the script completes, review the output it displays and note the following information about your Azure resources (you will need these values later):
     - Storage account name
     - Storage connection string
-    - Azure AI Services account
-    - Azure AI Services key
     - Search service endpoint
     - Search service admin key
     - Search service query key
