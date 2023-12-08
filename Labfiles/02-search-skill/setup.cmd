@@ -10,7 +10,7 @@ rem Get random numbers to create unique resource names
 set unique_id=!random!!random!
 
 echo Creating storage...
-call az storage account create --name ai102str!unique_id! --subscription !subscription_id! --resource-group !resource_group! --location !location! --sku Standard_LRS --encryption-services blob --default-action Allow --allow-blob-public-access true --output none
+call az storage account create --name ai102str!unique_id! --subscription !subscription_id! --resource-group !resource_group! --location !location! --sku Standard_LRS --encryption-services blob --default-action Allow --allow-blob-public-access true --only-show-errors --output none
 
 echo Uploading files...
 rem Hack to get storage key
@@ -25,7 +25,7 @@ call az storage container create --account-name ai102str!unique_id! --name margi
 call az storage blob upload-batch -d margies -s data --account-name ai102str!unique_id! --auth-mode key --account-key %AZURE_STORAGE_KEY%  --output none
 
 echo Creating search service...
-echo (If this gets stuck at '- Running ..' for more than a minute, press CTRL+C then select N)
+echo (If this gets stuck at '- Running ..' for more than a couple minutes, press CTRL+C then select N)
 call az search service create --name ai102srch!unique_id! --subscription !subscription_id! --resource-group !resource_group! --location !location! --sku basic --output none
 
 echo -------------------------------------
