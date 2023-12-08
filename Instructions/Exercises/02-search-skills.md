@@ -55,7 +55,7 @@ You'll develop your search app using Visual Studio Code. The code files for your
 12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
 
     ```
-    setup
+    ./setup
     ```
 
     > **Note**: If the script fails, ensure you saved it with the correct variable names and try again.
@@ -110,7 +110,7 @@ In this exercise, you'll use the Azure AI Search REST interface to create these 
 15. In the terminal pane for the **create-search** folder, enter the following command run the batch script.
 
     ```
-    create-search
+    ./create-search
     ```
 
 16. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.
@@ -150,7 +150,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Region**: *The same region as your Azure AI Search resource*
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. In the blade for your Function App, in the pane on the left, select the **Functions** tab. Then create a new function with the following settings:
+3. In the Overview page for your Function App, in the section down the page, select the **Functions** tab. Then create a new function in the portal with the following settings:
     - **Setup a development environment**"
         - **Development environment**: Develop in portal
     - **Select a template**"
@@ -289,39 +289,35 @@ module.exports = async function (context, req) {
 
     ```
     {
-    "values": [
+        "values": [
         {
-        "recordId": "a1",
-        "data": {
-            "text": [
-            "tiger",
-            "burning",
-            "bright",
-            "darkness",
-            "night"
-            ]
-        },
-        "errors": null,
-        "warnings": null
+            "recordId": "a1",
+            "data": {
+                "text": [
+                "tiger",
+                "burning",
+                "bright",
+                "darkness",
+                "night"
+                ]
+            }
         },
         {
-        "recordId": "a2",
-        "data": {
-            "text": [
-            "rain",
-            "spain",
-            "stays",
-            "mainly",
-            "plains",
-            "thats",
-            "youll",
-            "find"
-            ]
-        },
-        "errors": null,
-        "warnings": null
+            "recordId": "a2",
+            "data": {
+                "text": [
+                    "rain",
+                    "spain",
+                    "stays",
+                    "mainly",
+                    "plains",
+                    "thats",
+                    "youll",
+                    "find"
+                ]
+            }
         }
-    ]
+        ]
     }
     ```
 
@@ -353,7 +349,7 @@ Now you need to include your function as a custom skill in the search solution s
 14. In the terminal pane for the **update-search** folder, enter the following command run the batch script.
 
     ```
-    update-search
+    ./update-search
     ```
 
 15. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.

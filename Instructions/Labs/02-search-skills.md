@@ -146,11 +146,11 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Function App name**: *A unique name*
     - **Publish**: Code
     - **Runtime stack**: Node.js
-    - **Version**: 14 LTS
+    - **Version**: 18 LTS
     - **Region**: *The same region as your Azure AI Search resource*
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. In the blade for your Function App, in the pane on the left, select the **Functions** tab. Then create a new function with the following settings:
+3. In the Overview page for your Function App, in the section down the page, select the **Functions** tab. Then create a new function in the portal with the following settings:
     - **Setup a development environment**"
         - **Development environment**: Develop in portal
     - **Select a template**"
