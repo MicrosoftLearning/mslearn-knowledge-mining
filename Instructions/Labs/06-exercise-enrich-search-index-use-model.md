@@ -158,7 +158,7 @@ Next, you'll create a custom environment so you can deploy to a real-time endpoi
 1. Select the **Custom environments** tab.
 1. Select **+ Create**.
 1. For **Name**, enter **my-custom-environment**.
-1. In the list of Curated environments under **Select environment type**, select **automl-gpu:2**.
+1. In the list of *Curated environments* under **Select environment type**, select the latest **automl-gpu** version.
 1. Select **Next**.
 1. On your local machine, open the `conda_env.yaml` file you downloaded earlier and copy its contents.
 1. Return to browser, and select **conda_dependencies.yaml** in the Customize pane.
@@ -176,7 +176,7 @@ Your inference cluster should now be ready to use. You've also edited the scorin
 1. Select **Deploy**, then select **Real-time endpoint**.
 
     ![A screenshot of the Select endpoint pane.](../media/06-media/04-select-endpoint.png)
-1. For **Name**, enter **car-evaluation-endpoint**.
+1. For **Name**, enter a unique name, for example **car-evaluation-endpoint-1440637584** .
 1. For **Compute type**, select **Managed**.
 1. For **Authentication type**, select **Key-based authentication**.
 1. Select **Next**, then select **Next**.
@@ -232,7 +232,7 @@ Wait for the model to be deployed, it can take up to 10 minutes. You can check t
 
     ```json
     {
-        "predicted_price": 5790.948226933133
+        "predicted_price": 5852.823214312815
     }
     ```
 
@@ -301,15 +301,15 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 ### Create an Azure AI Search resource
 
 1. In the Azure portal, on the home page, select **+ Create a resource**.
-1. Search for **search**, then select **Azure AI Search**.
+1. Search for **Azure AI Search**, then select **Azure AI Search**.
 1. Select **Create**.
 1. In **Resource Group**, select **aml-for-acs-enrichment**.
-1. In Service name, enter **acs-enriched**.
+1. In Service name, enter a unique name, for example **acs-enriched-1440637584**.
 1. For **Location**, select the same region you used earlier.
 1. Select **Review + create**, then select **Create**.
 1. Wait for the resources to be deployed, then select **Go to resource**.
 1. Select **Import data**.
-1. On the **Connect to your data** pane, for the **Data source name** field, select **Azure Blob Storage**.
+1. On the **Connect to your data** pane, for the **Data source** field, select **Azure Blob Storage**.
 1. In **Data source name**, enter **import-docs**.
 1. In **Parsing mode**, select **JSON**.
 1. In **Connection string**, select **Choose an existing connection**.
