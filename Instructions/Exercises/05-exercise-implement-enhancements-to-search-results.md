@@ -168,8 +168,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 
 ### Test the updated index
 
-1. At the top of the page, select the search service **advanced-search-service-12345 | Indexes** link.
-1. On the **Overview** pane, select **Indexes**, then select **hotels-sample-index**.
+1. Return to the **Search explorer** tab of the **hotels-sample-index** page.
 1. In the **Query string**, enter the same search as before:
 
     `lake + view&$select=HotelName,Description,Category,Tags&$count=true`

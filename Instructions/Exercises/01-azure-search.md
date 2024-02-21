@@ -86,7 +86,7 @@ Now that you have the required resources, you can upload some documents to your 
 3. Save your changes, and then right-click the **01-azure-search** folder and open an integrated terminal.
 4. Enter the following command to sign into your Azure subscription by using the Azure CLI.
 
-    ```
+    ```powershell
     az login
     ```
 
@@ -94,7 +94,7 @@ Now that you have the required resources, you can upload some documents to your 
 
 5. Enter the following command to run the batch file. This will create a blob container in your storage account and upload the documents in the **data** folder to it.
 
-    ```
+    ```powershell
     UploadDocs
     ```
 
@@ -243,7 +243,7 @@ While you can use the portal to create and modify search solutions, it's often d
 4. In Visual Studio Code, in **skillset.json**, replace the **YOUR_COGNITIVE_SERVICES_KEY** placeholder with the Azure AI Services key you copied to the clipboard.
 5. Scroll through the JSON file, noting that it includes definitions for the skills you created using the Azure AI Search user interface in the Azure portal. At the bottom of the list of skills, an additional skill has been added with the following definition:
 
-    ```
+    ```json
     {
         "@odata.type": "#Microsoft.Skills.Text.V3.SentimentSkill",
         "defaultLanguageCode": "en",
@@ -279,7 +279,7 @@ While you can use the portal to create and modify search solutions, it's often d
 2. Scroll through the index and view the field definitions. Some fields are based on metadata and content in the source document, and others are the results of skills in the skillset.
 3. At the end of the list of fields that you defined in the Azure portal, note that two additional fields have been added:
 
-    ```
+    ```json
     {
         "name": "sentiment",
         "type": "Edm.String",
@@ -306,19 +306,18 @@ While you can use the portal to create and modify search solutions, it's often d
 1. In Visual studio Code, in the **modify-search** folder, open **indexer.json**. This shows a JSON definition for **margies-indexer**, which maps fields extracted from document content and metadata (in the **fieldMappings** section), and values extracted by skills in the skillset (in the **outputFieldMappings** section), to fields in the index.
 2. In the **fieldMappings** list, note the mapping for the **metadata_storage_path** value to the base-64 encoded key field. This was created when you assigned the **metadata_storage_path** as the key and selected the option to encode the key in the Azure portal. Additionally, a new mapping explicitly maps the same value to the **url** field, but without the Base-64 encoding:
 
-    ```
+    ```json
     {
         "sourceFieldName" : "metadata_storage_path",
         "targetFieldName" : "url"
-    }
-    
+    }    
     ```
 
     All of the other metadata and content fields in the source document are implicitly mapped to fields of the same name in the index.
 
 3. Review the **ouputFieldMappings** section, which maps outputs from the skills in the skillset to index fields. Most of these reflect the choices you made in the user interface, but the following mapping has been added to map the **sentimentLabel** value extracted by your sentiment skill to the **sentiment** field you added to the index:
 
-    ```
+    ```json
     {
         "sourceFieldName": "/document/sentimentLabel",
         "targetFieldName": "sentiment"
@@ -330,7 +329,7 @@ While you can use the portal to create and modify search solutions, it's often d
 1. Right-click the **modify-search** folder and open an integrated terminal.
 2. In the terminal pane for the **modify-search** folder, enter the following command to run the **modify-search.cmd** script, which submits the JSON definitions to the REST interface and initiates the indexing.
 
-    ```
+    ```powershell
     ./modify-search
     ```
 

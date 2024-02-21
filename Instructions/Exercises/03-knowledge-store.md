@@ -39,14 +39,14 @@ You'll develop your search app using Visual Studio Code. The code files for your
 6. Right-click the the **03-knowledge-store** folder and select **Open in Integrated Terminal**.
 7. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
 
-    ```
+    ```powershell
     az login --output none
     ```
 
 8. When prompted, sign into your Azure subscription. Then return to Visual Studio Code and wait for the sign-in process to complete.
 9. Run the following command to list Azure locations.
 
-    ```
+    ```powershell
     az account list-locations -o table
     ```
 
@@ -54,8 +54,8 @@ You'll develop your search app using Visual Studio Code. The code files for your
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
 12. In the terminal for the **03-knowledge-store** folder, enter the following command to run the script:
 
-    ```
-    setup
+    ```powershell
+    ./setup
     ```
     > **Note**: The Search CLI module is in preview, and may get stuck in the *- Running ..* process. If this happens for over 2 minutes, press CTRL+C to cancel the long-running operation, and then select **N** when asked if you want to terminate the script. It should then complete successfully.
     >
@@ -131,8 +131,8 @@ Now that you've prepared the JSON objects that define your search solution compo
 4. Right-click the the **create-search** folder and select **Open in Integrated Terminal**.
 5. In the terminal pane for the **create-search** folder, enter the following command run the batch script.
 
-    ```
-    create-search
+    ```powershell
+    ./create-search
     ```
 
 6. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.
@@ -151,11 +151,11 @@ The *object* projections defined in the Margie's Travel skillset consist of a JS
 
 1. In the Azure portal, view the Azure Storage account you created previously.
 2. Select the **Storage browser** tab (in the pane on the left) to view the storage account in the storage explorer interface in the Azure portal.
-2. Expand **Blob containers** to view the containers in the storage account. In addition to the **margies** container where the source data is stored, there should be two new containers: **margies-images** and **margies-knowledge**. These were created by the indexing process.
-3. Select the **margies-knowledge** container. It should contain a folder for each indexed document.
-4. Open any of the folders, and then download and open the **knowledge-projection.json** file it contains. Each JSON file contains a representation of an indexed document, including the enriched data extracted by the skillset as shown here.
+3. Expand **Blob containers** to view the containers in the storage account. In addition to the **margies** container where the source data is stored, there should be two new containers: **margies-images** and **margies-knowledge**. These were created by the indexing process.
+4. Select the **margies-knowledge** container. It should contain a folder for each indexed document.
+5. Open any of the folders, and then download and open the **knowledge-projection.json** file it contains. Each JSON file contains a representation of an indexed document, including the enriched data extracted by the skillset as shown here.
 
-```
+```json
 {
     "file_id":"abcd1234....",
     "file_name":"Margies Travel Company Info.pdf",
@@ -191,7 +191,7 @@ The ability to create *object* projections like this enables you to generate enr
 
 The *file* projections defined in the skillset create JPEG files for each image that was extracted from the documents during the indexing process.
 
-1. In the storage explorer interface in the Azure portal, select the **margies-images** blob container. This container contains a folder for each document that contained images.
+1. In the *Storage browser* interface in the Azure portal, select the **margies-images** blob container. This container contains a folder for each document that contained images.
 2. Open any of the folders and view its contents - each folder contains at least one \*.jpg file.
 3. Open any of the image files to verify that they contain images extracted from the documents.
 
@@ -201,7 +201,7 @@ The ability to generate *file* projections like this makes indexing an efficient
 
 The *table* projections defined in the skillset form a relational schema of enriched data.
 
-1. In the storage explorer interface in the Azure portal, expand **Tables**.
+1. In the *Storage browser* interface in the Azure portal, expand **Tables**.
 2. Select the **docs** table to view its columns. The columns include some standard Azure Storage table columns - to hide these, modify the **Column Options** to select only the following columns:
     - **document_id** (the key column automatically generated by the indexing process)
     - **file_id** (the encoded file URL)

@@ -39,14 +39,14 @@ You'll develop your search app using Visual Studio Code. The code files for your
 1. Right-click the the **02-search-skill** folder and select **Open in Integrated Terminal**.
 1. In the terminal pane, enter the following command to establish an authenticated connection to your Azure subscription.
 
-    ```
+    ```powershell
     az login --output none
     ```
 
 8. When prompted, select or sign into your Azure subscription. Then return to Visual Studio Code and wait for the sign-in process to complete.
 9. Run the following command to list Azure locations.
 
-    ```
+    ```powershell
     az account list-locations -o table
     ```
 
@@ -54,7 +54,7 @@ You'll develop your search app using Visual Studio Code. The code files for your
 11. In the **setup.cmd** script, modify the **subscription_id**, **resource_group**, and **location** variable declarations with the appropriate values for your subscription ID, resource group name, and location name. Then save your changes.
 12. In the terminal for the **02-search-skill** folder, enter the following command to run the script:
 
-    ```
+    ```powershell
     ./setup
     ```
 
@@ -109,7 +109,7 @@ In this exercise, you'll use the Azure AI Search REST interface to create these 
 14. Right-click the the **create-search** folder and select **Open in Integrated Terminal**.
 15. In the terminal pane for the **create-search** folder, enter the following command run the batch script.
 
-    ```
+    ```powershell
     ./create-search
     ```
 
@@ -150,7 +150,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Region**: *The same region as your Azure AI Search resource*
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. In the Overview page for your Function App, in the section down the page, select the **Functions** tab. Then create a new function in the portal with the following settings:
+3. On the **Overview** page select **Create in Azure portal** option to create a new function with the following settings:
     - **Setup a development environment**"
         - **Development environment**: Develop in portal
     - **Select a template**"
@@ -262,7 +262,7 @@ module.exports = async function (context, req) {
 6. Save the function and then open the **Test/Run** pane.
 7. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure AI Search skill in which records containing data for one or more documents are submitted for processing:
 
-    ```
+    ```json
     {
         "values": [
             {
@@ -284,10 +284,10 @@ module.exports = async function (context, req) {
         ]
     }
     ```
-    
+
 8. Click **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure AI Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
 
-    ```
+    ```json
     {
         "values": [
         {
@@ -348,7 +348,7 @@ Now you need to include your function as a custom skill in the search solution s
 13. Right-click the the **update-search** folder and select **Open in Integrated Terminal**.
 14. In the terminal pane for the **update-search** folder, enter the following command run the batch script.
 
-    ```
+    ```powershell
     ./update-search
     ```
 
