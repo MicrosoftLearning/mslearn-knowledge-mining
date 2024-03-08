@@ -225,13 +225,8 @@ The indexer will run and create an index of the 210 text files. You don't need t
 
 You'll now create a Python function app that your cognitive search custom skillset will call. The function app will use your custom text classifier model to enrich your search index.
 
-1. Open VScode, and, in the terminal, clone this GitHub repository to your machine.
-
-    ```bash
-    git clone https://github.com/MicrosoftLearning/mslearn-doc-intelligence movie-genre-function
-    ```
-
-1. In Visual Studio Code, open the **movie-genre-function** folder you've just cloned.
+1. [Download required files](https://github.com/MicrosoftLearning/mslearn-knowledge-mining/raw/main/Labfiles/04-enrich-custom-classes/movie-genre-function.zip) and extract the folder containing all the files.
+1. Open Visual Studio Code, open the **movie-genre-function** folder you've just downloaded.
 
     ![A screenshot of Visual Studio Code showing the optimize function app dialog.](../media/04-media/optimize-visual-studio-code.png)
 1. If you've installed all the required extensions, you're prompted to optimize the project. Select **Yes**.
