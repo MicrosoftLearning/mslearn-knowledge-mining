@@ -295,7 +295,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 
     Save the document to your machine as `test-car.json` extension.
 1. In the portal, select **Upload**.
-1. In the **Upload blob** pane, select **Brows for files**, navigate to where you saved the JSON document, and select it.
+1. In the **Upload blob** pane, select **Browse for files**, navigate to where you saved the JSON document, and select it.
 1. Select **Upload**.
 
 ### Create an Azure AI Search resource
