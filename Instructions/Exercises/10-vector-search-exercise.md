@@ -12,7 +12,7 @@ You'll need the following to successfully this exercise:
 - The [Postman app](https://www.postman.com/downloads/)
 - An Azure subscription
 - Azure AI Search service
-- The [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection) *Vector-Search-Quickstart.postman_collection v1.0 json*.
+- The Postman sample collection located in this repository - *Vector-Search-Quickstart.postman_collection v1.0 json*.
 
 > **Note**
 > You can find more information about the Postman app [here](https://learn.microsoft.com/en-us/azure/search/search-get-started-rest) if required.
@@ -25,7 +25,7 @@ First set up your project by carrying out the following steps:
 
     ![Illustration of location for Service name and Keys.](../media/vector-search/search keys.png)
 
-1. Download the [Postman sample collection](https://github.com/Azure/cognitive-search-vector-pr/tree/main/postman-collection). 
+1. Download the [Postman sample collection](https://github.com/MicrosoftLearning/mslearn-knowledge-mining/blob/main/Labfiles/10-vector-search/Vector%20Search.postman_collection%20v1.0.json).
 1. Open Postman and import the collection by selecting the **Import** button and drag and drop the collection folder into the box.
 
     ![Image of Import dialog box](../media/vector-search/import.png)
