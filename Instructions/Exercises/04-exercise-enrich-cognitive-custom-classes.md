@@ -28,7 +28,7 @@ To save you time, select this Azure ARM template to create resources you'll need
 
 ### Deploy a pre-built ARM template
 
-1. [![Deploy to Azure.](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) select this link to create your starting resources. You might need to copy and paste the [direct link](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) into your search bar.
+1. [![Deploy to Azure.](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json) select this link to create your starting resources. You might need to copy and paste the [direct link](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json) into your search bar.
 
     ![A screenshot of the options shown when deploying resources to Azure.](../media/04-media/deploy-azure-resources.png)
 1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
@@ -71,13 +71,10 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 },
 ```
 
-1. Download the [sample data](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/language-service/Custom%20text%20classification/Custom%20multi%20classification%20-%20movies%20summary.zip) from GitHub, save it locally on your machine.
-
-    ![A screenshot showing where to select to download tha sample zip data.](../media/04-media/download-sample-data.png)
-1. Open the **Custom multi classification - movies summary.zip** file, and extract the folder containing all the files.
+1. Navigate to **Labfiles/04-enrich-custom-classes** and extract the **movies summary.zip** folder containing all the files.
 
     > **Note**
-    > You use these files to train a model in Language Studio, and will also index all the files in Azure Cognitive Search.
+    > You use these files to train a model in Language Studio, and will also index all the files in Azure AI Search.
 
 1. In the [Azure portal](https://portal.azure.com/), select **Resource groups**, then select your resource group.
 1. Select the storage account you created, for example **acs18245str**.
@@ -92,7 +89,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
     ![A screenshot of uploading files into the container.](../media/04-media/upload-files.png)
 1. Select **Upload** at the top of the pane.
 1. In the **Upload blob** pane, select **Browse for files**.
-1. Navigate to where you downloaded the sample files, select all the text (`.txt`) and json (`.json`) files.
+1. Navigate to where you extracted the sample files, select all the text (`.txt`) and json (`.json`) files.
 1. Select **Upload** in the pane.
 1. Close the **Upload blob** pane.
 
@@ -102,11 +99,7 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 1. Select **+ Create a resource** and search for *Language service*.
 1. Select **Create** under **Language Service**.
 1. Select the option that includes **Custom text classification and Custom named entity recognition**.
-
-    ![A screenshot showing adding the custom text classification feature.](../media/04-media/select-additional-features.png)
 1. Select **Continue to create your resource**.
-
-    ![A screenshot showing the information needed to create a language service.](../media/04-media/enter-language-service-information.png)
 1. In **Resource group**, choose **cog-search-language-exe**.
 1. In **Region**, select the region you used above.
 1. In **Name**, enter **learn-language-service-for-custom-text**. This needs to be unique globally, so you might need to add a random numbers or characters at the end of it.
