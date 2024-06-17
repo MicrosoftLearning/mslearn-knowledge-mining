@@ -108,7 +108,7 @@ You'll use the REST interface to submit JSON definitions for your Azure AI Searc
     - A group containing a *file* projection based on the **normalized_images** collection of image data extracted from the documents.
     - A group containing the following *table* projections:
         - **KeyPhrases**: Contains an automatically generated key column and a **keyPhrase** column mapped to the **knowledge_projection/key_phrases/** collection output of the shaper skill.
-        - **Locations**: Contains an automatically generated key column and a **location** column mapped to the **knowledge_projection/key_phrases/** collection output of the shaper skill.
+        - **Locations**: Contains an automatically generated key column and a **location** column mapped to the **knowledge_projection/locations/** collection output of the shaper skill.
         - **ImageTags**: Contains an automatically generated key column and a **tag** column mapped to the **knowledge_projection/image_tags/** collection output of the shaper skill.
         - **Docs**: Contains an automatically generated key column and all of the **knowledge_projection** output values from the shaper skill that are not already assigned to a table.
 8. Replace the **YOUR_CONNECTION_STRING** placeholder for the **storageConnectionString** value with the connection string for your storage account.
