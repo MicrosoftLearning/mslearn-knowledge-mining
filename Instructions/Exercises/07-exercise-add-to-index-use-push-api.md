@@ -16,7 +16,7 @@ In this exercise, you'll clone an existing C# solution and run it to work out th
 
 To save you time, select this Azure Resource Manager template to create resources you'll need later in the exercise:
 
-1. [![Deploy to Azure.](../media/07-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-doc-intelligence%2Fmain%2Fcognitive-search%2Fazuredeploy.json) select this link to create an Azure Cognitive Search service.
+1. [![Deploy to Azure.](../media/07-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F07-exercise-add-to-index-use-push-api lab-files%2Fazuredeploy.json) select this link to create an Azure Cognitive Search service.
     ![A screenshot of the options shown when deploying resources to Azure.](../media/07-media/deploy-azure-resources.png)
 1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
 1. In **Region**, select a [supported region](/azure/ai-services/language-service/custom-text-classification/service-limits#regional-availability) that is close to you.
