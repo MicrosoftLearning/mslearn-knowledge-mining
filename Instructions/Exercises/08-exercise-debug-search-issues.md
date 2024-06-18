@@ -118,7 +118,7 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 1. Now you need to make sure that your skillset is attached to an Azure AI Services resource, otherwise you'll hit the basic quote and the indexer will timeout. To do this, select **Skillsets** in the left pane, then select your **hotels-sample-skillset**.
 
     ![A screenshot showing the skillset list.](../media/08-media/update-skillset.png)
-1. Select the **AI Services** tab, then select the AI services resource in the list.
+1. Select **Connect AI Service**, then select the AI services resource in the list.
 
     ![A screenshot showing the Azure AI Services resource to attach to the skillset.](../media/08-media/skillset-attach-service.png)
 1. Select **Save**.

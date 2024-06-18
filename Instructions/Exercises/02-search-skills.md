@@ -28,7 +28,7 @@ You'll develop your search app using Visual Studio Code. The code files for your
 > **Note**: If you have previously completed the **[Create an Azure AI Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.
 
 1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
-2. In the top search bar, search for *Azure AI services*, select **Azure AI Services**, and create an Azure AI services multi-service account resource with the following settings:
+2. In the top search bar, search for *Azure AI services*, select **Azure AI services multi-service account**, and create an Azure AI services multi-service account resource with the following settings:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Choose or create a resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided)*
     - **Region**: *Choose from available regions geographically close to you*
