@@ -372,6 +372,13 @@ Now that you have an index, you can search it.
 
     This query retrieves the **url** and **top_words** fields for all documents that mention *Las Vegas*.
 
+## Delete exercise resources
+
+Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
+
+1. In the Azure portal, select **Resource groups**.
+1. Select the resource group you don't need, then select **Delete resource group**.
+
 ## More information
 
 To learn more about creating custom skills for Azure AI Search, see the [Azure AI Search documentation](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).

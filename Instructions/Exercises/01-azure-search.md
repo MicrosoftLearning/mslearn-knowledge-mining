@@ -461,6 +461,13 @@ The web app already includes code to process and render the search results.
     - **Mojave desert** (observe that this term is identified as a *location* in some documents).
 10. Close the browser tab containing the Margie's Travel web site and return to Visual Studio Code. Then in the Python terminal for the **margies-travel** folder (where the dotnet or flask application is running), enter Ctrl+C to stop the app.
 
+## Delete exercise resources
+
+Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
+
+1. In the Azure portal, select **Resource groups**.
+1. Select the resource group you don't need, then select **Delete resource group**.
+
 ## More information
 
 To learn more about Azure AI Search, see the [Azure AI Search documentation](https://docs.microsoft.com/azure/search/search-what-is-azure-search).
