@@ -39,7 +39,7 @@ The solution you will create for Margie's Travel requires the following resource
 
 If you don't already have one in your subscription, you'll need to provision an **Azure AI Services** resource. Your search solution will use this to enrich the data in the datastore with AI-generated insights.
 
-1. Return to the home page of the Azure portal, and then select the **&#65291;Create a resource** button, search for *Azure AI Services*, and create an **Azure AI Services** resource with the following settings:
+1. Return to the home page of the Azure portal, and then select the **&#65291;Create a resource** button, search for *Azure AI Services*, and create an **Azure AI Services multi service account** resource with the following settings:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *The same resource group as your Azure AI Search resource*
     - **Region**: *The same location as your Azure AI Search resource*
