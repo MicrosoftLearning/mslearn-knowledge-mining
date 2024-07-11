@@ -55,6 +55,7 @@ You'll now create a regression model and train it using an Azure AI Machine Lear
 
     ![A screenshot showing the pipeline looking good, and the Submit button highlighted.](../media/06-media/submit-pipeline.png)
 1. Select **Basics** in the **Set up pipeline job** pane.
+   > Note: If you hid the **Set up pipeline job** pane before, you can open it again by selecting **Configure & Submit**.
 1. Select **Create new** under the Experiment name.
 1. In **New experiment name**, enter **linear-regression-training**.
 1. Select **Review + Submit** , then select **Submit**.
