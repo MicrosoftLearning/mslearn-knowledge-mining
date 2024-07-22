@@ -216,6 +216,13 @@ The *table* projections defined in the skillset form a relational schema of enri
 
 The ability to create *table* projections enables you to build analytical and reporting solutions that query the relational schema; for example, using Microsoft Power BI. The automatically generated key columns can be used to join the tables in queries - for example to return all of the locations mentioned in a specific document.
 
+## Delete exercise resources
+
+Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
+
+1. In the Azure portal, select **Resource groups**.
+1. Select the resource group you don't need, then select **Delete resource group**.
+
 ## More information
 
 To learn more about creating knowledge stores with Azure AI Search, see the [Azure AI Search documentation](https://docs.microsoft.com/azure/search/knowledge-store-concept-intro).
