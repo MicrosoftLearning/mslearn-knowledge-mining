@@ -51,8 +51,8 @@ namespace search_client.Pages
             var options = new SearchOptions{
                 IncludeTotalCount = true,
                 SearchMode = SearchMode.All,
-                Filter = FilterExpression,
-                OrderBy = {SortOrder},
+                Filter = filterBy,
+                OrderBy = {sortOrder},
                 Facets = {"metadata_author"},
                 HighlightFields = {"merged_content-3","imageCaption-3"} 
             };
@@ -68,7 +68,7 @@ namespace search_client.Pages
             options.Select.Add("locations");
             options.Select.Add("imageTags");
             options.Select.Add("imageCaption");
-            SearchResults<SearchResult> results = searchClient.Search<SearchResult>(SearchTerms, options);
+            SearchResults<SearchResult> results = searchClient.Search<SearchResult>(searchText, options);
             return results;
 
 
@@ -103,7 +103,7 @@ namespace search_client.Pages
                 }
                 
 
-                search_results = search_query(SearchTerms, SortOrder, FilterExpression);
+                search_results = search_query(SearchTerms, FilterExpression, SortOrder);
 
             }
             else{
