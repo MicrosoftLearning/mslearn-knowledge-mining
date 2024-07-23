@@ -95,7 +95,7 @@ Now that you have the required resources, you can upload some documents to your 
 5. Enter the following command to run the batch file. This will create a blob container in your storage account and upload the documents in the **data** folder to it.
 
     ```powershell
-    UploadDocs
+    .\UploadDocs.cmd
     ```
 
 ## Index the documents
@@ -153,7 +153,7 @@ Now that you have the documents in place, you can create a search solution by in
     1. Extracts the document metadata fields and content from the data source
     2. Runs the skillset of cognitive skills to generate additional enriched fields
     3. Maps the extracted fields to the index.
-15. In the bottom half of the **Overview** page for your Azure AI Search resource, view the **Indexers** tab, which should show the newly created **margies-indexer**. Wait a few minutes, and click **&orarr; Refresh** until the **Status** indicates success.
+15. On the left side, view the **Indexers** page, which should show the newly created **margies-indexer**. Wait a few minutes, and click **&orarr; Refresh** until the **Status** indicates success.
 
 ## Search the index
 
