@@ -151,9 +151,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
 
-3. On the **Overview** page select **Create in Azure portal** option to create a new function with the following settings:
-    - **Setup a development environment**"
-        - **Development environment**: Develop in portal
+3. On the **Overview** page click on the button **Create function** in the **Create in Azure portal** column to create a new function with the following settings:
     - **Select a template**"
         - **Template**: HTTP Trigger
     - **Template details**:
