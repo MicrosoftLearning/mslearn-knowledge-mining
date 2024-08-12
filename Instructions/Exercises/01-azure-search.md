@@ -56,7 +56,7 @@ If you don't already have one in your subscription, you'll need to provision an 
     - **Storage account name**: *Enter a unique name*
     - **Region**: *Choose any available region*
     - **Performance**: Standard
-    - **Replication**: Locally-redundant storage (LRS)
+    - **Redundancy**: Locally-redundant storage (LRS)
     - On the **Advanced** tab, check the box next to *Allow enabling anonymous access on individual containers*
 2. Wait for deployment to complete, and then go to the deployed resource.
 3. On the **Overview** page, note the **Subscription ID** -this identifies the subscription in which the storage account is provisioned.
@@ -231,7 +231,7 @@ While you can use the portal to create and modify search solutions, it's often d
 1. In the Azure portal, return to the **Overview** page for your Azure AI Search resource; and in the top section of the page, find the **Url** for your resource (which looks like **https://resource_name.search.windows.net**) and copy it to the clipboard.
 2. In Visual Studio Code, in the Explorer pane, expand the **01-azure-search** folder and its **modify-search** subfolder, and select **modify-search.cmd** to open it. You will use this script file to run *cURL* commands that submit JSON to the Azure AI Service REST interface.
 3. In **modify-search.cmd**, replace the **YOUR_SEARCH_URL** placeholder with the URL you copied to the clipboard.
-4. In the Azure portal, view the **Keys** page for your Azure AI Search resource, and copy the **Primary admin key** to the clipboard.
+4. In the Azure portal, in the **Settings** section, view the **Keys** page for your Azure AI Search resource, and copy the **Primary admin key** to the clipboard.
 5. In Visual Studio Code, replace the **YOUR_ADMIN_KEY** placeholder with the key you copied to the clipboard.
 6. Save the changes to **modify-search.cmd** (but don't run it yet!)
 
@@ -239,7 +239,7 @@ While you can use the portal to create and modify search solutions, it's often d
 
 1. In Visual studio Code, in the **modify-search** folder, open **skillset.json**. This shows a JSON definition for **margies-skillset**.
 2. At the top of the skillset definition, note the **cognitiveServices** object, which is used to connect your Azure AI Services resource to the skillset.
-3. In the Azure portal, open your Azure AI Services resource (<u>not</u> your Azure AI Search resource!) and view its **Keys** page. Then copy **Key 1** to the clipboard.
+3. In the Azure portal, open your Azure AI Services resource (<u>not</u> your Azure AI Search resource!) and, in the **Resource Management** section, view its **Keys and Endpoint** page. Then copy **KEY 1** to the clipboard.
 4. In Visual Studio Code, in **skillset.json**, replace the **YOUR_COGNITIVE_SERVICES_KEY** placeholder with the Azure AI Services key you copied to the clipboard.
 5. Scroll through the JSON file, noting that it includes definitions for the skills you created using the Azure AI Search user interface in the Azure portal. At the bottom of the list of skills, an additional skill has been added with the following definition:
 
@@ -375,13 +375,13 @@ Now that you have a useful index, you can use it from a client application. You 
     **C#**
 
     ```
-    dotnet add package Azure.Search.Documents --version 11.1.1
+    dotnet add package Azure.Search.Documents --version 11.6.0
     ```
 
     **Python**
 
     ```
-    pip install azure-search-documents==11.0.0
+    pip install azure-search-documents==11.5.1
     ```
 
 3. View the contents of the **margies-travel** folder, and note that it contains a file for configuration settings:
@@ -461,7 +461,7 @@ The web app already includes code to process and render the search results.
     - **Mojave desert** (observe that this term is identified as a *location* in some documents).
 10. Close the browser tab containing the Margie's Travel web site and return to Visual Studio Code. Then in the Python terminal for the **margies-travel** folder (where the dotnet or flask application is running), enter Ctrl+C to stop the app.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 

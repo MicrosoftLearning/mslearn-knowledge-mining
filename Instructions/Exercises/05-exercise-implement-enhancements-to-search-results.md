@@ -191,7 +191,7 @@ This hotel has matched the term lake in the `HotelName` field and on view in the
 
     The search score has increased, from **0.9433406** to **3.5707965**. However, all the other hotels have higher calculated scores. This hotel is now last in the results.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need.
 

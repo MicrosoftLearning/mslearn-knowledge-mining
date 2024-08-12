@@ -75,3 +75,7 @@ You should see a status code of type **200** to show that your request was succe
 1. Select the **Body** tab to see the response and view the results.
 
 You should see a status code of type **200** for a successful request.
+
+### Clean-up
+
+Now that you've completed the exercise, delete all the resources you no longer need. Start with the code cloned to your machine. Then delete the Azure resources.

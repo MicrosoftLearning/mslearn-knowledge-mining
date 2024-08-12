@@ -216,7 +216,7 @@ The *table* projections defined in the skillset form a relational schema of enri
 
 The ability to create *table* projections enables you to build analytical and reporting solutions that query the relational schema; for example, using Microsoft Power BI. The automatically generated key columns can be used to join the tables in queries - for example to return all of the locations mentioned in a specific document.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 

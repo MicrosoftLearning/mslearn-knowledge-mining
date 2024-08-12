@@ -127,5 +127,6 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
     ![A screenshot showing everything resolved.](../media/08-media/warnings-fixed-indexer.png)
 
-> [!TIP]
-> Now you've completed the exercise, if you've finished exploring Azure AI Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.
+### Clean-up
+
+ Now you've completed the exercise, if you've finished exploring Azure AI Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.

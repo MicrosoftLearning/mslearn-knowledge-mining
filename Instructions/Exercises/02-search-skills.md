@@ -141,22 +141,21 @@ To implement the word count functionality as a custom skill, you'll create an Az
 > **Note**: In this exercise, you'll create a simple Node.JS function using the code editing capabilities in the Azure portal. In a production solution, you would typically use a development environment such as Visual Studio Code to create a function app in your preferred language (for example C#, Python, Node.JS, or Java) and publish it to Azure as part of a DevOps process.
 
 1. In the Azure Portal, on the **Home** page, create a new **Function App** resource with the following settings:
+    - **Hosting option**: Consumption
     - **Subscription**: *Your subscription*
     - **Resource Group**: *The same resource group as your Azure AI Search resource*
     - **Function App name**: *A unique name*
-    - **Publish**: Code
     - **Runtime stack**: Node.js
     - **Version**: 18 LTS
     - **Region**: *The same region as your Azure AI Search resource*
+    - **Operating system**: Windows
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. On the **Overview** page select **Create in Azure portal** option to create a new function with the following settings:
-    - **Setup a development environment**"
-        - **Development environment**: Develop in portal
-    - **Select a template**"
-        - **Template**: HTTP Trigger
+3. On the **Overview** page select **Create function** at the bottom of the page to create a new function with the following settings:
+    - **Select a template**
+        - **Template**: HTTP Trigger    
     - **Template details**:
-        - **New Function**: wordcount
+        - **Function name**: wordcount
         - **Authorization level**: Function
 4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
 5. Replace the default function code with the following code:
@@ -372,7 +371,7 @@ Now that you have an index, you can search it.
 
     This query retrieves the **url** and **top_words** fields for all documents that mention *Las Vegas*.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 

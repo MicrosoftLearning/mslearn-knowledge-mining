@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OptimizeDataIndexing
-build_property.ProjectDir = c:\Users\Admin\Documents\Lab Files Updating folder\mslearn-knowledge-mining\Labfiles\07-exercise-add-to-index-use-push-api lab-files\OptimizeDataIndexing\
+build_property.ProjectDir = C:\gitclones\knowledge-mining-labs\mslearn-knowledge-mining\Labfiles\07-exercise-add-to-index-use-push-api lab-files\OptimizeDataIndexing\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
