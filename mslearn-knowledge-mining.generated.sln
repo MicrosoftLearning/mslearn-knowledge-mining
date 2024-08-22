@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labfiles", "Labfiles", "{73913731-84CC-4BDF-AA9A-EA34ADDBE3AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labfiles", "Labfiles", "{43EBFC1B-2718-4175-BAB9-8AD85A02B98F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07-exercise-add-to-index-use-push-api lab-files", "07-exercise-add-to-index-use-push-api lab-files", "{29D1D84A-A438-4876-B19D-C32B75898802}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07-exercise-add-to-index-use-push-api lab-files", "07-exercise-add-to-index-use-push-api lab-files", "{40248E5B-618E-4842-B90D-0D4E3BA63C57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptimizeDataIndexing", "Labfiles\07-exercise-add-to-index-use-push-api lab-files\OptimizeDataIndexing\OptimizeDataIndexing.csproj", "{38811354-4AC0-45D2-9591-862550BEEC61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptimizeDataIndexing", "Labfiles\07-exercise-add-to-index-use-push-api lab-files\OptimizeDataIndexing\OptimizeDataIndexing.csproj", "{A88599B1-A6D3-41A9-8E36-6C770882D5B8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-azure-search", "01-azure-search", "{5C064A91-2A25-4AEB-988F-CAA144FF61E4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-azure-search", "01-azure-search", "{4C826E11-DD51-4145-86B4-714CC8E68F7A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C-Sharp", "C-Sharp", "{7FE53835-2B22-4AE8-8A0F-5F5E5290615A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C-Sharp", "C-Sharp", "{1E6358BE-1F9C-42C1-9F21-99F47A766311}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "search-client", "Labfiles\01-azure-search\C-Sharp\margies-travel\search-client.csproj", "{9F21FD77-9161-46D7-9F16-C256E5681281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "search-client", "Labfiles\01-azure-search\C-Sharp\margies-travel\search-client.csproj", "{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,24 +21,24 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38811354-4AC0-45D2-9591-862550BEEC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38811354-4AC0-45D2-9591-862550BEEC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38811354-4AC0-45D2-9591-862550BEEC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38811354-4AC0-45D2-9591-862550BEEC61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F21FD77-9161-46D7-9F16-C256E5681281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F21FD77-9161-46D7-9F16-C256E5681281}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F21FD77-9161-46D7-9F16-C256E5681281}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F21FD77-9161-46D7-9F16-C256E5681281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A88599B1-A6D3-41A9-8E36-6C770882D5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88599B1-A6D3-41A9-8E36-6C770882D5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88599B1-A6D3-41A9-8E36-6C770882D5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88599B1-A6D3-41A9-8E36-6C770882D5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{29D1D84A-A438-4876-B19D-C32B75898802} = {73913731-84CC-4BDF-AA9A-EA34ADDBE3AF}
-		{38811354-4AC0-45D2-9591-862550BEEC61} = {29D1D84A-A438-4876-B19D-C32B75898802}
-		{5C064A91-2A25-4AEB-988F-CAA144FF61E4} = {73913731-84CC-4BDF-AA9A-EA34ADDBE3AF}
-		{7FE53835-2B22-4AE8-8A0F-5F5E5290615A} = {5C064A91-2A25-4AEB-988F-CAA144FF61E4}
-		{9F21FD77-9161-46D7-9F16-C256E5681281} = {7FE53835-2B22-4AE8-8A0F-5F5E5290615A}
+		{40248E5B-618E-4842-B90D-0D4E3BA63C57} = {43EBFC1B-2718-4175-BAB9-8AD85A02B98F}
+		{A88599B1-A6D3-41A9-8E36-6C770882D5B8} = {40248E5B-618E-4842-B90D-0D4E3BA63C57}
+		{4C826E11-DD51-4145-86B4-714CC8E68F7A} = {43EBFC1B-2718-4175-BAB9-8AD85A02B98F}
+		{1E6358BE-1F9C-42C1-9F21-99F47A766311} = {4C826E11-DD51-4145-86B4-714CC8E68F7A}
+		{7AD1CCA2-BEF2-4111-9C18-97E38C06B29B} = {1E6358BE-1F9C-42C1-9F21-99F47A766311}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87223B35-749E-4311-A70D-7B9A93D6470D}
