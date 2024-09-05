@@ -145,7 +145,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Subscription**: *Your subscription*
     - **Resource Group**: *The same resource group as your Azure AI Search resource*
     - **Function App name**: *A unique name*
-    - **Runtime stack**: 
+    - **Runtime stack**: Node.js
     - **Version**: 18 LTS
     - **Region**: *The same region as your Azure AI Search resource*
 
