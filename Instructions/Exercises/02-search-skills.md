@@ -141,7 +141,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
 > **Note**: In this exercise, you'll create a simple Node.JS function using the code editing capabilities in the Azure portal. In a production solution, you would typically use a development environment such as Visual Studio Code to create a function app in your preferred language (for example C#, Python, Node.JS, or Java) and publish it to Azure as part of a DevOps process.
 
 1. In the Azure Portal, on the **Home** page, create a new **Function App** resource with the following settings:
-    - **Hosting option**: Consumption
+    - **Hosting Plan**: Consumption
     - **Subscription**: *Your subscription*
     - **Resource Group**: *The same resource group as your Azure AI Search resource*
     - **Function App name**: *A unique name*
