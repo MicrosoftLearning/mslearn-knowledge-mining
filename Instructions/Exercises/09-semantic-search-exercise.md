@@ -14,7 +14,7 @@ In this exercise, you will add semantic ranker to an index and use semantic rank
 
 1. Open the Azure portal and sign in.
 1. Select **All resources** and select your search service.
-1. In the navigation pane, select **Semantic ranker (preview)**.
+1. In the navigation pane, select **Semantic ranker**.
 1. In **Availability**, in the **Free** option, select **Select Plan**.
 
 ![Screenshot of semantic ranker dialog box.](../media/semantic-search/semanticsearch.png)

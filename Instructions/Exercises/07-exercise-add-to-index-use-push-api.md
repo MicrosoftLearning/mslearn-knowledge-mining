@@ -164,7 +164,7 @@ You can search and verify that the documents have been added to the index in the
 
 ![A screenshot showing the search index with 100000 documents.](../media/07-media/check-search-service-index.png)
 
-### Delete exercise resources
+### Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Start with the code cloned to your machine. Then delete the Azure resources.
 

@@ -130,8 +130,8 @@ This exercise uses 210 text files that contain a plot summary for a movie. The t
 
 1. In **Name**, enter **movie-genre-classifier**.
 1. In **Text primary language**, select **English (US)**.
-1. In **Description**, enter **A model that can identify a movie genre from the summary**.
 1. Select **Yes, enable multi-lingual dataset**.
+1. In **Description**, enter **A model that can identify a movie genre from the summary**.
 1. Select **Next**.
 
     ![A screenshot showing selecting the container with sample data in.](../media/04-media/choose-container.png)
@@ -488,7 +488,7 @@ Each document in the index should have a new `textclass` field that can be searc
 
 Now that you've completed the exercise, delete all the resources you no longer need.
 
-### Delete exercise resources
+### Clean-up
 
 1. In the Azure portal, go to the Home page, and select **Resource groups**.
 1. Select the resource groups you don't need, then select **Delete resource group**.

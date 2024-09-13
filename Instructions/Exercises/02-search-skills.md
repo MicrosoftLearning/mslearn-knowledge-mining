@@ -148,14 +148,14 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Runtime stack**: Node.js
     - **Version**: 18 LTS
     - **Region**: *The same region as your Azure AI Search resource*
+    - **Operating system**: Windows
 
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
-
-3. On the **Overview** page click on the button **Create function** in the **Create in Azure portal** column to create a new function with the following settings:
-    - **Select a template**"
-        - **Template**: HTTP Trigger
+3. On the **Overview** page select **Create function** at the bottom of the page to create a new function with the following settings:
+    - **Select a template**
+        - **Template**: HTTP Trigger    
     - **Template details**:
-        - **New Function**: wordcount
+        - **Function name**: wordcount
         - **Authorization level**: Function
 4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
 5. Replace the default function code with the following code:
@@ -371,7 +371,7 @@ Now that you have an index, you can search it.
 
     This query retrieves the **url** and **top_words** fields for all documents that mention *Las Vegas*.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 

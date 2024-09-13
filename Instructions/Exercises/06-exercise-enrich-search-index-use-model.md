@@ -177,9 +177,9 @@ Your inference cluster should now be ready to use. You've also edited the scorin
 1. Select **Deploy**, then select **Real-time endpoint**.
 
     ![A screenshot of the Select endpoint pane.](../media/06-media/04-select-endpoint.png)
-1. For **Name**, enter a unique name, for example **car-evaluation-endpoint-1440637584** .
+1. For **Endpoint name**, enter a unique name, for example **car-evaluation-endpoint-1440637584** .
 1. For **Compute type**, select **Managed**.
-1. For **Authentication type**, select **Key-based authentication**.
+1. For **Authentication type**, select **Key-based**.
 1. Select **Next**, then select **Next**.
 1. Select **Next** again.
 1. In the **Select a scoring script for inferencing** field, browse to your updated `score.py` file and select it.
@@ -254,7 +254,7 @@ Next, you create a new Cognitive Search service and enrich an index using a cust
 
     ![A screenshot showing selecting a storage account in the Azure portal.](../media/06-media/navigate-storage-account.png)
 1. Select the storage account, for example **amlforacsworks1440637584**.
-1. Select **Configuration** under **Settings**. Then set **Allow Blob anonymous acces** to **Enabled**.
+1. Select **Configuration** under **Settings**. Then set **Allow Blob anonymous access** to **Enabled**.
 1. Select **Save**.
 1. Under **Data storage**, select **Containers**. 
 1. Create a new container to store index data, select **+ Container**.
@@ -463,7 +463,7 @@ You'll now replace the people names enrichment with the Azure Machine Learning c
 
 ### Update the output field mappings
 
-1. Go back to the **Overview** pane, and select **Indexers**, then select the **azureblob-indexer**.
+1. Go back to the **Overview** pane of your search service, and select **Indexers**, then select the **azureblob-indexer**.
 1. Select the **Indexer Definition (JSON)** tab, then change the **outputFieldMappings** value to:
 
     ```json
@@ -487,9 +487,9 @@ The updated skillset will now add a predicted value to the test car document in 
 1. Select **Search**.
 1. Scroll to the bottom of the results.
     ![A screenshot showing the predicted car price field added to the search results.](../media/06-media/test-results-search-explorer.png)
-You should see the populate field `predicted_price`.
+You should see the populated field `predicted_price`.
 
-## Delete exercise resources
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Delete the Azure resources:
 
