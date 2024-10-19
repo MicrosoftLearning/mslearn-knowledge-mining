@@ -31,12 +31,12 @@
         ]
       },
       {
-        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-        "name": "#1",
+        "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+        "name":"#1",
         "description": null,
         "context": "/document/merged_content",
         "categories": [
-          "Person",
+          "person",
           "Quantity",
           "Organization",
           "URL",
@@ -46,8 +46,7 @@
         ],
         "defaultLanguageCode": "en",
         "minimumPrecision": null,
-        "includeTypelessEntities": null,
-        "inputs": [
+        "inputs":[
           {
             "name": "text",
             "source": "/document/merged_content"
@@ -61,10 +60,6 @@
           {
             "name": "locations",
             "targetName": "locations"
-          },
-          {
-            "name": "entities",
-            "targetName": "entities"
           }
         ]
       },
