@@ -36,7 +36,7 @@
         "description": null,
         "context": "/document/merged_content",
         "categories": [
-          "person",
+          "Person",
           "Quantity",
           "Organization",
           "URL",
