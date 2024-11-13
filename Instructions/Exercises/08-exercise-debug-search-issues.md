@@ -16,14 +16,14 @@ In this exercise, you'll create an Azure AI Search solution, import some sample 
 
 Before you can begin using a Debug Session, you need to create an Azure Cognitive Search service.
 
-1. [Deploy resources to Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - select this link to deploy all the resources you need in the Azure portal.
+1. [Deploy resources to Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - if you're in a hosted VM, copy this link and paste into the VM browser. Otherwise, select this link to deploy all the resources you need in the Azure portal.
 
     ![A screenshot of the arm deployment template with fields entered.](../media/08-media/arm-template-deployment.png)
 
 1. Under **Resource Group**, select **Create new**.
-1. Type **acs-cognitive-search-exercise**.
+1. Type **debug-search-exercise**.
 1. Select the closest **Region** to you.
-1. For **Resource Prefix**, enter **acslearnex** and add a random combination of numbers or characters to ensure the storage name is unique.
+1. For **Resource Prefix**, enter **debugsearch** and add a random combination of numbers or characters to ensure the storage name is unique.
 1. For the Location, select the same region you used above.
 1. At the bottom of the pane, select **Review + create**.
 1. Wait until the resource is deployed, then select **Go to resource group**.
