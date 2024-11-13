@@ -14,26 +14,25 @@ In this exercise, you'll create an Azure AI Search solution, import some sample 
 
 ## Create your search solution
 
-Before you can begin using a Debug Session, you need to create an Azure Cognitive Search service.
+Before you can begin using a Debug Session, you need to create an Azure AI Search service.
 
 1. [Deploy resources to Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F08-debug-search%2Fazuredeploy.json) - if you're in a hosted VM, copy this link and paste into the VM browser. Otherwise, select this link to deploy all the resources you need in the Azure portal.
 
     ![A screenshot of the arm deployment template with fields entered.](../media/08-media/arm-template-deployment.png)
 
-1. Under **Resource Group**, select **Create new**.
-1. Type **debug-search-exercise**.
-1. Select the closest **Region** to you.
+1. Under **Resource Group**, select your provided resource group or select **Create new** and type **debug-search-exercise**.
+1. Select the closest **Region** to you, or use the default.
 1. For **Resource Prefix**, enter **debugsearch** and add a random combination of numbers or characters to ensure the storage name is unique.
 1. For the Location, select the same region you used above.
 1. At the bottom of the pane, select **Review + create**.
 1. Wait until the resource is deployed, then select **Go to resource group**.
 
-## Import sample data
+## Import sample data and configure resources
 
 With your resources created, you can now import your source data.
 
-1. In the listed resources, select the search service.
-
+1. In the listed resources, navigate to the storage account. Go to **Configuration** in the left pane, set **Allow Blob anonymous access** to **Enabled** and then select **Save**.
+1. Navigate back to your resource group, and select the search service.
 1. On the **Overview** pane, select **Import data**.
 
       ![A screenshot showing the import data menu selected.](../media/08-media/import-data.png)
@@ -60,41 +59,30 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 ![A screenshot showing 150 warnings on the indexer.](../media/08-media/indexer-warnings.png)
 
 1. Select **Debug sessions** in the left pane.
-
 1. Select **+ Add Debug Session**.
-
-1. Select **Choose an existing connection** for  Storage connection string, then select your storage account.
-
-    ![A screenshot showing new de-bug session choosing a connection.](../media/08-media/connect-storage.png)
-1. Select **+ Container** to add a new container. Name it **acs-debug-storage**.
-
-    ![A screenshot showing creating a storage container.](../media/08-media/create-storage-container.png)
-
-1. Set its **Anonymous access level** to **Container(anonymous read access for containers and blobs)**.
-
-    > **Note**: You may need to enable blob anonymous in order to select this option. To do so, in the storage account go to **Configuration** , set **Allow Blob anonymous access** to **Enabled** and then select **Save**.
-
-1. Select **Create**.
-1. Select your new container in the list, then select **Select**.
-1. Select **hotel-sample-indexer** for the **Indexer Template**.
-1. Select **Save Session**.
+1. Provide a name for the session, and select **hotel-sample-indexer** for the **Indexer Template**.
+1. Select your storage account from the **Storage account** field. This will automatically create a storage container for you to hold the debug data.
+1. Leave the checkbox for authenticating using a managed identity unchecked.
+1. Select **Save**.
+1. Once created, the debug session will automatically run on the data in your search service. It should complete with errors/warnings.
 
     The dependency graph shows you that for each document there's an error on three skills.
-    ![A screenshot showing the three errors on an enriched document.](../media/08-media/warning-skill-selection.png)
+    ![A screenshot showing the three errors on an enriched document.](../media/08-media/debug-session-errors.png)
 
-1. Select **V3**.
+    > **Note**: You may see an error about connecting to the storage account and configuring managed identities. This happens if you try to debug too quickly after enabling anonymous blob access, and running the debug session should still work. Refreshing the browser window after a few minutes should remove the warning.
+
+1. In the dependency graph, select one of the skill nodes that have an error.
 1. On the skills details pane, select **Errors/Warnings(1)**.
-1. Expand the **Message** column so you can see details.
 
     The details are:
 
-    *Invalid language code '(Unknown)'. Supported languages: ar,cs,da,de,en,es,fi,fr,hu,it,ja,ko,nl,no,pl,pt-BR,pt-PT,ru,sv,tr,zh-Hans. For additional details see https://aka.ms/language-service/language-support.*
+    *Invalid language code '(Unknown)'. Supported languages: af,am,ar,as,az,bg,bn,bs,ca,cs,cy,da,de,el,en,es,et,eu,fa,fi,fr,ga,gl,gu,he,hi,hr,hu,hy,id,it,ja,ka,kk,km,kn,ko,ku,ky,lo,lt,lv,mg,mk,ml,mn,mr,ms,my,ne,nl,no,or,pa,pl,ps,pt-BR,pt-PT,ro,ru,sk,sl,so,sq,sr,ss,sv,sw,ta,te,th,tr,ug,uk,ur,uz,vi,zh-Hans,zh-Hant. For additional details see https://aka.ms/language-service/language-support.*
 
-    If you look back at the dependency graph, the Language detection skill has outputs to the three skills with warnings. Also the skill input causing the error is `languageCode`.
+    If you look back at the dependency graph, the Language Detection skill has outputs to the three skills with errors. If you look at the skill settings with errors, you'll see the skill input causing the error is `languageCode`.
 
 1. In the dependency graph, select **Language detection**.
 
-    ![A screenshot showing the Skill Settings for the Language Detection skill.](../media/08-media/language-detection-error.png)
+    ![A screenshot showing the Skill Settings for the Language Detection skill.](../media/08-media/language-detection-skill-settings.png)
     Looking at the skill settings JSON, note the field being used to deduce the language is the `HotelId`.
 
     This field will be causing the error as the skill can't work out the language based on an ID.
@@ -102,20 +90,17 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 ## Resolve the warning on the indexer
 
 1. Select **source** under inputs, and change the field to `/document/Description`.
-    ![A screenshot of the Language Detection SKill screen showing the fixed skill.](../media/08-media/language-detection-fix.png)
 1. Select **Save**.
-1. Select **Run**.
+1. Select **Run**. The indexer should no longer have any errors or warnings. The skillset can now be updated.
 
-    ![A screenshot showing the need to run after updating a skill.](../media/08-media/rerun-debug-session.png)
+    ![A screenshot showing a complete run with no errors.](../media/08-media/debug-session-complete.png)
+   
+1. Select **Commit changes** to push the changes made in this session to your indexer.
+1. Select **OK**. You can now delete your session.
 
-    The indexer should no longer have any errors or warnings. The skillset can now be updated.
+Now you need to make sure that your skillset is attached to an Azure AI Services resource, otherwise you'll hit the basic quota and the indexer will timeout. 
 
-1. Select **Commit changes...**
-
-    ![A screenshot showing the issue resolved.](../media/08-media/error-fixed.png)
-1. Select **OK**.
-
-1. Now you need to make sure that your skillset is attached to an Azure AI Services resource, otherwise you'll hit the basic quote and the indexer will timeout. To do this, select **Skillsets** in the left pane, then select your **hotels-sample-skillset**.
+1. To do this, select **Skillsets** in the left pane, then select your **hotels-sample-skillset**.
 
     ![A screenshot showing the skillset list.](../media/08-media/update-skillset.png)
 1. Select **Connect AI Service**, then select the AI services resource in the list.
@@ -127,6 +112,6 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
     ![A screenshot showing everything resolved.](../media/08-media/warnings-fixed-indexer.png)
 
-### Clean-up
+## Clean-up
 
- Now you've completed the exercise, if you've finished exploring Azure AI Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **acs-cognitive-search-exercise** resource group.
+ Now you've completed the exercise, if you've finished exploring Azure AI Search services, delete the Azure resources that you created during the exercise. The easiest way to do this is delete the **debug-search-exercise** resource group.
