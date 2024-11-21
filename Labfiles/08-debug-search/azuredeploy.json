@@ -275,6 +275,9 @@
             ],
             "properties": {
               "azPowerShellVersion": "6.4",
+              "containerSettings": {
+                  "containerGroupName": "azscriptsaci"
+              },
               "primaryScriptUri": "https://raw.githubusercontent.com/MicrosoftLearning/mslearn-knowledge-mining/main/Labfiles/08-debug-search/templates/SearchAssets.ps1",
               "arguments": "[concat('-searchServiceName', ' ', variables('searchServiceName'),' ', '-searchServiceKey', ' ', listAdminKeys(concat('Microsoft.Search/searchServices/', variables('searchServiceName')), '2021-04-01-preview').primaryKey,' ', '-storageAccount', ' ', variables('storageAccountName'),' ', '-storageKey', ' ', listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,' ', '-storageContainerName', ' ', variables('storageContainerName'),' ', '-cogServicesKey', ' ', listKeys(resourceId(resourceGroup().name,'Microsoft.CognitiveServices/accounts', variables('cognitiveServicesAccountName')), '2017-04-18').key1,' ', '-dataSourceName', ' ', variables('dataSourceName'),' ', '-skillsetName', ' ', variables('skillsetName'),' ', '-indexName', ' ', variables('indexName'),' ', '-indexerName', ' ', variables('indexerName'))]",
               "timeout": "PT1H",
