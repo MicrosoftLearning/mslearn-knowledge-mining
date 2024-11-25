@@ -315,7 +315,7 @@ While you can use the portal to create and modify search solutions, it's often d
 
     All of the other metadata and content fields in the source document are implicitly mapped to fields of the same name in the index.
 
-3. Review the **ouputFieldMappings** section, which maps outputs from the skills in the skillset to index fields. Most of these reflect the choices you made in the user interface, but the following mapping has been added to map the **sentimentLabel** value extracted by your sentiment skill to the **sentiment** field you added to the index:
+3. Review the **outputFieldMappings** section, which maps outputs from the skills in the skillset to index fields. Most of these reflect the choices you made in the user interface, but the following mapping has been added to map the **sentimentLabel** value extracted by your sentiment skill to the **sentiment** field you added to the index:
 
     ```json
     {
