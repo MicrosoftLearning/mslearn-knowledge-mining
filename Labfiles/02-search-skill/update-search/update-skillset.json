@@ -70,7 +70,6 @@
         ],
         "defaultLanguageCode": "en",
         "minimumPrecision": null,
-        "includeTypelessEntities": null,
         "inputs": [
           {
             "name": "text",
@@ -87,7 +86,7 @@
             "targetName": "locations"
           },
           {
-            "name": "entities",
+            "name": "namedEntities",
             "targetName": "entities"
           }
         ]
