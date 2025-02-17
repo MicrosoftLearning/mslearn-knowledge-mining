@@ -150,6 +150,8 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Region**: *The same region as your Azure AI Search resource*
     - **Operating system**: Windows
 
+>**Note**: If the region where you created your Azure AI Search resource does not have available quota for deploying your Function App resource, you can choose a different region where your subscription has available quota for deployment.
+
 2. Wait for deployment to complete, and then go to the deployed Function App resource.
 3. On the **Overview** page select **Create function** at the bottom of the page to create a new function with the following settings:
     - **Select a template**
