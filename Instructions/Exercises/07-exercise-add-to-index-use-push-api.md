@@ -28,7 +28,7 @@ To save you time, select this Azure Resource Manager template to create resource
 
     ![A screenshot showing all of the deployed Azure resources.](../media/07-media/azure-resources-created.png)
 
-### Copy Azure AI Search service REST API information
+## Copy Azure AI Search service REST API information
 
 1. In the list of resources, select the search service you created. In the above example **acs118245-search-service**.
 1. Copy the search service name into a text file.
@@ -36,34 +36,18 @@ To save you time, select this Azure Resource Manager template to create resource
     ![A screenshot of the keys section of a search service.](../media/07-media/search-api-keys-exercise-version.png)
 1. On the left, select **Keys**, then copy the **Primary admin key** into the same text file.
 
-### Download example code
+## Download example code to use in Visual Studio Code
 
-Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top of the Azure portal.
-> **Note**
-> If you're prompted to create an Azure Storage account select **Create storage**.
+You'll run an Azure sample code using Visual Studio Code. The code files have been provided in a GitHub repo.
 
-1. Once it has finished starting up, clone the following example code repository by running the following in your Cloud Shell:
+1. Start Visual Studio Code.
+1. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` repository to a local folder (it doesn't matter which folder).
+1. When the repository has been cloned, open the folder in Visual Studio Code.
+1. Wait while additional files are installed to support the C# code projects in the repo.
 
-    ```powershell
-    git clone https://github.com/Azure-Samples/azure-search-dotnet-scale.git samples
-    ```
+    > **Note**: If you are prompted to add required assets to build and debug, select **Not Now**.
 
-1. Change into the newly created directory by running:
-
-    ```powershell
-    cd samples
-    ```
-
-1. Then run:
-
-    ```powershell
-    code ./optimize-data-indexing/v11
-    ```
-
-1. This opens the code editor inside Cloud Shell at the `/optimize-data-indexing/v11` folder.
-
-    ![A screenshot of VS Code showing the setup notifications.](../media/07-media/setup-visual-studio-code-solution.png)
-1. In the navigation on the left, expand the **OptimizeDataIndexing** folder, then select the **appsettings.json** file.
+1. In the navigation on the left, expand the **optimize-data-indexing/v11/OptimizeDataIndexing** folder, then select the **appsettings.json** file.
 
     ![A screenshot showing the contents of the appsettings.json file.](../media/07-media/update-app-settings.png)
 1. Paste in your search service name and primary admin key.
@@ -78,36 +62,29 @@ Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top o
 
     The settings file should look similar to the above.
 1. Save your change by pressing **CTRL + S**.
-1. Select the **OptimizeDataIndexing.csproj** file. <!-- Added this and the next two steps in case we can't update the file in the repo that holds these (seems to be separate from the other labs)-->
-1. On the fifth line, change `<TargetFramework>netcoreapp3.1</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>`. <!--- can be removed if no longer needed based on the above-->
-1. Save your change by pressing **CTRL + S**.<!--- can be removed if no longer needed based on the above-->
-1. In the terminal, enter `cd ./optimize-data-indexing/v11/OptimizeDataIndexing` then press **Enter** to change into the correct directory.
-1. Select the **Program.cs** file. Then, in the terminal, enter `dotnet run` and press **Enter**.
+1. Right-click the the **OptimizeDataIndexing** folder and select **Open in Integrated Terminal**.
+1. In the terminal, enter `dotnet run` and press **Enter**.
 
     ![A screenshot showing the app running in VS Code with an exception.](../media/07-media/debug-application.png)
-The output shows that in this case, the best performing batch size is 900 documents. As it reaches 3.688 MB per second.
+The output shows that in this case, the best performing batch size is 900 documents. As it reaches 6.071 MB per second.
 
-### Edit the code to implement threading and a backoff and retry strategy
+## Edit the code to implement threading and a backoff and retry strategy
 
 There's code commented out that's ready to change the app to use threads to upload documents to the search index.
 
 1. Make sure you've selected **Program.cs**.
 
     ![A screenshot of VS Code showing the Program.cs file.](../media/07-media/edit-program-code.png)
-1. Comment out lines 38 and 39 like this:
+1. Comment out lines 37 and 38 like this:
 
     ```csharp
     //Console.WriteLine("{0}", "Finding optimal batch size...\n");
     //await TestBatchSizesAsync(searchClient, numTries: 3);
     ```
 
-1. Uncomment lines 41 to 49.
+1. Uncomment lines 44 to 48.
 
     ```csharp
-    long numDocuments = 100000;
-    DataGenerator dg = new DataGenerator();
-    List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
-
     Console.WriteLine("{0}", "Uploading using exponential backoff...\n");
     await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8);
 
@@ -124,7 +101,6 @@ There's code commented out that's ready to change the app to use threads to uplo
 1. Select your terminal, then press any key to end the running process if you haven't already.
 1. Run `dotnet run` in the terminal.
 
-    ![A screenshot showing the completed messages in the console.](../media/07-media/upload-hundred-thousand-documents.png)
     The app will start eight threads, and then as each thread finishes writing a new message to the console:
 
     ```powershell
@@ -164,7 +140,7 @@ You can search and verify that the documents have been added to the index in the
 
 ![A screenshot showing the search index with 100000 documents.](../media/07-media/check-search-service-index.png)
 
-### Clean-up
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Start with the code cloned to your machine. Then delete the Azure resources.
 
