@@ -36,16 +36,34 @@ To save you time, select this Azure Resource Manager template to create resource
     ![A screenshot of the keys section of a search service.](../media/07-media/search-api-keys-exercise-version.png)
 1. On the left, select **Keys**, then copy the **Primary admin key** into the same text file.
 
-## Download example code to use in Visual Studio Code
+## Clone the repository in Cloud Shell
 
-You'll run an Azure sample code using Visual Studio Code. The code files have been provided in a GitHub repo.
+You'll develop your code using Cloud Shell from the Azure Portal. The code files for your app have been provided in a GitHub repo.
 
-1. Start Visual Studio Code.
-1. Open the palette (SHIFT+CTRL+P) and run a **Git: Clone** command to clone the `https://github.com/MicrosoftLearning/mslearn-knowledge-mining` repository to a local folder (it doesn't matter which folder).
-1. When the repository has been cloned, open the folder in Visual Studio Code.
-1. Wait while additional files are installed to support the C# code projects in the repo.
+> **Tip**: If you have already cloned the **mslearn-knowledge-mining** repo recently, you can skip this task. Otherwise, follow these steps to clone it to your development environment.
 
-    > **Note**: If you are prompted to add required assets to build and debug, select **Not Now**.
+1. In the Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
+
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
+
+1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
+
+    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+
+1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
+
+    ```
+    rm -r mslearn-knowledge-mining -f
+    git clone https://github.com/microsoftlearning/mslearn-knowledge-mining mslearn-knowledge-mining
+    ```
+
+1. After the repo has been cloned, navigate to the folder containing the application code files:  
+
+    ```
+   cd './mslearn-knowledge-mining/Labfiles/07-exercise-add-to-index-use-push-api lab-files'
+    ```
+
+## Set up your application
 
 1. In the navigation on the left, expand the **optimize-data-indexing/v11/OptimizeDataIndexing** folder, then select the **appsettings.json** file.
 
