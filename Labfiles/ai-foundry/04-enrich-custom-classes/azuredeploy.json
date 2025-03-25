@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourcePrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "provide a 2-13 character prefix for all resources."
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ],
+            "metadata": {
+                "description": "Storage Account type"
+            }
+        },
+        "searchServiceSku": {
+            "type": "string",
+            "defaultValue": "standard",
+            "allowedValues": [
+                "free",
+                "basic",
+                "standard",
+                "standard2",
+                "standard3"
+            ],
+            "metadata": {
+                "description": "The SKU of the search service you want to create. E.g. free or standard"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "East US",
+            "allowedValues": [
+                "Australia East",                
+                "Central US",
+                "East US",
+                "East US 2",
+                "North Europe",
+                "South Central US",
+                "West Europe",
+                "West US 2",
+                "UK South"
+            ],
+            "metadata": {
+                "description": "Location where the Azure Search service and Cognitive Services account will be deployed."
+            }
+        }
+    },
+    "variables": {
+        "storageAccountName": "[concat(parameters('resourcePrefix'), 'str')]",
+        "searchServiceName": "[concat(parameters('resourcePrefix'), '-search-service')]",
+        "cognitiveServicesAccountName": "[concat(parameters('resourcePrefix'), '-cognitive-services')]",
+        "storageAccountId":"[concat(parameters('resourcePrefix'))]"
+    },
+    "resources": [     
+        {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
+            "location": "[parameters('location')]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageAccountType')]",
+                "tier": "Standard"
+            }
+        },
+        {
+            "apiVersion": "2015-08-19",
+            "name": "[variables('searchServiceName')]",
+            "type": "Microsoft.Search/searchServices",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('searchServiceSku')]"
+            }
+        },
+        {
+            "name": "[variables('cognitiveServicesAccountName')]",
+            "type": "Microsoft.CognitiveServices/accounts",
+            "apiVersion": "2017-04-18",
+            "sku": {
+                "name": "S0"
+            },
+            "kind": "CognitiveServices",
+            "location": "[toLower(replace(parameters('location'),' ', ''))]",
+            "properties": {
+                "apiProperties": {},
+                "publicNetworkAccess": "Enabled"
+            }
+        }
+    ]
+}

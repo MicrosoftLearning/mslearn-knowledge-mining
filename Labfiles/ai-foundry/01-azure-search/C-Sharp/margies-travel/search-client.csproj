@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>search_client</RootNamespace>
+  </PropertyGroup>
+
+    <ItemGroup>
+   
+    <PackageReference Include="Azure.Search.Documents" Version="11.4.0" />
+   
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.32" />
+  </ItemGroup>
+
+</Project>
