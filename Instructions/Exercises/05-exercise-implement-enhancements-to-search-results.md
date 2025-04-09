@@ -84,19 +84,19 @@ The Azure portal assumes the first field in the document needs to be translated.
 
 1. At the top of the page, select the search service, **advanced-search-service-12345 |Indexes** link.
 1. Select **Skillsets** under Search management on the left pane, then select **hotels-sample-skillset**.
-1. Edit the JSON document, change line 11 to:
+1. Edit the JSON document, change line 9 to:
 
     ```json
     "context": "/document/Description",
     ```
 
-1. Change the default from language to English on line 12:
+1. Change the default from language to English on line 11:
 
     ```json
     "defaultFromLanguageCode": "en",
     ```
 
-1. Change the source field on line 18 to:
+1. Change the source field on line 15 to:
 
     ```json
     "source": "/document/Description"
@@ -105,8 +105,8 @@ The Azure portal assumes the first field in the document needs to be translated.
 1. Select **Save**.
 1. At the top of the page, select the search service, **advanced-search-service-12345 | Skillsets** link.
 1. On the **Overview** pane, select **Indexers**, then select **hotels-sample-indexer**.
-1. Select **Indexer Definition (JSON)**.
-1. Change the source field name on line 21 to:
+1. Select **Edit JSON**.
+1. Change the source field name on line 20 to:
 
     ```json
     "sourceFieldName": "/document/Description/Description_pt",
