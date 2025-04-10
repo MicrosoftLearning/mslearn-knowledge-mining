@@ -99,7 +99,7 @@ The Azure portal assumes the first field in the document needs to be translated.
 1. Change the source field on line 15 to:
 
     ```json
-    "source": "/document/Description"
+    "source": "/document/Description",
     ```
 
 1. Select **Save**.
