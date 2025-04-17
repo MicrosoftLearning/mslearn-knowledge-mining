@@ -171,6 +171,24 @@ Now that you have the documents in place, you can create a search solution by in
     3. Maps the extracted fields to the index.
 1. On the left side, view the **Indexers** page, which should show the newly created **margies-indexer**. Wait a few minutes, and click **&orarr; Refresh** until the **Status** indicates success.
 
+    <details>
+    <summary><b>Troubleshooting tip</b>: Failed indexer</summary><br>
+    <p>If your indexer fails to create an index, you need to manually add a field mapping function:</p>
+    <ol>
+        <li>Select <b>margies-indexer</b> and then select <b>Edit JSON</b>.</li>
+        <li>In the <code>fieldMappings</code> field, add the following function:.</li>
+        <code>"fieldMappings": [
+       {
+           "sourceFieldName": "metadata_storage_path",
+           "targetFieldName": "metadata_storage_path",
+           "mappingFunction": {
+               "name": "base64Encode"
+           }
+       }],</code>
+        <li>Select <b>Save</b> and then run the indexer again.</li>
+    </ol>
+    </details>
+
 ## Search the index
 
 Now that you have an index, you can search it.
@@ -184,22 +202,14 @@ Now that you have an index, you can search it.
 
     ```json
     {
-      "search": "*"
-    }
-    ```
-
-1. Modify the JSON request to include the **count** parameter as shown here:
-
-    ```json
-    {
       "search": "*",
       "count": true
     }
     ```
 
-1. Submit the modified search. This time, the results include a **@odata.count** field at the top of the results that indicates the number of documents returned by the search.
+1. The results include a **@odata.count** field at the top of the results that indicates the number of documents returned by the search.
 
-1. Try the following query:
+1. Modify the JSON request to include the **select** parameter as shown here:
 
     ```json
     {
@@ -245,7 +255,7 @@ While you can use the portal to create and modify search solutions, it's often d
 ### Get the endpoint and key for your Azure AI Search resource
 
 1. In the Azure portal, return to the **Overview** page for your Azure AI Search resource; and in the top section of the page, find the **Url** for your resource (which looks like **https://resource_name.search.windows.net**) and copy it to the clipboard.
-1. In the cloud shell command line, run the command `cd modify-search` and `code modify-search.sh` to open the script file. You will use it to run *cURL* commands that submit JSON to the Azure AI Service REST interface.
+1. In the cloud shell command line, run the commands `cd modify-search` and then `code modify-search.sh` to open the script file. You will use it to run *cURL* commands that submit JSON to the Azure AI Service REST interface.
 1. In **modify-search.sh**, replace the **YOUR_SEARCH_URL** placeholder with the URL you copied to the clipboard.
 1. In the Azure portal, in the **Settings** section, view the **Keys** page for your Azure AI Search resource, and copy the **Primary admin key** to the clipboard.
 1. In the code editor, replace the **YOUR_ADMIN_KEY** placeholder with the key you copied to the clipboard.
@@ -409,16 +419,18 @@ Now that you have a useful index, you can use it from a client application. You 
 
     Open the configuration file and update the configuration values it contains to reflect the **endpoint** and **query key** for your Azure AI Search resource. Save your changes and close the code editor.
 
+>**Note**: If you receive a permission error when trying to open the configuration file, run `chmod a+w appsettings.json` or `chmod a+w .env` and then try to open it again.
+
 ### Explore code to search an index
 
 The **margies-travel** folder contains code files for a web application (a Microsoft C# *ASP.NET Razor* web application or a Python *Flask* application), which includes search functionality.
 
 1. Open the following code file in the web application, depending on your choice of programming language:
-    - **C#**:Pages/Index.cshtml.cs
+    - **C#**: ./Pages/Index.cshtml.cs
     - **Python**: app.py
 
-1. Near the top of the code file, find the comment **Import search namespaces**, and note the namespaces that have been imported to work with the Azure AI Search SDK:
-1. In the **search_query** function, find the comment **Create a search client**, and note that the code creates a **SearchClient** object using the endpoint and query key for your Azure AI Search resource:
+1. Near the top of the code file, find the comment **Import search namespaces**, and note the namespaces that have been imported to work with the Azure AI Search SDK.
+1. In the **search_query** function, find the comment **Create a search client**, and note that the code creates a **SearchClient** object using the endpoint and query key for your Azure AI Search resource.
 1. In the **search_query** function, find the comment **Submit search query**, and review the code to submit a search for the specified text with the following options:
     - A *search mode* that requires **all** of the individual words in the search text are found.
     - The total number of documents found by the search is included in the results.
@@ -433,7 +445,7 @@ The **margies-travel** folder contains code files for a web application (a Micro
 The web app already includes code to process and render the search results.
 
 1. Open the following code file in the web application, depending on your choice of programming language:
-    - **C#**:Pages/Index.cshtml
+    - **C#**: ./Pages/Index.cshtml
     - **Python**: templates/search.html
 1. Examine the code, which renders the page on which the search results are displayed. Observe that:
     - The page begins with a search form that the user can use to submit a new search (in the Python version of the application, this form is defined in the **base.html** template), which is referenced at the beginning of the page.
@@ -452,7 +464,8 @@ The web app already includes code to process and render the search results.
 
 ### Run the web app
 
- 1. return to the integrated terminal for the **margies-travel** folder, and enter the following command to run the program:
+1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Beta version** (this is required to use Web preview).
+1. Navigate to the **margies-travel** folder for your preferred language and enter the following command to run the program:
 
     **C#**
     
@@ -466,7 +479,7 @@ The web app already includes code to process and render the search results.
     flask run
     ```
 
-1. In the message that is displayed when the app starts successfully, follow the link to the running web application (*http://localhost:5000/* or *http://127.0.0.1:5000/*) to open the Margies Travel site in a web browser.
+1. In the cloud shell toolbar, select **Web preview** and open and browse port **5000** to open the Margies Travel site in a web browser.
 1. In the Margie's Travel website, enter **London hotel** into the search box and click **Search**.
 1. Review the search results. They include the file name (with a hyperlink to the file URL), an extract of the file content with the search terms (*London* and *hotel*) emphasized, and other attributes of the file from the index fields.
 1. Observe that the results page includes some user interface elements that enable you to refine the results. These include:
