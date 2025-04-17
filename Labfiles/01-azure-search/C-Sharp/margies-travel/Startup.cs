@@ -43,6 +43,13 @@ namespace search_client
 
             app.UseAuthorization();
 
+            // Middleware to set Content-Type header to text/html
+            app.Use(async (context, next) =>
+            {
+                context.Response.ContentType = "text/html";
+                await next.Invoke();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
