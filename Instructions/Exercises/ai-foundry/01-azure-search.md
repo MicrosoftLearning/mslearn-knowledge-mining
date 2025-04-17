@@ -410,7 +410,9 @@ Now that you have a useful index, you can use it from a client application. You 
     **Python**
 
     ```
-    pip install azure-search-documents==11.5.1
+    python -m venv labenv
+    ./labenv/bin/Activate.ps1
+    pip install dotenv flask azure-search-documents==11.5.1
     ```
 
 1. Run the `ls` command and view the contents of the **margies-travel** folder, and note that it contains a file for configuration settings:
@@ -476,6 +478,9 @@ The web app already includes code to process and render the search results.
     **Python**
     
     ```
+    python -m venv labenv
+    ./labenv/bin/Activate.ps1
+    pip install dotenv flask azure-search-documents==11.5.1
     flask run
     ```
 
