@@ -117,22 +117,22 @@ In this exercise, you'll use the Azure AI Search REST interface to create these 
     *You can find the connection string on the **Access keys** page for your storage account in the Azure portal.*
 
 1. Save and close the updated JSON file.
-1. In the **create-search** folder, open **skillset.json**. This file contains a JSON definition for a skillset named **margies-custom-skillset**.
+1. In the command line pane, run `code skillset.json` to open **skillset.json**. This file contains a JSON definition for a skillset named **margies-custom-skillset**.
 1. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_AI_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
 
     *You can find the keys on the **Keys and Endpoint** page for your Azure AI Services resource in the Azure portal.*
 
 1. Save and close the updated JSON file.
-1. In the **create-search** folder, open **index.json**. This file contains a JSON definition for an index named **margies-custom-index**.
+1. In the command line pane, run `code index.json` to open **index.json**. This file contains a JSON definition for an index named **margies-custom-index**.
 1. Review the JSON for the index, then close the file without making any changes.
-1. In the **create-search** folder, open **indexer.json**. This file contains a JSON definition for an indexer named **margies-custom-indexer**.
+1. In the command line pane, run `code indexer.json` to open **indexer.json**. This file contains a JSON definition for an indexer named **margies-custom-indexer**.
 1. Review the JSON for the indexer, then close the file without making any changes.
-1. In the **create-search** folder, open **create-search.sh**. This batch script uses the cURL utility to submit the JSON definitions to the REST interface for your Azure AI Search resource.
+1. In the command line pane, run `code create-search.sh` to open **create-search.sh**. This batch script uses the cURL utility to submit the JSON definitions to the REST interface for your Azure AI Search resource.
 1. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure AI Search resource.
 
     *You can find these values on the **Overview** and **Keys** pages for your Azure AI Search resource in the Azure portal.*
 
-1. Save the updated batch file.
+1. Save the updated batch file and close the code editor.
 1. In the command line pane, enter the following commands to run the batch script:
 
     ```powershell
@@ -149,7 +149,7 @@ In this exercise, you'll use the Azure AI Search REST interface to create these 
 Now that you have an index, you can search it.
 
 1. At the top of the blade for your Azure AI Search resource, select **Search explorer**.
-2. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
+1. In Search explorer, in the **Query string** box, enter the following query string, and then select **Search**.
 
     ```
     search=London&$select=url,sentiment,keyphrases&$filter=metadata_author eq 'Reviewer' and sentiment eq 'positive'
@@ -177,15 +177,15 @@ To implement the word count functionality as a custom skill, you'll create an Az
     - **Region**: *The same region as your Azure AI Search resource*
     - **Operating system**: Windows
 
-2. Wait for deployment to complete, and then go to the deployed Function App resource.
-3. On the **Overview** page select **Create function** at the bottom of the page to create a new function with the following settings:
+1. Wait for deployment to complete, and then go to the deployed Function App resource.
+1. On the **Overview** page select **Create function** at the bottom of the page to create a new function with the following settings:
     - **Select a template**
         - **Template**: HTTP Trigger    
     - **Template details**:
         - **Function name**: wordcount
         - **Authorization level**: Function
-4. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
-5. Replace the default function code with the following code:
+1. Wait for the *wordcount* function to be created. Then in its page, select the **Code + Test** tab.
+1. Replace the default function code with the following code:
 
     ```javascript
     module.exports = async function (context, req) {
@@ -285,8 +285,8 @@ To implement the word count functionality as a custom skill, you'll create an Az
     };
     ```
 
-6. Save the function and then open the **Test/Run** pane.
-7. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure AI Search skill in which records containing data for one or more documents are submitted for processing:
+1. Save the function and then open the **Test/Run** pane.
+1. In the **Test/Run** pane, replace the existing **Body** with the following JSON, which reflects the schema expected by an Azure AI Search skill in which records containing data for one or more documents are submitted for processing:
 
     ```json
     {
@@ -311,7 +311,7 @@ To implement the word count functionality as a custom skill, you'll create an Az
     }
     ```
 
-8. Click **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure AI Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
+1. Click **Run** and view the HTTP response content that is returned by your function. This reflects the schema expected by Azure AI Search when consuming a skill, in which a response for each document is returned. In this case, the response consists of up to 10 terms in each document in descending order of how frequently they appear:
 
     ```json
     {
@@ -347,37 +347,36 @@ To implement the word count functionality as a custom skill, you'll create an Az
     }
     ```
 
-9. Close the **Test/Run** pane and in the **wordcount** function blade, click **Get function URL**. Then copy the URL for the default key to the clipboard. You'll need this in the next procedure.
+1. Close the **Test/Run** pane and in the **wordcount** function blade, click **Get function URL**. Then copy the URL for the default key to the clipboard. You'll need this in the next procedure.
 
 ## Add the custom skill to the search solution
 
 Now you need to include your function as a custom skill in the search solution skillset, and map the results it produces to a field in the index. 
 
-1. In Visual Studio Code, in the **02-search-skill/update-search** folder, open the **update-skillset.json** file. This contains the JSON definition of a skillset.
-2. Review the skillset definition. It includes the same skills as before, as well as a new **WebApiSkill** skill named **get-top-words**.
-3. Edit the **get-top-words** skill definition to set the **uri** value to the URL for your Azure function (which you copied to the clipboard in the previous procedure), replacing **YOUR-FUNCTION-APP-URL**.
-4. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_AI_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
+1. In the command line pane, run `cd ../update-search` to open the **update-search** folder, then run `code update-skillset.json` to edit the **update-skillset.json** file. This contains the JSON definition of a skillset.
+1. Review the skillset definition. It includes the same skills as before, as well as a new **WebApiSkill** skill named **get-top-words**.
+1. Edit the **get-top-words** skill definition to set the **uri** value to the URL for your Azure function (which you copied to the clipboard in the previous procedure), replacing **YOUR-FUNCTION-APP-URL**.
+1. At the top of the skillset definition, in the **cognitiveServices** element, replace the **YOUR_AI_SERVICES_KEY** placeholder with either of the keys for your Azure AI Services resources.
 
     *You can find the keys on the **Keys and Endpoint** page for your Azure AI Services resource in the Azure portal.*
 
-5. Save and close the updated JSON file.
-6. In the **update-search** folder, open **update-index.json**. This file contains the JSON definition for the **margies-custom-index** index, with an additional field named **top_words** at the bottom of the index definition.
-7. Review the JSON for the index, then close the file without making any changes.
-8. In the **update-search** folder, open **update-indexer.json**. This file contains a JSON definition for the **margies-custom-indexer**, with an additional mapping for the **top_words** field.
-9. Review the JSON for the indexer, then close the file without making any changes.
-10. In the **update-search** folder, open **update-search.cmd**. This batch script uses the cURL utility to submit the updated JSON definitions to the REST interface for your Azure AI Search resource.
-11. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure AI Search resource.
+1. Save and close the updated JSON file.
+1. In the command line pane, run `code update-index.json` to open **update-index.json**. This file contains the JSON definition for the **margies-custom-index** index, with an additional field named **top_words** at the bottom of the index definition.
+1. Review the JSON for the index, then close the file without making any changes.
+1. In the command line pane, run `code update-indexer.json` to open **update-indexer.json**. This file contains a JSON definition for the **margies-custom-indexer**, with an additional mapping for the **top_words** field.
+1. Review the JSON for the indexer, then close the file without making any changes.
+1. In the command line pane, run `code update-search.sh` to open **update-search.sh**. This batch script uses the cURL utility to submit the updated JSON definitions to the REST interface for your Azure AI Search resource.
+1. Replace the **YOUR_SEARCH_URL** and **YOUR_ADMIN_KEY** variable placeholders with the **Url** and one of the **admin keys** for your Azure AI Search resource.
 
     *You can find these values on the **Overview** and **Keys** pages for your Azure AI Search resource in the Azure portal.*
 
-12. Save the updated batch file.
-13. Right-click the the **update-search** folder and select **Open in Integrated Terminal**.
-14. In the terminal pane for the **update-search** folder, enter the following command run the batch script.
+1. Save the updated batch file and close the code editor.
+1. In the command line pane, enter the following commands to run the batch script:
 
     ```powershell
-    ./update-search
+    chmod +x ./update-search.sh
+    ./update-search.sh
     ```
-
 15. When the script completes, in the Azure portal, on the page for your Azure AI Search resource, select the **Indexers** page and wait for the indexing process to complete.
 
     *You can select **Refresh** to track the progress of the indexing operation. It may take a minute or so to complete.*
