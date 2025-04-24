@@ -12,16 +12,6 @@ In this exercise, you'll create an Azure AI Search solution and enrich an index 
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 
-## Set up your development environment with Python, VS Code and VS Code Extensions
-
-Install these tools to complete this exercise. You can still follow along with the steps without these tools.
-
-1. Install [VS Code](https://code.visualstudio.com/)
-1. Install [Azure Core Functions Tool](https://github.com/Azure/azure-functions-core-tools)
-1. Install [Azure Tools Extensions for VS Code](https://code.visualstudio.com/docs/azure/extensions)
-1. Install [Python 3.8](https://www.python.org/downloads/release/python-380/) for your operating system.
-1. Install [Python Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-
 ## Set up your Azure resources
 
 To save you time, select this Azure ARM template to create resources you'll need later in the exercise.
@@ -31,62 +21,60 @@ To save you time, select this Azure ARM template to create resources you'll need
 1. [![Deploy to Azure.](../media/04-media/deploy-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json) select this link to create your starting resources. You might need to copy and paste the [direct link](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftLearning%2Fmslearn-knowledge-mining%2Fmain%2FLabfiles%2F04-enrich-custom-classes%2Fazuredeploy.json) into your search bar.
 
     ![A screenshot of the options shown when deploying resources to Azure.](../media/04-media/deploy-azure-resources.png)
-1. In **Resource group**, select **Create new**, name it **cog-search-language-exe**.
+1. In **Resource group**, select **Create new**, name it `cog-search-language-exe`.
 1. In **Region**, select a [supported region](https://learn.microsoft.com/azure/ai-services/language-service/concepts/regional-support) that is close to you.
 1. The **Resource Prefix** needs to be globally unique, enter a random numeric and lower-case character prefix, for example **acs18245**.
 1. In **Location**, select the same region you chose above.
 1. Select **Review + create**.
 1. Select **Create**.
-
-    > **Note**
-    > There's an error shown, **You will need to Agree to the terms of service below to create this resource successfully.**, by selecting **Create** you are agreeing to them.
-
-1. Select **Go to resource group** to see all the resources that you've created.
+1. Once the deployment is complete, select **Go to resource group** to see all the resources that you've created.
 
     ![A screenshot of the deployed resources.](../media/04-media/azure-resources-created.png)
 You'll be setting up an Azure Cognitive Search index, creating an Azure function, and creating a Language Studio project to identify movie genres from their summaries.
 
 ### Upload sample data to train language services
 
-This exercise uses 210 text files that contain a plot summary for a movie. The text files name is the movie title. The folder also contains a **movieLabels.json** file that maps the genres of a movie to the file, for each file there's a JSON entry like this:
+1. This exercise uses 210 text files that contain a plot summary for a movie. The text files name is the movie title. The folder also contains a **movieLabels.json** file that maps the genres of a movie to the file, for each file there's a JSON entry like this:
 
-```json
-{
-    "location": "And_Justice_for_All.txt",
-    "language": "en-us",
-    "classifiers": [
-        {
-            "classifierName": "Mystery"
-        },
-        {
-            "classifierName": "Drama"
-        },
-        {
-            "classifierName": "Thriller"
-        },
-        {
-            "classifierName": "Comedy"
-        }
-    ]
-},
-```
+    ```json
+    {
+        "location": "And_Justice_for_All.txt",
+        "language": "en-us",
+        "classifiers": [
+            {
+                "classifierName": "Mystery"
+            },
+            {
+                "classifierName": "Drama"
+            },
+            {
+                "classifierName": "Thriller"
+            },
+            {
+                "classifierName": "Comedy"
+            }
+        ]
+    },
+    ```
 
-1. Navigate to **Labfiles/04-enrich-custom-classes** and extract the **movies summary.zip** folder containing all the files.
+1. Download and extract the **movies summary.zip** folder containing all the files from the following link `https://github.com/MicrosoftLearning/mslearn-knowledge-mining/raw/refs/heads/main/Labfiles/04-enrich-custom-classes/movies%20summary.zip`.
 
     > **Note**
     > You use these files to train a model in Language Studio, and will also index all the files in Azure AI Search.
 
 1. In the [Azure portal](https://portal.azure.com/), select **Resource groups**, then select your resource group.
 1. Select the storage account you created, for example **acs18245str**.
-1. Select **Configuration** from the left pane, select the **Enable** option for the *Allow Blob anonymous access* setting and then select **Save** at the top of the page.
+1. Select **Configuration** under **Settings** from the left pane, then select the **Enabled** option for the *Allow Blob anonymous access* setting and then select **Save** at the top of the page.
 
     ![A screenshot showing how to create a new storage container.](../media/04-media/select-azure-blob-storage.png)
 
-1. Select **Containers** from the left, then select **+ Container**.
-1. In the **New container** pane, in **Name**, enter **language-studio-training-data**.
+1. Select **Containers** under **Data storage** from the left, then select **+ Container**.
+1. In the **New container** pane, in **Name**, enter `language-studio-training-data`.
 1. In **Anonymous access level**, choose **Container (anonymous read access for containers and blobs)** and select **Create**.
 1. Select the new container you just created, **language-studio-training-data**.
+
     ![A screenshot of uploading files into the container.](../media/04-media/upload-files.png)
+
 1. Select **Upload** at the top of the pane.
 1. In the **Upload blob** pane, select **Browse for files**.
 1. Navigate to where you extracted the sample files, select all the text (`.txt`) and json (`.json`) files.
