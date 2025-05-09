@@ -28,7 +28,7 @@ To save you time, select this Azure Resource Manager template to create resource
 
     ![A screenshot showing all of the deployed Azure resources.](../media/07-media/azure-resources-created.png)
 
-### Copy Azure AI Search service REST API information
+## Copy Azure AI Search service REST API information
 
 1. In the list of resources, select the search service you created. In the above example **acs118245-search-service**.
 1. Copy the search service name into a text file.
@@ -36,36 +36,47 @@ To save you time, select this Azure Resource Manager template to create resource
     ![A screenshot of the keys section of a search service.](../media/07-media/search-api-keys-exercise-version.png)
 1. On the left, select **Keys**, then copy the **Primary admin key** into the same text file.
 
-### Download example code
+## Clone the repository in Cloud Shell
 
-Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top of the Azure portal.
-> **Note**
-> If you're prompted to create an Azure Storage account select **Create storage**.
+You'll develop your code using Cloud Shell from the Azure Portal. The code files for your app have been provided in a GitHub repo.
 
-1. Once it has finished starting up, clone the following example code repository by running the following in your Cloud Shell:
+> **Tip**: If you have already cloned the **mslearn-knowledge-mining** repo recently, you can skip this task. Otherwise, follow these steps to clone it to your development environment.
 
-    ```powershell
-    git clone https://github.com/Azure-Samples/azure-search-dotnet-scale.git samples
+1. In the Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
+
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
+
+1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
+
+    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+
+1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
+
+    ```
+    rm -r mslearn-knowledge-mining -f
+    git clone https://github.com/microsoftlearning/mslearn-knowledge-mining mslearn-knowledge-mining
     ```
 
-1. Change into the newly created directory by running:
+1. After the repo has been cloned, navigate to the folder containing the application code files:  
 
-    ```powershell
-    cd samples
+    ```
+   cd mslearn-knowledge-mining/Labfiles/07-exercise-add-to-index-use-push-api/OptimizeDataIndexing
     ```
 
-1. Then run:
+## Set up your application
 
-    ```powershell
-    code ./optimize-data-indexing/v11
+1. Using the `ls` command, you can view the contents of the **OptimizeDataIndexing** folder. Note that it contains a `appsettings.json` file for configuration settings.
+
+1. Enter the following command to edit the configuration file that has been provided:
+
+    ```
+   code appsettings.json
     ```
 
-1. This opens the code editor inside Cloud Shell at the `/optimize-data-indexing/v11` folder.
-
-    ![A screenshot of VS Code showing the setup notifications.](../media/07-media/setup-visual-studio-code-solution.png)
-1. In the navigation on the left, expand the **OptimizeDataIndexing** folder, then select the **appsettings.json** file.
+    The file is opened in a code editor.
 
     ![A screenshot showing the contents of the appsettings.json file.](../media/07-media/update-app-settings.png)
+
 1. Paste in your search service name and primary admin key.
 
     ```json
@@ -77,23 +88,26 @@ Open your the Azure Cloud Shell by selecting the Cloud Shell button at the top o
     ```
 
     The settings file should look similar to the above.
-1. Save your change by pressing **CTRL + S**.
-1. Select the **OptimizeDataIndexing.csproj** file. <!-- Added this and the next two steps in case we can't update the file in the repo that holds these (seems to be separate from the other labs)-->
-1. On the fifth line, change `<TargetFramework>netcoreapp3.1</TargetFramework>` to `<TargetFramework>net7.0</TargetFramework>`. <!--- can be removed if no longer needed based on the above-->
-1. Save your change by pressing **CTRL + S**.<!--- can be removed if no longer needed based on the above-->
-1. In the terminal, enter `cd ./optimize-data-indexing/v11/OptimizeDataIndexing` then press **Enter** to change into the correct directory.
-1. Select the **Program.cs** file. Then, in the terminal, enter `dotnet run` and press **Enter**.
+   
+1. After you've replaced the placeholders, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
+1. In the terminal, enter `dotnet run` and press **Enter**.
 
     ![A screenshot showing the app running in VS Code with an exception.](../media/07-media/debug-application.png)
-The output shows that in this case, the best performing batch size is 900 documents. As it reaches 3.688 MB per second.
 
-### Edit the code to implement threading and a backoff and retry strategy
+    The output shows that in this case, the best performing batch size is 900 documents with the highest transfer rate (MB / Second).
+   
+    >**Note**: Your transfer rate values may be different from what is shown in the screenshot. However, the best performing batch size should still be the same. 
+
+## Edit the code to implement threading and a backoff and retry strategy
 
 There's code commented out that's ready to change the app to use threads to upload documents to the search index.
 
-1. Make sure you've selected **Program.cs**.
+1. Enter the following command to open the code file for the client application:
 
-    ![A screenshot of VS Code showing the Program.cs file.](../media/07-media/edit-program-code.png)
+    ```
+   code Program.cs
+    ```
+
 1. Comment out lines 38 and 39 like this:
 
     ```csharp
@@ -118,13 +132,13 @@ There's code commented out that's ready to change the app to use threads to uplo
     The code that controls the batch size and number of threads is `await ExponentialBackoff.IndexDataAsync(searchClient, hotels, 1000, 8)`. The batch size is 1000 and the threads are eight.
 
     ![A screenshot showing all the edited code.](../media/07-media/thread-code-ready.png)
+
     Your code should look like the above.
 
-1. Save your changes, press **CTRL**+**S**.
+1. Save your changes.
 1. Select your terminal, then press any key to end the running process if you haven't already.
 1. Run `dotnet run` in the terminal.
 
-    ![A screenshot showing the completed messages in the console.](../media/07-media/upload-hundred-thousand-documents.png)
     The app will start eight threads, and then as each thread finishes writing a new message to the console:
 
     ```powershell
@@ -164,7 +178,7 @@ You can search and verify that the documents have been added to the index in the
 
 ![A screenshot showing the search index with 100000 documents.](../media/07-media/check-search-service-index.png)
 
-### Clean-up
+## Clean-up
 
 Now that you've completed the exercise, delete all the resources you no longer need. Start with the code cloned to your machine. Then delete the Azure resources.
 
