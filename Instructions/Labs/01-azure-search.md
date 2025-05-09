@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Create an Azure AI Search solution'
-    module: 'Module 12 - Creating a Knowledge Mining Solution'
+    description: 'Create a searchable index from a collection of documents.'
 ---
 
 # Create an Azure AI Search solution
@@ -24,13 +24,13 @@ The solution you will create for Margie's Travel requires the following resource
 
 ### Create an Azure AI Search resource
 
-1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using the Microsoft account associated with your Azure subscription.
-1. Select the **&#65291;Create a resource** button, search for *search*, and create an **Azure AI Search** resource with the following settings:
+1. In a web browser, open the Azure portal at `https://portal.azure.com`, and sign in using your Azure credentials.
+1. Select the **&#65291;Create a resource** button, search for `Azure AI Search`, and create an **Azure AI Search** resource with the following settings:
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group (if you are using a restricted subscription, you may not have permission to create a new resource group - use the one provided)*
-    - **Service name**: *Enter a unique name*
+    - **Resource group**: *Create or select a resource group*
+    - **Service name**: *A valid name for your search resource*
     - **Location**: *Select a location - note that your Azure AI Search and Azure AI Services resources must be in the same location*
-    - **Pricing tier**: Basic
+    - **Pricing tier**: Free
 
 1. Wait for deployment to complete, and then go to the deployed resource.
 1. Review the **Overview** page on the blade for your Azure AI Search resource in the Azure portal. Here, you can use a visual interface to create, test, manage, and monitor the various components of a search solution; including data sources, indexes, indexers, and skillsets.
@@ -39,25 +39,27 @@ The solution you will create for Margie's Travel requires the following resource
 
 If you don't already have one in your subscription, you'll need to provision an **Azure AI Services** resource. Your search solution will use this to enrich the data in the datastore with AI-generated insights.
 
-1. In the top search bar, search for *Azure AI Services*, and create an **Azure AI Services multi service account** resource with the following settings:
+1. In the top search bar, search for `Azure AI Services`, and create an **Azure AI Services** resource with the following settings:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *The same resource group as your Azure AI Search resource*
     - **Region**: *The same location as your Azure AI Search resource*
-    - **Name**: *Enter a unique name*
+    - **Name**: *A valid name for your AI Services resource*
     - **Pricing tier**: Standard S0
-1. Select the required checkboxes and create the resource.
 1. Wait for deployment to complete, and then view the deployment details.
 
 ### Create a storage account
 
 1. In the top search bar, search for *storage accounts*, and create a **Storage accounts** resource with the following settings:
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: **The same resource group as your Azure AI Search and Azure AI Services resources*
-    - **Storage account name**: *Enter a unique name*
-    - **Region**: *Choose any available region*
-    - **Performance**: Standard
-    - **Redundancy**: Locally-redundant storage (LRS)
-    - On the **Advanced** tab, check the box next to *Allow enabling anonymous access on individual containers*
+    - On the **Basics** tab:
+        - **Subscription**: *Your Azure subscription*
+        - **Resource group**: **The same resource group as your Azure AI Search and Azure AI Services resources*
+        - **Storage account name**: *A valid name for your storage resource*
+        - **Region**: *Choose any available region*
+        - **Primary service**: Azure Blob Storage or Azure Data Lake Storage Gen 2
+        - **Performance**: Standard
+        - **Redundancy**: Locally-redundant storage (LRS)
+    - On the **Advanced** tab:
+        - **Allow enabling anonymous access on individual containers**: Selected
 1. Wait for deployment to complete, and then go to the deployed resource.
 1. On the **Overview** page, note the **Subscription ID** -this identifies the subscription in which the storage account is provisioned.
 1. On the **Access keys** page, note that two keys have been generated for your storage account. Then select **Show keys** to view the keys.
@@ -65,9 +67,8 @@ If you don't already have one in your subscription, you'll need to provision an 
     > **Tip**: Keep the **Storage Account** blade open - you will need the subscription ID and one of the keys in the next procedure.
 
 ## Prepare to develop an app in Cloud Shell
-You'll develop your search app using Azure cloud shell. The code files for your app have been provided in a GitHub repo.
 
-> **Tip**: If you have already cloned the **mslearn-knowledge-mining** repo, you can skip this task. Otherwise, follow these steps to clone it to your development environment.
+You'll develop your search app using Azure cloud shell. The code files for your app have been provided in a GitHub repo.
 
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
@@ -83,7 +84,7 @@ You'll develop your search app using Azure cloud shell. The code files for your 
 
     ```
     rm -r mslearn-knowledge-mining -f
-    git clone https://github.com/microsoftlearning/mslearn-knowledge-mining mslearn-knowledge-mining
+    git clone https://github.com/microsoftlearning/mslearn-knowledge-mining
     ```
 
     > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
