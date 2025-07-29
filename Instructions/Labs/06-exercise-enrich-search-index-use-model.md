@@ -35,27 +35,49 @@ Before you enrich your search index, create an Azure Machine Learning workspace.
 You'll now create a regression model and train it using an Azure AI Machine Learning Studio pipeline. You'll train your model on automobile price data. The model, once trained, will predict the price of an automobile based on its attributes.
 
 1. On the home page, select **Designer**.
-
-1. From the list of prebuilt components, select **Regression - Automobile Price Prediction (Basic)**.
+1. On the **Designer** page, select **Create a new pipeline using classic prebuilt components**.
 
     ![A screenshot showing selecting the prebuilt regression model.](../media/06-media/select-pre-built-components-new.png)
 
-1. Select **Validate**.
+1. Change the default pipeline name (**Pipeline-Created-on-*date***) to `Car-Price-Prediction` by selecting the pencil icon on its right.
+1. In the asset library panel, select the **Components** tab and expand the **Sample data** asset group.
 
+>**NOTE**: If the asset library is collapsed, you can expand it by selecting the **>>** icon in the top toolbar.
+
+1. Drag and drop the **Automobile price data (Raw)** component onto the canvas.
+1. Expand the **Data Transformation** asset group and drag and drop the **Clean Missing Data** component onto the canvas, below **automobile_price_raw**.
+1. Connect the data output to the input of the new component.
+1. Select the **Clean Missing Data** component and select **Edit column** in the right panel.
+
+>**NOTE**: You may need to expand the panel by selecting the **Expand** icon in the top-right corner of the canvas.
+
+1. In the **Columns to be cleaned** window, in the **Include** row, select **All columns** in the dropdown menu and select **Save**. You can also close the right panel.
+1. Still in the **Data Transformation** asset group, drag and drop the **Split Data** component onto the canvas, below **Clean Missing Data**.
+1. Connect the **Cleaned dataset** output to the input of the new component.
+1. Expand the **Model Training** asset group and drag and drop the **Train Model** component onto the canvas, below **Split Data**.
+1. Connect the **Results dataset1** output to the **Dataset** input of the new component.
+1. Select the **Train Model** component and select **Edit column** in the right panel.
+1. In the **Enter column name** field, enter `price` and select **Save**.
+1. Expand the **Machine Learning Algorithms** asset group and drag and drop the **Linear Regression** component onto the canvas, next to **Split Data**.
+1. Connect the **Untrained model** output of the new component to the input of the **Train Model** component.
+1. Expand the **Model Scoring & Evaluation** asset group and drag and drop the **Score Model** component onto the canvas, below **Train Model**.
+1. Connect the **Trained model** output to the input of the new component and the **Results dataset2** output from **Split Data** to the **Dataset** input of the new component.
+1. Still in the **Model Scoring & Evaluation** asset group, drag and drop the **Evaluate Model** component onto the canvas, below **Score Model**.
+1. Connect the **Scored dataset** output to the left input of the new component.
+1. Review your pipeline, it should look like the following:
+
+    ![A screenshot showing the regression pipeline.](../media/06-media/regression-pipeline.png)
+
+1. Select **Validate**.
 1. On the **Graph validation** pane, select the error **Select compute target in submission wizard**.
 
     ![A screenshot showing how to create a compute instance to train the model.](../media/06-media/create-compute-instance-new.png)
+
 1. In the **Select compute type** dropdown, choose **Compute instance**. Then select **Create Azure ML compute instance** underneath.
 1. In the **Compute name** field, enter a unique name (such as **compute-for-training**).
 1. Select **Review + create**, then select **Create**.
-
 1. In the **Select Azure ML compute instance** field, select your instance from the dropdown. You might need to wait until it has finished provisioning.
-
-1. Select **Validate** again, the pipeline should look good.
-
-    ![A screenshot showing the pipeline looking good, and the Submit button highlighted.](../media/06-media/submit-pipeline.png)
 1. Select **Basics** in the **Set up pipeline job** pane.
-   > Note: If you hid the **Set up pipeline job** pane before, you can open it again by selecting **Configure & Submit**.
 1. Select **Create new** under the Experiment name.
 1. In **New experiment name**, enter **linear-regression-training**.
 1. Select **Review + Submit** , then select **Submit**.
@@ -83,12 +105,10 @@ While your pipeline is training a linear regression model, you can create the re
 Your pipeline job should have finished. You'll download the `score.py` and `conda_env.yaml` files. Then you'll register your trained model.
 
 1. On the left, select **Jobs**.
-
-    ![A screenshot showing the completed pipeline job.](../media/06-media/completed-pipeline-new.png)
-1. Select your experiment, then select your completed job in the table, for example, **Regression - Automobile Price Prediction (Basic)**. If you're prompted to save changes, select **Discard** for changes.
-1. In the designer, select **Job overview** in the top right, then select the **Train Model** node.
+1. Select your experiment, then expand your completed job and select the **train_model** child-job.
 
     ![A screenshot showing how to download score.py.](../media/06-media/download-score-conda.png)
+
 1. In the **Outputs + logs** tab, expand the **trained_model_outputs** folder.
 1. Next to `score.py`, select the more menu (**...**), then select **Download**.
 1. Next to `conda_env.yaml`, select the more menu (**...**), then select **Download**.
