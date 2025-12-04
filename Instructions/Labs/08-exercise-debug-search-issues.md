@@ -91,13 +91,15 @@ The indexer will now begin to ingest 50 documents. However, if you check the sta
 
 1. Select **source** under inputs, and change the field to `/document/Description`.
 1. Select **Save**.
-    > ⚠️ **Importan**: You might encounter an error related to connecting to the storage account. This happens because the debug session sometimes deselects the storage account.
-    To resolve this:
-    Open the Debug Panel.
-    Go to Settings.
-    Check if the storage account is selected. If not, select the previously created storage account.
-    Click Save and continue with the exercise.
-    This issue may occur in other instances during debugging, so keep this fix in mind.
+    
+    > ⚠️ **Important:** You might encounter an error related to connecting to the storage account. This happens because the debug session sometimes deselects the storage account.  
+    > **To resolve this:**  
+    > - Open the **Debug Panel**.  
+    > - Go to **Settings**.  
+    > - Check if the storage account is selected. If not, select the previously created storage account.  
+    > - Click **Save** and continue with the exercise.  
+    >  
+    > This issue may occur in other instances during debugging, so keep this fix in mind
 
 1. Select **Run**. The indexer should no longer have any errors or warnings. The skillset can now be updated.
 
