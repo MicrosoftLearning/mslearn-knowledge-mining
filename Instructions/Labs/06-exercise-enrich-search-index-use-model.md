@@ -9,6 +9,8 @@ You can use the power of machine learning to enrich a search index. To do this, 
 
 In this exercise, you'll create an Azure AI Machine Learning Studio model, then train, deploy, and test an endpoint using the model. Then you'll create an Azure Cognitive Search service, create sample data, and enrich an index using the Azure AI Machine Learning studio endpoint.
 
+This exercise should take approximately 30 minutes to complete.
+
 > **Note**
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 >

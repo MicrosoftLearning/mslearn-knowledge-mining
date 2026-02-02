@@ -9,6 +9,8 @@ You've built a search solution and now want to add Azure AI Services for languag
 
 In this exercise, you'll create an Azure AI Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
 
+This exercise should take approximately 40 minutes to complete.
+
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 

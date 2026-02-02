@@ -9,6 +9,8 @@ You want to explore how to create an Azure AI Search index and upload documents 
 
 In this exercise, you'll clone an existing C# solution and run it to work out the optimal batch size to upload documents. You'll then use this batch size and upload documents effectively using a threaded approach.
 
+This exercise should take approximately 20 minutes to complete.
+
 > **Note**
 >To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 

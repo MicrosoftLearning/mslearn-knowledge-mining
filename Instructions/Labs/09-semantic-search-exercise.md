@@ -10,6 +10,8 @@ lab:
 
 In this exercise, you will add semantic ranker to an index and use semantic ranker for a query.
 
+This exercise should take approximately 20 minutes to complete.
+
 ## Enable semantic ranker
 
 1. Open the Azure portal and sign in.

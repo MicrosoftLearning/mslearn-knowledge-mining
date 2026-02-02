@@ -14,6 +14,8 @@ Azure AI Search uses an enrichment pipeline of AI skills to extract AI-generated
 
 In this exercise, you'll implement a knowledge store for *Margie's Travel*, a fictitious travel agency that uses information in brochures and hotel reviews to help customers plan trips.
 
+This exercise should take approximately 30 minutes to complete.
+
 ## Create Azure resources
 
 > **Note**: If you have previously completed the **[Create an Azure AI Search solution](01-azure-search.md)** exercise, and still have these Azure resources in your subscription, you can skip this section and start at the **Create a search solution** section. Otherwise, follow the steps below to provision the required Azure resources.

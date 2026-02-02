@@ -9,6 +9,8 @@ You've built your search solution but have noticed that there are some warnings 
 
 In this exercise, you'll create an Azure AI Search solution, import some sample data, and then resolve a warning on the indexer.
 
+This exercise should take approximately 20 minutes to complete.
+
 > **Note**
 > To complete this exercise, you will need a Microsoft Azure subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free?azure-portal=true).
 

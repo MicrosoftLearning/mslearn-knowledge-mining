@@ -12,6 +12,8 @@ For example, suppose *Margie's Travel* is a travel agency that specializes in or
 
 To address this challenge, Margie's Travel can use Azure AI Search to implement a solution in which the documents are indexed and enriched by using AI skills to make them easier to search.
 
+This exercise should take approximately 40 minutes to complete.
+
 ## Create Azure resources
 
 The solution you will create for Margie's Travel requires the following resources in your Azure subscription:

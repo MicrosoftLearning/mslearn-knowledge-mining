@@ -14,6 +14,8 @@ You'll need the following to successfully this exercise:
 - Azure AI Search service
 - The Postman sample collection located in this repository - *Vector-Search-Quickstart.postman_collection v1.0 json*.
 
+This exercise should take approximately 20 minutes to complete.
+
 > **Note**
 > You can find more information about the Postman app [here](https://learn.microsoft.com/en-us/azure/search/search-get-started-rest) if required.
 
