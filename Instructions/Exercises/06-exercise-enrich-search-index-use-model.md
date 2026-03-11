@@ -1,6 +1,15 @@
 ---
 lab:
-    title: 'Enrich a search index using Azure Machine Learning model'
+  title: Enrich a search index using Azure Machine Learning model
+  description: You can use the power of machine learning to enrich a search index.
+    To do this, you'll use a model trained in Azure AI Machine Learning studio and
+    call it from a machine learning custom skillset.
+  duration: 10 minutes
+  level: 500
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure Machine Learning
 ---
 
 # Enrich a search index using Azure Machine Learning model
