@@ -1,7 +1,16 @@
 ---
 lab:
-    title: 'Create a Custom Skill for Azure AI Search'
-    module: 'Module 12 - Creating a Knowledge Mining Solution'
+  title: Create a Custom Skill for Azure AI Search
+  module: Module 12 - Creating a Knowledge Mining Solution
+  description: Azure AI Search uses an enrichment pipeline of AI skills to extract
+    AI-generated fields from documents and include them in a search index. There's
+    a comprehensive set of built-in skills that you can use, but if you have a specific
+    requirement that isn't met by these skills, you can create a custom skill.
+  duration: 148 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Azure
 ---
 
 # Create a Custom Skill for Azure AI Search
