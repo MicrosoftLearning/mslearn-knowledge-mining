@@ -1,6 +1,14 @@
 ---
 lab:
-    title: 'Enrich an AI search index with custom classes'
+  title: Enrich an AI search index with custom classes
+  description: You've built a search solution and now want to add Azure AI Services
+    for language enrichments to your indexes.
+  duration: 10 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Azure
+  - Azure AI services
 ---
 
 # Enrich an AI search index with custom classes
