@@ -1,7 +1,16 @@
 ---
 lab:
-    title: 'Create a Knowledge Store with Azure AI Search'
-    module: 'Module 12 - Creating a Knowledge Mining Solution'
+  title: Create a Knowledge Store with Azure AI Search
+  module: Module 12 - Creating a Knowledge Mining Solution
+  description: 'Azure AI Search uses an enrichment pipeline of AI skills to extract
+    AI-generated fields from documents and include them in a search index. While the
+    index might be considered the primary output from an indexing process, the enriched
+    data it contains might also be useful in other ways. For example:'
+  duration: 30 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Azure
 ---
 
 # Create a Knowledge Store with Azure AI Search
