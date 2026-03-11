@@ -1,6 +1,13 @@
 ---
 lab:
-    title: 'Add to an index using the push API'
+  title: Add to an index using the push API
+  description: You want to explore how to create an Azure AI Search index and upload
+    documents to that index using C# code.
+  duration: 20 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Azure
 ---
 
 # Add to an index using the push API
