@@ -1,6 +1,13 @@
 ---
 lab:
-    title: 'Enrich a search index using Azure Machine Learning model'
+  title: Enrich a search index using Azure Machine Learning model
+  description: In this exercise, you'll create an Azure AI Machine Learning Studio model, then train, deploy, and test an endpoint using the model. Then you'll create an Azure Cognitive Search service, create sample data, and enrich an index using the Azure AI Machine Learning studio endpoint.
+  duration: 30 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure Machine Learning
 ---
 
 # Enrich a search index using Azure Machine Learning model
