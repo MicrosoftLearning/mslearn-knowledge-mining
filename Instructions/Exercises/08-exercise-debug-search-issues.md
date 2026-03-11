@@ -1,6 +1,12 @@
 ---
 lab:
-    title: 'Debug search issues'
+  title: Debug search issues
+  description: In this exercise, you'll create an Azure AI Search solution, import some sample data, and then resolve a warning on the indexer.
+  duration: 94 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - Azure
 ---
 
 # Debug search issues
