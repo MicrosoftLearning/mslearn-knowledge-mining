@@ -1,6 +1,11 @@
 ---
 lab:
-    title: 'Use the REST API to run vector search queries'
+  title: Use the REST API to run vector search queries
+  description: In this exercise you'll set up your project, create an index, upload
+    your documents, and run queries.
+  duration: 20 minutes
+  level: 100
+  islab: true
 ---
 
 # Use the REST API to run vector search queries
