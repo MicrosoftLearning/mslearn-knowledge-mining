@@ -1,6 +1,11 @@
 ---
 lab:
-    title: 'Debug search issues'
+  title: Debug search issues
+  description: You've built your search solution but have noticed that there are some
+    warnings on the indexer.
+  duration: 94 minutes
+  level: 200
+  islab: true
 ---
 
 # Debug search issues
