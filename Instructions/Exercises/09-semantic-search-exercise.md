@@ -1,6 +1,14 @@
 ---
 lab:
-    title: 'Set up semantic ranker'
+  title: Set up semantic ranker
+  description: Once you have a search index and semantic ranker enabled, you can configure semantic ranking. You require a search client that supports preview APIs on the query request. You could use Search explorer in the Azure portal, the Postman app, the Azure SDK for .NET, or the Azure SDK for Python. In this exercise, you will use Search explorer in the Azure portal.
+  duration: 70 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - .NET
+    - Azure
+    - Azure Portal
 ---
 
 # Set up semantic ranker
