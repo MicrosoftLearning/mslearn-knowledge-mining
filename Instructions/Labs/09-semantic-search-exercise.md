@@ -1,6 +1,11 @@
 ---
 lab:
-    title: 'Set up semantic ranker'
+  title: Set up semantic ranker
+  description: In this exercise, you will add semantic ranker to an index and use
+    semantic ranker for a query.
+  duration: 20 minutes
+  level: 200
+  islab: true
 ---
 
 # Set up semantic ranker
