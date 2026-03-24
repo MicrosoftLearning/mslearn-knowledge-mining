@@ -1,7 +1,6 @@
 ---
 lab:
   title: Create a Knowledge Store with Azure AI Search
-  module: Module 12 - Creating a Knowledge Mining Solution
   description: In this exercise, you'll use the Azure AI Search REST interface to create these components by submitting JSON requests.
   duration: 30 minutes
   level: 300

@@ -3,7 +3,7 @@ lab:
   title: Create an Azure AI Search solution
   description: Create a searchable index from a collection of documents.
   duration: 40 minutes
-  level: 400
+  level: 300
   islab: true
   primarytopics:
     - Azure

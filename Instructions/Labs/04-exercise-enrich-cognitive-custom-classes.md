@@ -3,7 +3,7 @@ lab:
   title: Enrich an AI search index with custom classes
   description: In this exercise, you'll create an Azure AI Search solution and enrich an index with the results from a Language Studio custom text classification project. You'll create a function app to connect search and your classification model together.
   duration: 40 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Azure
