@@ -1,7 +1,13 @@
 ---
 lab:
-    title: 'Create an Azure AI Search solution'
-    module: 'Module 12 - Creating a Knowledge Mining Solution'
+  title: Create an Azure AI Search solution
+  module: Module 12 - Creating a Knowledge Mining Solution
+  description: 'The solution you will create for Margie''s Travel requires the following resources in your Azure subscription:'
+  duration: 176 minutes
+  level: 500
+  islab: true
+  primarytopics:
+    - Azure
 ---
 
 # Create an Azure AI Search solution

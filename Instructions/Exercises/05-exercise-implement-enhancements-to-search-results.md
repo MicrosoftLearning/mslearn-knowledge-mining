@@ -1,6 +1,13 @@
 ---
 lab:
-    title: 'Implement enhancements to search results'
+  title: Implement enhancements to search results
+  description: In this exercise, you'll add a scoring profile to improve the relevance of search results. Then you'll use Azure AI Services to add Portuguese descriptions for all your hotels.
+  duration: 150 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - Azure
+    - Azure AI services
 ---
 
 # Implement enhancements to search results
