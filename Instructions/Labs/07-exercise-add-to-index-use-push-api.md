@@ -5,6 +5,8 @@ lab:
   duration: 20 minutes
   level: 300
   islab: true
+  primarytopics:
+    - Azure
 ---
 
 # Add to an index using the push API

@@ -1,7 +1,6 @@
 ---
 lab:
   title: Create a Custom Skill for Azure AI Search
-  module: Module 12 - Creating a Knowledge Mining Solution
   description: In this exercise, you'll create a custom skill that tabulates the frequency of individual words in a document to generate a list of the top five most used words, and add it to a search solution for Margie's Travel - a fictitious travel agency.
   duration: 30 minutes
   level: 400
